@@ -50,6 +50,29 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  z-index:2000;
+  pointer-events:none;
+  opacity:.035;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{
+  background:var(--wine);
+  color:var(--paper);
+}
+
+/* Unifica el tono de todas las fotos reales, vengan de la sesión que vengan */
+.plate-glass-photo img,
+.tabla-visual-photo img,
+.insta-card-photo img,
+.showcase-media img,
+.lightbox-media img{
+  filter:saturate(1.08) contrast(1.05) brightness(1.01);
 }
 img{max-width:100%;display:block;}
 a{color:inherit;}
@@ -189,6 +212,19 @@ button{font-family:inherit;}
   letter-spacing:.01em;
   color:var(--espresso);
 }
+.brand-tagline{
+  display:block;
+  font-family:var(--font-body);
+  font-size:.56rem;
+  line-height:1.3;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--gold-deep);
+  margin-left:2px;
+  padding-left:10px;
+  border-left:1px solid var(--line);
+}
 .nav-links{
   display:flex;align-items:center;gap:28px;
   position:relative;z-index:1;
@@ -199,8 +235,19 @@ button{font-family:inherit;}
   font-weight:500;
   color:var(--espresso-70);
   transition:color .25s ease;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;left:0;right:0;bottom:-4px;
+  height:1.5px;
+  background:var(--wine);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .35s var(--ease);
 }
 .nav-links a:hover{color:var(--wine);}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left;}
 .nav-actions{display:flex;align-items:center;gap:10px;position:relative;z-index:1;}
 .nav-actions .btn{padding:11px 20px;font-size:.92rem;}
 .nav-toggle{
@@ -217,6 +264,10 @@ button{font-family:inherit;}
 }
 .nav-toggle span::before{top:-6px;}
 .nav-toggle span::after{top:6px;}
+
+@media (max-width: 480px){
+  .brand-tagline{display:none;}
+}
 
 @media (max-width: 880px){
   .nav-links{
@@ -236,6 +287,7 @@ button{font-family:inherit;}
     transition:transform .35s var(--ease), opacity .35s var(--ease), visibility .35s;
   }
   .nav-links a{padding:12px 10px;border-radius:12px;}
+  .nav-links a::after{display:none;}
   .nav-links a:hover{background:rgba(42,27,16,.06);}
   .site-header.nav-open .nav-links{transform:translateY(0);opacity:1;visibility:visible;}
   .nav-toggle{display:flex;}
@@ -258,6 +310,15 @@ button{font-family:inherit;}
     var(--cream);
   z-index:-2;
 }
+.hero-bg::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(420px 420px at var(--mx,50%) var(--my,30%), rgba(201,154,79,.16), transparent 65%);
+  transition:opacity .4s ease;
+  opacity:0;
+  pointer-events:none;
+}
+.hero:hover .hero-bg::before{opacity:1;}
 .hero-bg::after{
   content:'';
   position:absolute;inset:0;
