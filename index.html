@@ -450,11 +450,14 @@
       <div class="section-head center">
         <p class="kicker">Lo más solicitado</p>
         <h2>Lo que la gente repite una y otra vez</h2>
-        <p>Tablas reales, servidas en pisos y eventos reales. Esto es lo que sale de nuestra cocina.</p>
+        <p>Tablas reales, servidas en pisos y eventos reales. Toca cualquier foto para ver los detalles.</p>
       </div>
 
       <div class="showcase-grid">
-        <article class="showcase-card is-featured">
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Bodas y eventos"
+          data-title="Tablas individuales con flores comestibles"
+          data-desc="Pensada para bodas, comuniones y eventos donde cada invitado se merece su propio momento: nada de estirar el brazo entre veinte personas para llegar a una tabla central. Cada plato se monta a mano con quesos madurados, embutido cortado fino y flores comestibles de temporada que cambian según la época del año. Es el detalle que hace que los invitados sigan hablando de la comida días después de la boda.">
           <div class="showcase-media">
             <picture>
               <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
@@ -463,11 +466,14 @@
           </div>
           <div class="showcase-caption">
             <span class="showcase-tag">Bodas y eventos</span>
-            <h3>Tablas individuales con flores comestibles</h3>
+            <h3>Tablas individuales con flores</h3>
           </div>
-        </article>
+        </button>
 
-        <article class="showcase-card">
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Grupos grandes"
+          data-title="Torre ALMA de 3 pisos"
+          data-desc="Tres pisos, una sola torre, cero prisa por repetir. Pensada para grupos de 15 a 30 personas: combina jamón cortado a cuchillo, quesos curados, fruta de temporada y algo salado en cada nivel, así el show dura toda la sobremesa en vez de vaciarse en diez minutos. La pieza central perfecta para un cumpleaños, un aniversario o cualquier celebración donde ya no cabe ni un plato más en la mesa.">
           <div class="showcase-media">
             <picture>
               <source srcset="assets/img/card-torre.webp" type="image/webp">
@@ -478,9 +484,13 @@
             <span class="showcase-tag">Grupos grandes</span>
             <h3>Torre ALMA de 3 pisos</h3>
           </div>
-        </article>
+        </button>
 
-        <article class="showcase-card">
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="La favorita"
+          data-title="Tabla Mixta ALMA"
+          data-tabla-value="mixta"
+          data-desc="La que más repetimos, con diferencia. Rosetones de embutido montados en pincho para picar sin mancharte las manos, brie cremoso, encurtidos caseros y un toque de miel que rompe justo cuando lo necesitas. Si es tu primera vez con nosotros, es la tabla que siempre recomendamos para empezar.">
           <div class="showcase-media">
             <picture>
               <source srcset="assets/img/tabla-mixta-card.webp" type="image/webp">
@@ -491,9 +501,12 @@
             <span class="showcase-tag">La favorita</span>
             <h3>Tabla Mixta ALMA</h3>
           </div>
-        </article>
+        </button>
 
-        <article class="showcase-card">
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Con pan del día"
+          data-title="Tabla Mediterránea"
+          data-desc="Pan artesano horneado el mismo día, jamón cortado fino, higos, fruta fresca y un aceite de oliva que se nota desde el primer bocado. Es la tabla que mejor representa lo que somos: producto de mercado, sin artificios, servido como en una sobremesa de domingo que no quieres que termine.">
           <div class="showcase-media">
             <picture>
               <source srcset="assets/img/card-mediterranea.webp" type="image/webp">
@@ -504,7 +517,7 @@
             <span class="showcase-tag">Con pan del día</span>
             <h3>Tabla Mediterránea</h3>
           </div>
-        </article>
+        </button>
       </div>
     </div>
   </section>
@@ -899,6 +912,25 @@
     </div>
   </div>
 </footer>
+
+<!-- ============ LIGHTBOX (detalle de tabla) ============ -->
+<div class="lightbox" data-lightbox aria-hidden="true">
+  <div class="lightbox-backdrop" data-lightbox-close></div>
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lightbox-media">
+      <img data-lightbox-img src="" alt="">
+    </div>
+    <div class="lightbox-info">
+      <span class="showcase-tag" data-lightbox-tag></span>
+      <h3 id="lightbox-title" data-lightbox-title></h3>
+      <p data-lightbox-desc></p>
+      <a href="#reserva" class="btn btn-primary" data-lightbox-cta>Reservar esta tabla</a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ WHATSAPP FLOTANTE ============ -->
 <a class="whatsapp-float" href="https://wa.me/34607864393?text=Hola%20ALMA%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20tablas%20gourmet" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a ALMA">
