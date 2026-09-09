@@ -1,5 +1,5 @@
 /* ============================================================
-   BENDITA TABLA — main.js
+   ALMA CATERING & EXPERIENCES — main.js
    Nav, tilt 3D del hero, selector de disponibilidad, validación
    de formulario y banner de cookies. Sin dependencias externas.
    ============================================================ */
@@ -87,6 +87,7 @@
       '.experience-visual',
       '.experience-facts li',
       '.tabla-card',
+      '.showcase-card',
       '.step',
       '.testi-card',
       '.faq-item',
@@ -461,7 +462,7 @@
       var mensaje = (form.querySelector('#reserva-mensaje') || {}).value || '';
       var fechaLegible = formatDateEs(selectedDate);
 
-      var texto = 'Hola Bendita Tabla! Quiero reservar:\n' +
+      var texto = 'Hola ALMA! Quiero reservar:\n' +
         '- Nombre: ' + nombre + '\n' +
         '- Día: ' + fechaLegible + ' a las ' + selectedTime + 'h\n' +
         '- Personas: ' + personas + '\n' +
