@@ -40,7 +40,7 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
 body{
   margin:0;
   background:var(--cream);
@@ -50,6 +50,8 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  overscroll-behavior-x:none;
+  max-width:100vw;
   position:relative;
 }
 body::before{
@@ -594,6 +596,8 @@ button{font-family:inherit;}
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
     gap:16px;
     margin:0 -24px;
     padding:4px 24px 18px;
@@ -719,6 +723,8 @@ button{font-family:inherit;}
   scrollbar-width:thin;
   -webkit-overflow-scrolling:touch;
   scroll-snap-type:x proximity;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x;
 }
 .day-chip{
   flex:none;
@@ -941,6 +947,39 @@ button{font-family:inherit;}
   animation:pulse-wa 3.2s ease-in-out infinite;
 }
 .whatsapp-float svg{width:28px;height:28px;color:#fff;}
+
+.back-to-top{
+  position:fixed;
+  bottom:98px;right:29px;
+  z-index:399;
+  width:52px;height:52px;
+  border-radius:50%;
+  border:1px solid var(--glass-border);
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:var(--glass-shadow);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--espresso);
+  cursor:pointer;
+  padding:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(14px);
+  transition:opacity .3s ease, transform .3s var(--ease), visibility .3s, background .2s ease;
+}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{background:var(--paper);transform:translateY(-3px);}
+.back-to-top svg{width:20px;height:20px;}
+
+@media (max-width:560px){
+  .back-to-top{
+    bottom:92px;right:24px;
+    width:44px;height:44px;
+  }
+  .back-to-top svg{width:18px;height:18px;}
+}
 .whatsapp-float:hover{animation-play-state:paused;transform:scale(1.06);}
 @keyframes pulse-wa{
   0%,100%{box-shadow:0 14px 30px rgba(46,92,69,.4),0 0 0 0 rgba(46,92,69,.4);}
