@@ -71,6 +71,7 @@ body::before{
 .tabla-visual-photo img,
 .insta-card-photo img,
 .showcase-media img,
+.experience-visual img,
 .lightbox-media img{
   filter:saturate(1.08) contrast(1.05) brightness(1.01);
 }
@@ -500,6 +501,7 @@ button{font-family:inherit;}
   position:relative;
   aspect-ratio:1/1.05;
   border-radius:28px;
+  overflow:hidden;
   background:
     radial-gradient(400px 320px at 30% 20%, rgba(201,154,79,.35), transparent 60%),
     linear-gradient(160deg, #3a2717, #241609);
@@ -507,6 +509,18 @@ button{font-family:inherit;}
   border:1px solid rgba(243,236,218,.14);
 }
 .experience-visual svg{width:70%;height:70%;}
+.experience-visual picture,
+.experience-visual img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.experience-visual::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(160deg, rgba(58,39,23,.35), rgba(36,22,9,.55));
+  pointer-events:none;
+}
 
 @media (max-width: 900px){
   .experience-inner{grid-template-columns:1fr;}
