@@ -322,11 +322,15 @@ button{font-family:inherit;}
   display:flex;align-items:center;justify-content:center;
 }
 .plate-glass svg{width:82%;height:82%;}
-.plate-glass-photo{overflow:hidden;padding:10px;}
+.plate-glass-photo{
+  overflow:hidden;
+  padding:10px;
+  border-radius:36px;
+}
 .plate-glass-photo picture,
 .plate-glass-photo img{
   width:100%;height:100%;
-  border-radius:50%;
+  border-radius:26px;
   object-fit:cover;
   display:block;
 }
@@ -358,7 +362,17 @@ button{font-family:inherit;}
 
 @media (max-width: 980px){
   .hero-grid{grid-template-columns:1fr;}
-  .hero-scene{height:400px;margin-top:20px;order:-1;}
+  .hero-scene{height:320px;margin-top:12px;}
+  .plate-glass{width:280px;height:280px;}
+  .floaty.f-grapes{width:76px;}
+  .floaty.f-cheese{width:86px;}
+  .floaty.f-fig{width:58px;}
+  .floaty.f-wine{width:70px;}
+  .floaty.f-sprig{width:52px;}
+}
+@media (max-width: 420px){
+  .hero-scene{height:280px;}
+  .plate-glass{width:230px;height:230px;}
 }
 
 /* =========================================================
@@ -495,7 +509,24 @@ button{font-family:inherit;}
 .tabla-price span{font-size:.82rem;color:var(--espresso-50);}
 
 @media (max-width:980px){.tablas-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:640px){.tablas-grid{grid-template-columns:1fr;}}
+@media (max-width:640px){
+  .tablas-grid{
+    display:flex;
+    grid-template-columns:none;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:16px;
+    margin:0 -24px;
+    padding:4px 24px 18px;
+    scrollbar-width:none;
+  }
+  .tablas-grid::-webkit-scrollbar{display:none;}
+  .tabla-card{
+    flex:0 0 82%;
+    scroll-snap-align:center;
+  }
+}
 
 /* =========================================================
    Cómo funciona — pasos
@@ -1052,108 +1083,6 @@ button{font-family:inherit;}
   .lightbox-panel{grid-template-columns:1fr;max-height:92vh;}
   .lightbox-media{min-height:240px;}
   .lightbox-info{padding:30px 26px;}
-}
-
-/* =========================================================
-   Inmersión tipo Apple — recorrido de tablas fijado al scroll
-   (solo escritorio: en móvil se muestra el listado de precios)
-   ========================================================= */
-.tablas-immersive{
-  display:none;
-  position:relative;
-}
-@media (min-width: 880px){
-  .tablas-immersive{display:block;}
-}
-.immersive-sticky{
-  position:sticky;
-  top:0;
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0 24px;
-}
-.immersive-intro{
-  position:absolute;
-  top:70px;left:50%;
-  transform:translateX(-50%);
-  text-align:center;
-  z-index:2;
-  transition:opacity .3s ease;
-}
-.immersive-intro .kicker{justify-content:center;}
-.immersive-dots{
-  position:absolute;
-  right:36px;top:50%;
-  transform:translateY(-50%);
-  display:flex;flex-direction:column;gap:16px;
-  z-index:3;
-}
-.idot{
-  width:9px;height:9px;border-radius:50%;
-  border:1.5px solid var(--gold);
-  background:transparent;
-  padding:0;cursor:pointer;
-  transition:background .3s ease, transform .3s ease, border-color .3s ease;
-}
-.idot:hover{border-color:var(--wine);}
-.idot.is-active{background:var(--wine);border-color:var(--wine);transform:scale(1.35);}
-
-.immersive-stage{
-  position:relative;
-  width:100%;
-  max-width:1040px;
-  height:62vh;
-  margin-top:20px;
-}
-.immersive-panel{
-  position:absolute;
-  inset:0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:56px;
-  opacity:0;
-  pointer-events:none;
-  will-change:opacity,transform;
-}
-.immersive-visual{display:flex;align-items:center;justify-content:center;height:100%;}
-.immersive-visual svg{width:78%;max-width:320px;filter:drop-shadow(0 30px 40px rgba(42,27,16,.2));}
-.immersive-visual-photo img{
-  width:100%;height:100%;
-  max-width:420px;max-height:420px;
-  object-fit:cover;
-  border-radius:24px;
-  box-shadow:0 30px 50px rgba(42,27,16,.28);
-}
-.immersive-copy{max-width:420px;}
-.immersive-num{
-  font-family:var(--font-display);font-style:italic;color:var(--gold);
-  font-size:1.05rem;display:block;margin-bottom:12px;
-}
-.immersive-copy h3{font-size:clamp(1.9rem,3.2vw,2.7rem);}
-.immersive-copy p{color:var(--espresso-70);font-size:1.03rem;}
-.immersive-copy .tabla-tags{margin-bottom:6px;}
-.immersive-copy .tabla-price{border-top:none;padding-top:0;justify-content:flex-start;gap:14px;margin:16px 0 24px;}
-
-.immersive-scroll-hint{
-  position:absolute;bottom:34px;left:50%;
-  transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:2px;
-  font-size:.78rem;color:var(--espresso-50);
-  transition:opacity .3s ease;
-}
-.immersive-scroll-hint svg{animation:hint-bounce 1.6s ease-in-out infinite;}
-@keyframes hint-bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
-
-@media (max-width: 1080px){
-  .immersive-panel{grid-template-columns:1fr;text-align:center;gap:18px;}
-  .immersive-visual svg{max-width:220px;}
-  .immersive-copy{margin-inline:auto;}
-  .immersive-copy .tabla-price{justify-content:center;}
-  .immersive-dots{right:16px;}
 }
 
 /* =========================================================
