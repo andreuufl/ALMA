@@ -517,6 +517,32 @@
   }
 
   /* ============================================================
+     Botón "Volver arriba"
+     ============================================================ */
+  (function () {
+    var backToTop = document.querySelector('[data-back-to-top]');
+    if (!backToTop) return;
+    var ticking = false;
+    function toggle() {
+      backToTop.classList.toggle('is-visible', window.scrollY > 500);
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(toggle);
+        ticking = true;
+      }
+    }, { passive: true });
+    toggle();
+    backToTop.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+    });
+  })();
+
+  /* ============================================================
      Banner de cookies
      ============================================================ */
   var cookieBanner = document.querySelector('[data-cookie-banner]');
