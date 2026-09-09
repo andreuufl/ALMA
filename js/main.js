@@ -118,6 +118,64 @@
     revealTargets.forEach(function (el) { observer.observe(el); });
   })();
 
+  /* ---------- Foco de luz que sigue al ratón en el hero ---------- */
+  var heroSectionGlow = document.querySelector('.hero');
+  if (heroSectionGlow && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroSectionGlow.addEventListener('pointermove', function (e) {
+      var rect = heroSectionGlow.getBoundingClientRect();
+      var mx = ((e.clientX - rect.left) / rect.width) * 100;
+      var my = ((e.clientY - rect.top) / rect.height) * 100;
+      heroSectionGlow.style.setProperty('--mx', mx + '%');
+      heroSectionGlow.style.setProperty('--my', my + '%');
+    });
+  }
+
+  /* ---------- Contadores animados (estadísticas del hero) ---------- */
+  (function () {
+    var counters = document.querySelectorAll('[data-counter]');
+    if (!counters.length) return;
+    var reduceMotionCounters = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCounter(el) {
+      var target = parseFloat(el.getAttribute('data-counter'));
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var useComma = el.hasAttribute('data-decimal-comma');
+      if (reduceMotionCounters) {
+        var finalVal = target.toFixed(decimals);
+        if (useComma) finalVal = finalVal.replace('.', ',');
+        el.textContent = finalVal + suffix;
+        return;
+      }
+      var start = null;
+      var duration = 1400;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = (target * eased).toFixed(decimals);
+        if (useComma) current = current.replace('.', ',');
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      counters.forEach(animateCounter);
+      return;
+    }
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { counterObserver.observe(el); });
+  })();
+
   /* ---------- Tilt 3D del escenario del hero ---------- */
   var scene = document.querySelector('.hero-scene');
   var stage = document.querySelector('.scene-stage');
@@ -236,98 +294,6 @@
     });
   })();
 
-  /* ============================================================
-     Inmersión tipo Apple: recorrido de las tablas fijado al scroll
-     ============================================================ */
-  (function () {
-    var immersive = document.querySelector('[data-immersive]');
-    if (!immersive) return;
-    var panels = Array.prototype.slice.call(immersive.querySelectorAll('[data-panel]'));
-    var dots = Array.prototype.slice.call(immersive.querySelectorAll('[data-dot-index]'));
-    var introEl = immersive.querySelector('.immersive-intro');
-    var hintEl = immersive.querySelector('[data-scroll-hint]');
-    if (!panels.length) return;
-
-    var mq = window.matchMedia('(min-width: 880px)');
-    var reduceMotionImmersive = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function sizeSection() {
-      if (!mq.matches) {
-        immersive.style.height = '';
-        return;
-      }
-      immersive.style.height = (panels.length * window.innerHeight) + 'px';
-    }
-
-    function setStatic() {
-      panels.forEach(function (panel, i) {
-        panel.style.opacity = i === 0 ? '1' : '0';
-        panel.style.transform = 'none';
-        panel.style.pointerEvents = i === 0 ? 'auto' : 'none';
-      });
-      if (dots.length) dots.forEach(function (d, i) { d.classList.toggle('is-active', i === 0); });
-    }
-
-    function update() {
-      if (!mq.matches) { setStatic(); return; }
-      var rect = immersive.getBoundingClientRect();
-      var scrollable = immersive.offsetHeight - window.innerHeight;
-      var raw = scrollable > 0 ? (-rect.top) / scrollable : 0;
-      raw = Math.max(0, Math.min(1, raw));
-      var activeFloat = raw * panels.length;
-      var activeIndex = Math.min(panels.length - 1, Math.floor(activeFloat));
-
-      panels.forEach(function (panel, i) {
-        var dist = activeFloat - (i + 0.5);
-        var opacity = Math.max(0, 1 - Math.abs(dist) * 1.5);
-        var scale = 1 - Math.min(Math.abs(dist), 1) * 0.14;
-        var translateY = dist * 46;
-        panel.style.opacity = String(opacity);
-        panel.style.transform = 'translateY(' + translateY + 'px) scale(' + scale + ')';
-        panel.style.pointerEvents = opacity > 0.55 ? 'auto' : 'none';
-      });
-
-      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === activeIndex); });
-      if (introEl) introEl.style.opacity = String(Math.max(0, 1 - activeFloat * 2.4));
-      if (hintEl) hintEl.style.opacity = raw < 0.06 ? '1' : '0';
-    }
-
-    sizeSection();
-
-    if (reduceMotionImmersive) {
-      panels.forEach(function (panel) {
-        panel.style.opacity = '1';
-        panel.style.transform = 'none';
-        panel.style.pointerEvents = 'auto';
-      });
-      immersive.style.height = '';
-    } else {
-      var immersiveTicking = false;
-      window.addEventListener('scroll', function () {
-        if (!immersiveTicking) {
-          requestAnimationFrame(function () { update(); immersiveTicking = false; });
-          immersiveTicking = true;
-        }
-      }, { passive: true });
-      window.addEventListener('resize', function () { sizeSection(); update(); });
-      update();
-    }
-
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        var target = immersive.offsetTop + (i + 0.5) * window.innerHeight;
-        window.scrollTo({ top: target, behavior: 'smooth' });
-      });
-    });
-
-    immersive.querySelectorAll('[data-tabla-value]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var val = btn.getAttribute('data-tabla-value');
-        var select = document.getElementById('reserva-tabla');
-        if (val && select) select.value = val;
-      });
-    });
-  })();
 
   /* ============================================================
      Selector de disponibilidad (día + hora)
