@@ -119,8 +119,11 @@ button{font-family:inherit;}
 }
 
 .section{
-  padding:96px 0;
+  padding:64px 0;
   position:relative;
+}
+@media (max-width:640px){
+  .section{padding:48px 0;}
 }
 .section-head{
   max-width:640px;
@@ -300,7 +303,7 @@ button{font-family:inherit;}
    ========================================================= */
 .hero{
   position:relative;
-  padding:168px 0 110px;
+  padding:168px 0 64px;
   overflow:hidden;
 }
 .hero-bg{
@@ -469,7 +472,7 @@ button{font-family:inherit;}
 .experience-inner{
   max-width:var(--container);
   margin-inline:auto;
-  padding:96px 24px;
+  padding:64px 24px;
   display:grid;
   grid-template-columns:.9fr 1.1fr;
   gap:64px;
@@ -860,7 +863,7 @@ button{font-family:inherit;}
   background:var(--espresso);
   color:rgba(243,236,218,.7);
   padding:76px 0 30px;
-  margin-top:110px;
+  margin-top:48px;
 }
 .footer-grid{
   display:grid;
