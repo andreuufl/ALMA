@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.benditatabla.com/</loc>
+    <loc>https://www.almacatering.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.benditatabla.com/privacidad.html</loc>
+    <loc>https://www.almacatering.com/privacidad.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.benditatabla.com/terminos.html</loc>
+    <loc>https://www.almacatering.com/terminos.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.benditatabla.com/gracias.html</loc>
+    <loc>https://www.almacatering.com/gracias.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>
