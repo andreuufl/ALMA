@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Gracias por tu reserva! — Bendita Tabla</title>
+<meta name="description" content="Hemos recibido tu solicitud de reserva en Bendita Tabla. Te confirmamos disponibilidad real por WhatsApp.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.benditatabla.com/gracias.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
+<link rel="preload" as="image" href="assets/img/logo.jpg" fetchpriority="high">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
+<header class="site-header" data-header>
+  <div class="container">
+    <nav class="glass-nav" aria-label="Navegación principal">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo.jpg" alt="Bendita Tabla" width="42" height="42">
+        <span class="brand-word">Bendita Tabla</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#tablas">Nuestras tablas</a></li>
+        <li><a href="index.html#reserva">Reserva</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn-glass" href="index.html">Volver al inicio</a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="thanks">
+    <div class="glass-card thanks-card">
+      <div class="thanks-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <p class="kicker" style="justify-content:center;">Solicitud enviada</p>
+      <h1 id="thanks-title">¡Gracias por escribirnos!</h1>
+      <p id="thanks-lede">Hemos abierto WhatsApp con los datos de tu reserva. Confírmanos el envío del mensaje y te responderemos con la disponibilidad real y la dirección exacta del piso.</p>
+
+      <div class="thanks-detail" id="thanks-detail" style="display:none;"></div>
+
+      <div class="thanks-actions">
+        <a href="https://wa.me/34607864393" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20z"/></svg>
+          Ir a WhatsApp
+        </a>
+        <a href="index.html" class="btn btn-outline">Volver al inicio</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" style="margin-top:0;">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Bendita Tabla. Todos los derechos reservados.</span>
+      <span><a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var nombre = params.get('nombre');
+    var fecha = params.get('fecha');
+    var hora = params.get('hora');
+    var personas = params.get('personas');
+    var tabla = params.get('tabla');
+
+    if (nombre) {
+      document.getElementById('thanks-title').textContent = '¡Gracias, ' + nombre + '!';
+    }
+    if (fecha && hora) {
+      var box = document.getElementById('thanks-detail');
+      box.style.display = 'block';
+      box.innerHTML =
+        'Te esperamos el <strong>' + fecha + '</strong> a las <strong>' + hora + 'h</strong>' +
+        (personas ? ' para <strong>' + personas + ' personas</strong>' : '') +
+        (tabla ? ' — <strong>' + tabla + '</strong>' : '') +
+        '. En cuanto confirmemos disponibilidad real, te lo decimos por WhatsApp junto con la dirección exacta del piso.';
+    }
+  })();
+</script>
+</body>
+</html>
