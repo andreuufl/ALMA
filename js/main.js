@@ -157,6 +157,63 @@
   }
 
   /* ============================================================
+     Lightbox: detalle de tabla al hacer clic en "Lo más solicitado"
+     ============================================================ */
+  (function () {
+    var lightbox = document.querySelector('[data-lightbox]');
+    if (!lightbox) return;
+    var imgEl = lightbox.querySelector('[data-lightbox-img]');
+    var tagEl = lightbox.querySelector('[data-lightbox-tag]');
+    var titleEl = lightbox.querySelector('[data-lightbox-title]');
+    var descEl = lightbox.querySelector('[data-lightbox-desc]');
+    var ctaEl = lightbox.querySelector('[data-lightbox-cta]');
+    var lastTrigger = null;
+
+    function openLightbox(trigger) {
+      var img = trigger.querySelector('img');
+      imgEl.src = img.currentSrc || img.src;
+      imgEl.alt = img.alt || '';
+      tagEl.textContent = trigger.getAttribute('data-tag') || '';
+      titleEl.textContent = trigger.getAttribute('data-title') || '';
+      descEl.textContent = trigger.getAttribute('data-desc') || '';
+      var tablaValue = trigger.getAttribute('data-tabla-value');
+      if (tablaValue) {
+        ctaEl.setAttribute('data-tabla-value', tablaValue);
+      } else {
+        ctaEl.removeAttribute('data-tabla-value');
+      }
+      lastTrigger = trigger;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lightbox.querySelector('.lightbox-close').focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    document.querySelectorAll('[data-lightbox-trigger]').forEach(function (trigger) {
+      trigger.addEventListener('click', function () { openLightbox(trigger); });
+    });
+    lightbox.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
+      el.addEventListener('click', closeLightbox);
+    });
+    ctaEl.addEventListener('click', function () {
+      var val = ctaEl.getAttribute('data-tabla-value');
+      var select = document.getElementById('reserva-tabla');
+      if (val && select) select.value = val;
+      closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+    });
+  })();
+
+  /* ============================================================
      Preguntas frecuentes — acordeón
      ============================================================ */
   (function () {
