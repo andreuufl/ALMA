@@ -221,9 +221,9 @@ button{font-family:inherit;}
   text-transform:uppercase;
   font-weight:700;
   color:var(--gold-deep);
-  margin-left:2px;
-  padding-left:10px;
+  padding-left:14px;
   border-left:1px solid var(--line);
+  position:relative;z-index:1;
 }
 .nav-links{
   display:flex;align-items:center;gap:28px;
