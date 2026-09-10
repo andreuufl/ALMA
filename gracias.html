@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <title>¡Gracias por tu reserva! — ALMA Catering & Experiences</title>
 <meta name="description" content="Hemos recibido tu solicitud de reserva en ALMA. Te confirmamos disponibilidad real por WhatsApp.">
 <meta name="robots" content="noindex, follow">
@@ -26,8 +27,8 @@
       <a href="index.html" class="brand">
         <img src="assets/img/logo.jpg" alt="ALMA" width="42" height="42">
         <span class="brand-word">ALMA</span>
-        <span class="brand-tagline">Catering<br>Experiences</span>
       </a>
+      <span class="brand-tagline">Catering<br>Experiences</span>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html#tablas">Nuestras tablas</a></li>
         <li><a href="index.html#reserva">Reserva</a></li>
@@ -48,7 +49,7 @@
       </div>
       <p class="kicker" style="justify-content:center;">Solicitud enviada</p>
       <h1 id="thanks-title">¡Gracias por escribirnos!</h1>
-      <p id="thanks-lede">Hemos abierto WhatsApp con los datos de tu reserva. Confírmanos el envío del mensaje y te responderemos con la disponibilidad real y la dirección exacta del piso.</p>
+      <p id="thanks-lede">Hemos abierto WhatsApp con los datos de tu reserva. Confírmanos el envío del mensaje y te responderemos con la disponibilidad real y la ubicación exacta.</p>
 
       <div class="thanks-detail" id="thanks-detail" style="display:none;"></div>
 
@@ -92,9 +93,12 @@
         'Te esperamos el <strong>' + fecha + '</strong> a las <strong>' + hora + 'h</strong>' +
         (personas ? ' para <strong>' + personas + ' personas</strong>' : '') +
         (tabla ? ' — <strong>' + tabla + '</strong>' : '') +
-        '. En cuanto confirmemos disponibilidad real, te lo decimos por WhatsApp junto con la dirección exacta del piso.';
+        '. En cuanto confirmemos disponibilidad real, te lo decimos por WhatsApp junto con la ubicación exacta.';
     }
   })();
 </script>
+<button type="button" class="back-to-top" data-back-to-top aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 </body>
 </html>
