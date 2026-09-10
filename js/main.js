@@ -107,6 +107,8 @@
     var groups = [
       '.section-head',
       '.experience-visual',
+      '.events-photo',
+      '.events-facts li',
       '.experience-facts li',
       '.tabla-card',
       '.showcase-card',
@@ -139,6 +141,21 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     revealTargets.forEach(function (el) { observer.observe(el); });
   })();
+
+  /* ---------- Botón magnético (se deja atraer sutilmente por el cursor) ---------- */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('[data-magnetic]').forEach(function (btn) {
+      btn.addEventListener('pointermove', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px,' + (y * 0.35) + 'px)';
+      });
+      btn.addEventListener('pointerleave', function () {
+        btn.style.transform = 'translate(0,0)';
+      });
+    });
+  }
 
   /* ---------- Foto del hero: cambia según la hora real de quien visita ---------- */
   (function () {
@@ -594,6 +611,99 @@
       }, 1300);
     });
   }
+
+  /* ============================================================
+     Formulario de bodas y eventos → validación + envío por WhatsApp
+     ============================================================ */
+  (function () {
+    var eventsForm = document.querySelector('#events-form');
+    if (!eventsForm) return;
+
+    var fechaInput = eventsForm.querySelector('#events-fecha');
+    if (fechaInput) {
+      var today = new Date();
+      fechaInput.min = today.toISOString().slice(0, 10);
+    }
+
+    var MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    function formatFechaEs(iso) {
+      if (!iso) return '';
+      var d = new Date(iso + 'T00:00:00');
+      if (isNaN(d.getTime())) return iso;
+      return d.getDate() + ' de ' + MESES[d.getMonth()] + ' de ' + d.getFullYear();
+    }
+
+    var eFields = {
+      nombre: { el: eventsForm.querySelector('#events-nombre'), validate: function (v) { return v.trim().length >= 2; } },
+      tipo: { el: eventsForm.querySelector('#events-tipo'), validate: function (v) { return !!v; } },
+      email: { el: eventsForm.querySelector('#events-email'), validate: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
+      telefono: { el: eventsForm.querySelector('#events-telefono'), validate: function (v) { return /^[+\d][\d\s]{7,}$/.test(v.trim()); } },
+      fecha: { el: eventsForm.querySelector('#events-fecha'), validate: function (v) { return !!v; } },
+      invitados: { el: eventsForm.querySelector('#events-invitados'), validate: function (v) { return v && parseInt(v, 10) >= 10; } },
+      ubicacion: { el: eventsForm.querySelector('#events-ubicacion'), validate: function (v) { return v.trim().length >= 2; } }
+    };
+
+    function eFieldWrap(el) { return el ? el.closest('.field') : null; }
+    function eShowError(key) { var w = eFieldWrap(eFields[key].el); if (w) w.classList.add('has-error'); }
+    function eClearError(key) { var w = eFieldWrap(eFields[key].el); if (w) w.classList.remove('has-error'); }
+
+    Object.keys(eFields).forEach(function (key) {
+      var f = eFields[key];
+      if (!f.el) return;
+      f.el.addEventListener('input', function () { if (f.validate(f.el.value)) eClearError(key); });
+      f.el.addEventListener('blur', function () { if (!f.validate(f.el.value)) eShowError(key); else eClearError(key); });
+    });
+
+    eventsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+      var firstInvalid = null;
+      Object.keys(eFields).forEach(function (key) {
+        var f = eFields[key];
+        if (!f.el) return;
+        if (!f.validate(f.el.value)) {
+          eShowError(key);
+          valid = false;
+          if (!firstInvalid) firstInvalid = f.el;
+        } else {
+          eClearError(key);
+        }
+      });
+      if (!valid) {
+        if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+        return;
+      }
+
+      var nombre = eFields.nombre.el.value.trim();
+      var tipoSel = eFields.tipo.el;
+      var tipo = tipoSel.options[tipoSel.selectedIndex].text;
+      var telefono = eFields.telefono.el.value.trim();
+      var fechaLegible = formatFechaEs(eFields.fecha.el.value);
+      var invitados = eFields.invitados.el.value.trim();
+      var ubicacion = eFields.ubicacion.el.value.trim();
+      var mensaje = (eventsForm.querySelector('#events-mensaje') || {}).value || '';
+
+      var texto = 'Hola ALMA! Quiero pedir presupuesto para un evento:\n' +
+        '- Nombre: ' + nombre + '\n' +
+        '- Tipo de evento: ' + tipo + '\n' +
+        '- Fecha aproximada: ' + fechaLegible + '\n' +
+        '- Invitados: ' + invitados + '\n' +
+        '- Ubicación: ' + ubicacion + '\n' +
+        '- Teléfono: ' + telefono +
+        (mensaje.trim() ? ('\n- Comentario: ' + mensaje.trim()) : '');
+
+      var url = 'https://wa.me/34607864393?text=' + encodeURIComponent(texto);
+      window.open(url, '_blank', 'noopener');
+
+      var successBox = document.querySelector('[data-events-success]');
+      if (successBox) successBox.classList.add('is-visible');
+
+      var params = new URLSearchParams({ nombre: nombre, fecha: fechaLegible, tabla: tipo + ' — ' + invitados + ' invitados' });
+      setTimeout(function () {
+        window.location.href = 'gracias.html?' + params.toString();
+      }, 1300);
+    });
+  })();
 
   /* ============================================================
      Botón "Volver arriba"
