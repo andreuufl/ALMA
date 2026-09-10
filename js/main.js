@@ -182,10 +182,11 @@
     counters.forEach(function (el) { counterObserver.observe(el); });
   })();
 
-  /* ---------- Tilt 3D del escenario del hero ---------- */
+  /* ---------- Tilt 3D del escenario del hero (solo escritorio/tablet) ---------- */
   var scene = document.querySelector('.hero-scene');
   var stage = document.querySelector('.scene-stage');
-  if (scene && stage && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var tiltMq = window.matchMedia('(min-width: 981px)');
+  if (scene && stage && tiltMq.matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var rect, raf = null;
     var targetX = 0, targetY = 0, curX = 0, curY = 0;
 
