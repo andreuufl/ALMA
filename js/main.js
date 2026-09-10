@@ -145,15 +145,98 @@
   })();
 
 
-  /* ---------- Foto anotada: al tocar un número, se actualiza un único panel ---------- */
+  /* ---------- Foto anotada: cambia según la hora, y al tocar un número se actualiza el panel ---------- */
   (function () {
-    var photo = document.querySelector('.hotspot-photo');
-    var detail = document.querySelector('[data-hotspot-detail]');
-    if (!photo || !detail) return;
+    var root = document.querySelector('[data-hotspot-root]');
+    if (!root) return;
+    var imgEl = root.querySelector('[data-hotspot-img]');
+    var sourceEl = root.querySelector('[data-hotspot-source]');
+    var buttonsWrap = root.querySelector('[data-hotspot-buttons]');
+    var detail = root.querySelector('[data-hotspot-detail]');
     var numEl = detail.querySelector('[data-hotspot-detail-num]');
     var titleEl = detail.querySelector('[data-hotspot-detail-title]');
     var descEl = detail.querySelector('[data-hotspot-detail-desc]');
-    var hotspots = Array.prototype.slice.call(photo.querySelectorAll('.hotspot'));
+
+    var sets = {
+      manana: {
+        base: 'hero-mediterranea-annotated',
+        alt: 'Tabla mediterránea ALMA con los ingredientes numerados del 1 al 8',
+        points: [
+          { top: 19, left: 51, label: 'Salami enrollado a mano', desc: 'Cortado fino y enrollado en el momento, para picar sin necesidad de cubiertos.' },
+          { top: 27, left: 68, label: 'Brie y queso curado', desc: 'Dos texturas distintas en la misma tabla: cremoso por un lado, curado por otro.' },
+          { top: 42, left: 87, label: 'Uvas de temporada', desc: 'Elegidas cada semana según lo que esté en su mejor momento.' },
+          { top: 48, left: 59, label: 'Jamón cortado a mano', desc: 'A cuchillo, justo antes de servir — nada de bandejas precortadas.' },
+          { top: 54, left: 66, label: 'Miel de flores', desc: 'El contrapunto dulce que rompe con lo salado en el momento justo.' },
+          { top: 70, left: 53, label: 'Pan artesano del día', desc: 'Horneado la misma mañana, nunca el día anterior.' },
+          { top: 58, left: 10, label: 'Higos frescos', desc: 'De temporada, partidos al momento para que no pierdan su punto.' },
+          { top: 72, left: 27, label: 'Aceitunas aliñadas', desc: 'Con receta propia, no de bote genérico.' }
+        ]
+      },
+      mediodia: {
+        base: 'tabla-mixta-annotated',
+        alt: 'Tabla Mixta ALMA con los ingredientes numerados del 1 al 6',
+        points: [
+          { top: 20, left: 47, label: 'Rosa de queso', desc: 'Cortado y enrollado a mano — la pieza más fotografiada de la mesa.' },
+          { top: 62, left: 18, label: 'Bola de queso especiada', desc: 'Con finas hierbas, para untar en pan o cracker.' },
+          { top: 60, left: 47, label: 'Miel de flores', desc: 'El contrapunto dulce que rompe con lo salado en el momento justo.' },
+          { top: 38, left: 12, label: 'Aceitunas aliñadas', desc: 'Con receta propia, no de bote genérico.' },
+          { top: 78, left: 65, label: 'Rosetones en pincho', desc: 'Salami y queso en el mismo bocado, listos para picar sin cubiertos.' },
+          { top: 15, left: 82, label: 'Mermelada casera', desc: 'De temporada, hecha en casa sin conservantes.' }
+        ]
+      },
+      noche: {
+        base: 'hero-mesa-flores-annotated',
+        alt: 'Tablas individuales ALMA con flores comestibles, ingredientes numerados del 1 al 6',
+        points: [
+          { top: 20, left: 57, label: 'Rosetón con flores', desc: 'Cada tabla individual lleva su propia flor comestible de temporada.' },
+          { top: 38, left: 38, label: 'Tabla individual', desc: 'Una por invitado — nadie tiene que estirar el brazo para servirse.' },
+          { top: 78, left: 45, label: 'Abanico de quesos', desc: 'Cortados finos, para que se sirvan solos sin necesidad de cuchillo.' },
+          { top: 63, left: 20, label: 'Higos y moras', desc: 'De temporada, combinados con queso curado y pistachos.' },
+          { top: 30, left: 80, label: 'Flores comestibles', desc: 'Elegidas para combinar con la paleta de color de tu boda o evento.' },
+          { top: 88, left: 78, label: 'Uvas y conos de salami', desc: 'El cierre perfecto de cada tabla individual.' }
+        ]
+      },
+      madrugada: {
+        base: 'hero-torre-annotated',
+        alt: 'Torre ALMA de 3 pisos con los ingredientes numerados del 1 al 6',
+        points: [
+          { top: 12, left: 50, label: 'Jamón cocido enrollado', desc: 'El piso de arriba, pensado para servirse primero y sin esperas.' },
+          { top: 44, left: 50, label: 'Rosetón de salami', desc: 'Repetido en cada piso para que nunca te quede lejos.' },
+          { top: 32, left: 22, label: 'Uvas de temporada', desc: 'Verdes y moradas, elegidas cada semana.' },
+          { top: 80, left: 48, label: 'Mozzarella fresca', desc: 'En bolitas, para picar de un solo bocado.' },
+          { top: 85, left: 20, label: 'Rosas de salami', desc: 'El piso de abajo, pensado para servir a más gente a la vez.' },
+          { top: 53, left: 38, label: 'Galletas saladas', desc: 'La base perfecta para el queso curado.' }
+        ]
+      }
+    };
+
+    var hour = new Date().getHours();
+    var key = (hour >= 6 && hour < 12) ? 'manana'
+      : (hour >= 12 && hour < 18) ? 'mediodia'
+      : (hour >= 18 && hour < 23) ? 'noche'
+      : 'madrugada';
+    var data = sets[key];
+
+    imgEl.src = 'assets/img/' + data.base + '.jpg';
+    if (sourceEl) sourceEl.srcset = 'assets/img/' + data.base + '.webp';
+    imgEl.alt = data.alt;
+
+    buttonsWrap.innerHTML = '';
+    var hotspots = [];
+    data.points.forEach(function (pt, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'hotspot';
+      btn.style.top = pt.top + '%';
+      btn.style.left = pt.left + '%';
+      btn.setAttribute('data-hotspot-num', i + 1);
+      btn.setAttribute('data-hotspot-label', pt.label);
+      btn.setAttribute('data-hotspot-desc', pt.desc);
+      btn.setAttribute('aria-label', (i + 1) + '. ' + pt.label);
+      buttonsWrap.appendChild(btn);
+      hotspots.push(btn);
+    });
+
     var activeHotspot = null;
 
     function selectHotspot(btn) {
@@ -181,8 +264,13 @@
     });
 
     /* Empieza mostrando el primero como activo, para que el panel nunca esté vacío */
-    if (hotspots[0]) hotspots[0].classList.add('is-active');
-    activeHotspot = hotspots[0] || null;
+    if (hotspots[0]) {
+      hotspots[0].classList.add('is-active');
+      activeHotspot = hotspots[0];
+      numEl.textContent = '1';
+      titleEl.textContent = data.points[0].label;
+      descEl.textContent = data.points[0].desc;
+    }
   })();
 
   /* ---------- Botón magnético (se deja atraer sutilmente por el cursor) ---------- */
