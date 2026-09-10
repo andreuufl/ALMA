@@ -51,6 +51,7 @@
   var heroBgEl = document.querySelector('.hero-bg');
   var heroSceneEl = document.querySelector('.hero-scene');
   var heroCopyEl = document.querySelector('.hero-copy');
+  var heroParallaxMq = window.matchMedia('(min-width: 981px)');
 
   var scrollTicking = false;
   function updateOnScroll() {
@@ -61,8 +62,13 @@
     if (!reduceMotion && heroSection) {
       var heroHeight = heroSection.offsetHeight;
       var progress = Math.min(scrollTop / heroHeight, 1);
-      if (heroBgEl) heroBgEl.style.transform = 'translateY(' + (scrollTop * 0.16) + 'px)';
-      if (heroSceneEl) heroSceneEl.style.transform = 'translateY(' + (scrollTop * 0.1) + 'px)';
+      if (heroParallaxMq.matches) {
+        if (heroBgEl) heroBgEl.style.transform = 'translateY(' + (scrollTop * 0.16) + 'px)';
+        if (heroSceneEl) heroSceneEl.style.transform = 'translateY(' + (scrollTop * 0.1) + 'px)';
+      } else {
+        if (heroBgEl) heroBgEl.style.transform = '';
+        if (heroSceneEl) heroSceneEl.style.transform = '';
+      }
       if (heroCopyEl) {
         heroCopyEl.style.opacity = String(1 - progress * 0.85);
         heroCopyEl.style.transform = 'translateY(' + (progress * 34) + 'px)';
