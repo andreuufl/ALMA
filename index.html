@@ -88,6 +88,7 @@
       <span class="brand-tagline">Catering<br>Experiences</span>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experiencia">La experiencia</a></li>
+        <li><a href="#eventos">Bodas y eventos</a></li>
         <li><a href="#tablas">Nuestras tablas</a></li>
         <li><a href="#como-funciona">Cómo funciona</a></li>
         <li><a href="#opiniones">Opiniones</a></li>
@@ -115,7 +116,7 @@
         <h1>Reunidos alrededor de una tabla, en el corazón de la ciudad, en l'Eixample</h1>
         <p class="lede">ALMA prepara cada tabla como en casa de quien sabe comprar bien: jamón cortado al momento, quesos de temporada y embutidos artesanales. Ya sea una mesa íntima para pocos, o el catering de tu boda o evento.</p>
         <div class="hero-actions">
-          <a href="#reserva" class="btn btn-primary">Reservar mi tabla</a>
+          <a href="#reserva" class="btn btn-primary" data-magnetic>Reservar mi tabla</a>
           <a href="https://wa.me/34607864393?text=Hola%20ALMA%21%20Quiero%20reservar%20una%20tabla.%0AD%C3%ADa%3A%20%0AHora%3A%20%0APersonas%3A%20" class="btn btn-glass" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20z"/></svg>
             Escríbenos por WhatsApp
@@ -209,6 +210,112 @@
             <div><h4>Maridaje</h4><p>Vinos y vermuts naturales, o un cóctel de autor preparado al momento.</p></div>
           </li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODAS Y EVENTOS ============ -->
+  <section class="section events-section" id="eventos">
+    <div class="container">
+      <div class="events-wrap">
+        <div class="events-photos">
+          <div class="events-photo events-photo-a">
+            <picture>
+              <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
+              <img src="assets/img/card-mesa-flores.jpg" alt="Tablas individuales decoradas con flores comestibles para una boda" loading="lazy" width="1000" height="750">
+            </picture>
+          </div>
+          <div class="events-photo events-photo-b">
+            <picture>
+              <source srcset="assets/img/card-torre.webp" type="image/webp">
+              <img src="assets/img/card-torre.jpg" alt="Torre de embutidos, quesos y fruta para un evento grande" loading="lazy" width="800" height="1000">
+            </picture>
+          </div>
+        </div>
+
+        <div class="events-copy">
+          <p class="kicker">Bodas y eventos</p>
+          <h2>Catering ALMA, donde tú lo necesites</h2>
+          <p>Para celebraciones más grandes, llevamos la misma filosofía de la mesa íntima a la ubicación que elijas: tu boda, tu evento de empresa, tu cumpleaños. Torres de varios pisos, mesas individuales por invitado, o estaciones repartidas por el espacio — adaptamos el formato al aforo y al estilo de tu celebración.</p>
+
+          <ul class="events-facts">
+            <li><strong>10–200+</strong><span>invitados</span></li>
+            <li><strong>Barcelona</strong><span>y alrededores</span></li>
+            <li><strong>A medida</strong><span>según tu evento</span></li>
+          </ul>
+
+          <div class="form-success" role="status" aria-live="polite" data-events-success>
+            <div class="success-icon">
+              <svg class="success-check" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+                <circle class="success-check-circle" cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <path class="success-check-mark" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M14 27l7 7 16-16"/>
+              </svg>
+            </div>
+            <strong>¡Solicitud enviada!</strong>
+            <p>Hemos abierto WhatsApp con los datos de tu evento. Te llevamos a confirmarlo…</p>
+          </div>
+
+          <form id="events-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="events-nombre">Nombre</label>
+                <input type="text" id="events-nombre" name="nombre" autocomplete="name" required>
+                <p class="field-error">Escribe tu nombre.</p>
+              </div>
+              <div class="field">
+                <label for="events-tipo">Tipo de evento</label>
+                <select id="events-tipo" name="tipo" required>
+                  <option value="">Elige una opción</option>
+                  <option value="Boda">Boda</option>
+                  <option value="Evento corporativo">Evento corporativo</option>
+                  <option value="Cumpleaños">Cumpleaños</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <p class="field-error">Elige el tipo de evento.</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="events-email">Email</label>
+                <input type="email" id="events-email" name="email" autocomplete="email" required>
+                <p class="field-error">Introduce un email válido.</p>
+              </div>
+              <div class="field">
+                <label for="events-telefono">Teléfono</label>
+                <input type="tel" id="events-telefono" name="telefono" autocomplete="tel" placeholder="+34 6XX XXX XXX" required>
+                <p class="field-error">Introduce un teléfono válido.</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="events-fecha">Fecha aproximada</label>
+                <input type="date" id="events-fecha" name="fecha" required>
+                <p class="field-error">Indica una fecha aproximada.</p>
+              </div>
+              <div class="field">
+                <label for="events-invitados">Nº de invitados</label>
+                <input type="number" id="events-invitados" name="invitados" min="10" placeholder="Ej. 60" required>
+                <p class="field-error">Indica cuántos invitados (mínimo 10).</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="events-ubicacion">Ubicación del evento</label>
+              <input type="text" id="events-ubicacion" name="ubicacion" placeholder="Ciudad o nombre del espacio" required>
+              <p class="field-error">Indica dónde se celebra el evento.</p>
+            </div>
+
+            <div class="field">
+              <label for="events-mensaje">Cuéntanos más (opcional)</label>
+              <textarea id="events-mensaje" name="mensaje" placeholder="Estilo del evento, alergias, presupuesto orientativo…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Solicitar presupuesto</button>
+            <p class="form-note">Sin compromiso. Te respondemos por WhatsApp para afinar los detalles.</p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -728,6 +835,7 @@
         <h4>Explorar</h4>
         <ul>
           <li><a href="#experiencia">La experiencia</a></li>
+          <li><a href="#eventos">Bodas y eventos</a></li>
           <li><a href="#tablas">Nuestras tablas</a></li>
           <li><a href="#como-funciona">Cómo funciona</a></li>
           <li><a href="#faq">Preguntas frecuentes</a></li>
