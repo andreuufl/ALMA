@@ -145,6 +145,73 @@
   })();
 
 
+  /* ---------- Foto anotada: capa interactiva sobre los números ---------- */
+  (function () {
+    var photo = document.querySelector('.hotspot-photo');
+    if (!photo) return;
+    var tooltip = photo.querySelector('[data-hotspot-tooltip]');
+    if (!tooltip) return;
+    var titleEl = tooltip.querySelector('[data-hotspot-tooltip-title]');
+    var descEl = tooltip.querySelector('[data-hotspot-tooltip-desc]');
+    var hotspots = Array.prototype.slice.call(photo.querySelectorAll('.hotspot'));
+    var legendItems = Array.prototype.slice.call(document.querySelectorAll('.hotspot-legend li'));
+    var activeHotspot = null;
+
+    function positionTooltip(btn) {
+      var rect = btn.getBoundingClientRect();
+      var flip = btn.hasAttribute('data-hotspot-flip') || rect.top < 190;
+      tooltip.classList.toggle('is-flipped', flip);
+
+      var left = rect.left + rect.width / 2;
+      left = Math.max(130, Math.min(left, window.innerWidth - 130));
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = (flip ? rect.bottom : rect.top) + 'px';
+    }
+
+    function showTooltip(btn) {
+      if (activeHotspot) {
+        activeHotspot.classList.remove('is-active');
+        var prevIdx = hotspots.indexOf(activeHotspot);
+        if (legendItems[prevIdx]) legendItems[prevIdx].classList.remove('is-active');
+      }
+      activeHotspot = btn;
+      btn.classList.add('is-active');
+      var idx = hotspots.indexOf(btn);
+      if (legendItems[idx]) legendItems[idx].classList.add('is-active');
+
+      titleEl.textContent = btn.getAttribute('data-hotspot-label') || '';
+      descEl.textContent = btn.getAttribute('data-hotspot-desc') || '';
+
+      positionTooltip(btn);
+      tooltip.classList.add('is-visible');
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('is-visible');
+      if (activeHotspot) {
+        activeHotspot.classList.remove('is-active');
+        var idx = hotspots.indexOf(activeHotspot);
+        if (legendItems[idx]) legendItems[idx].classList.remove('is-active');
+      }
+      activeHotspot = null;
+    }
+
+    hotspots.forEach(function (btn) {
+      btn.addEventListener('mouseenter', function () { showTooltip(btn); });
+      btn.addEventListener('focus', function () { showTooltip(btn); });
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (activeHotspot === btn) { hideTooltip(); } else { showTooltip(btn); }
+      });
+    });
+    photo.addEventListener('mouseleave', hideTooltip);
+    document.addEventListener('click', function (e) {
+      if (!photo.contains(e.target)) hideTooltip();
+    });
+    window.addEventListener('scroll', hideTooltip, { passive: true });
+    window.addEventListener('resize', hideTooltip);
+  })();
+
   /* ---------- Botón magnético (se deja atraer sutilmente por el cursor) ---------- */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('[data-magnetic]').forEach(function (btn) {
