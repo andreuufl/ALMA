@@ -240,14 +240,15 @@ button{font-family:inherit;}
   position:relative;z-index:1;
 }
 .nav-links{
-  display:flex;align-items:center;gap:28px;
+  display:flex;align-items:center;gap:20px;
   position:relative;z-index:1;
 }
 .nav-links a{
   text-decoration:none;
-  font-size:.95rem;
+  font-size:.9rem;
   font-weight:500;
   color:var(--espresso-70);
+  white-space:nowrap;
   transition:color .25s ease;
   position:relative;
 }
@@ -292,7 +293,7 @@ button{font-family:inherit;}
   .brand-tagline{display:none;}
 }
 
-@media (max-width: 880px){
+@media (max-width: 1140px){
   .nav-links{
     position:fixed;top:88px;left:16px;right:16px;
     z-index:550;
