@@ -320,50 +320,33 @@
     </div>
   </section>
 
-  <!-- ============ FOTO INTERACTIVA ============ -->
+  <!-- ============ FOTO ANOTADA ============ -->
   <section class="section hotspot-section">
     <div class="container">
       <div class="section-head center">
         <p class="kicker">Al detalle</p>
-        <h2>Toca la tabla y descubre cada ingrediente</h2>
+        <h2>Cada número, un ingrediente real</h2>
         <p>Nada de fotos de banco de imágenes: esto es justo lo que preparamos, ingrediente a ingrediente.</p>
       </div>
 
-      <div class="hotspot-photo">
-        <picture>
-          <source srcset="assets/img/hero-mediterranea-square.webp" type="image/webp">
-          <img src="assets/img/hero-mediterranea-square.jpg" alt="Tabla mediterránea ALMA con pan artesano, jamón, quesos, higos, miel y fruta fresca" loading="lazy" width="900" height="900">
-        </picture>
-
-        <button type="button" class="hotspot" style="top:19%;left:51%;" data-hotspot-label="Salami enrollado a mano" data-hotspot-desc="Cortado fino y enrollado en el momento, para picar sin necesidad de cubiertos.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:27%;left:68%;" data-hotspot-label="Brie y queso curado" data-hotspot-desc="Dos texturas distintas en la misma tabla: cremoso por un lado, curado por otro.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:42%;left:87%;" data-hotspot-label="Uvas de temporada" data-hotspot-desc="Elegidas cada semana según lo que esté en su mejor momento.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:48%;left:59%;" data-hotspot-label="Jamón cortado a mano" data-hotspot-desc="A cuchillo, justo antes de servir — nada de bandejas precortadas.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:54%;left:66%;" data-hotspot-label="Miel de flores" data-hotspot-desc="El contrapunto dulce que rompe con lo salado en el momento justo.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:70%;left:53%;" data-hotspot-label="Pan artesano del día" data-hotspot-desc="Horneado la misma mañana, nunca el día anterior.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:58%;left:10%;" data-hotspot-label="Higos frescos" data-hotspot-desc="De temporada, partidos al momento para que no pierdan su punto.">
-          <span class="hotspot-dot"></span>
-        </button>
-        <button type="button" class="hotspot" style="top:72%;left:27%;" data-hotspot-label="Aceitunas aliñadas" data-hotspot-desc="Con receta propia, no de bote genérico." data-hotspot-flip>
-          <span class="hotspot-dot"></span>
-        </button>
-
-        <div class="hotspot-tooltip" data-hotspot-tooltip role="status" aria-live="polite">
-          <strong data-hotspot-tooltip-title></strong>
-          <p data-hotspot-tooltip-desc></p>
+      <div class="hotspot-wrap">
+        <div class="hotspot-photo">
+          <picture>
+            <source srcset="assets/img/hero-mediterranea-annotated.webp" type="image/webp">
+            <img src="assets/img/hero-mediterranea-annotated.jpg" alt="Tabla mediterránea ALMA con los ingredientes numerados del 1 al 8" loading="lazy" width="900" height="900">
+          </picture>
         </div>
+
+        <ol class="hotspot-legend">
+          <li><span class="hotspot-num">1</span><div><strong>Salami enrollado a mano</strong><p>Cortado fino y enrollado en el momento, para picar sin necesidad de cubiertos.</p></div></li>
+          <li><span class="hotspot-num">2</span><div><strong>Brie y queso curado</strong><p>Dos texturas distintas en la misma tabla: cremoso por un lado, curado por otro.</p></div></li>
+          <li><span class="hotspot-num">3</span><div><strong>Uvas de temporada</strong><p>Elegidas cada semana según lo que esté en su mejor momento.</p></div></li>
+          <li><span class="hotspot-num">4</span><div><strong>Jamón cortado a mano</strong><p>A cuchillo, justo antes de servir — nada de bandejas precortadas.</p></div></li>
+          <li><span class="hotspot-num">5</span><div><strong>Miel de flores</strong><p>El contrapunto dulce que rompe con lo salado en el momento justo.</p></div></li>
+          <li><span class="hotspot-num">6</span><div><strong>Pan artesano del día</strong><p>Horneado la misma mañana, nunca el día anterior.</p></div></li>
+          <li><span class="hotspot-num">7</span><div><strong>Higos frescos</strong><p>De temporada, partidos al momento para que no pierdan su punto.</p></div></li>
+          <li><span class="hotspot-num">8</span><div><strong>Aceitunas aliñadas</strong><p>Con receta propia, no de bote genérico.</p></div></li>
+        </ol>
       </div>
     </div>
   </section>
