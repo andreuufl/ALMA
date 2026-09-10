@@ -107,6 +107,7 @@
     var groups = [
       '.section-head',
       '.experience-visual',
+      '.hotspot-photo',
       '.events-photo',
       '.events-facts li',
       '.experience-facts li',
@@ -140,6 +141,54 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     revealTargets.forEach(function (el) { observer.observe(el); });
+  })();
+
+  /* ---------- Foto interactiva: puntos con el nombre de cada ingrediente ---------- */
+  (function () {
+    var photo = document.querySelector('.hotspot-photo');
+    if (!photo) return;
+    var tooltip = photo.querySelector('[data-hotspot-tooltip]');
+    var titleEl = tooltip.querySelector('[data-hotspot-tooltip-title]');
+    var descEl = tooltip.querySelector('[data-hotspot-tooltip-desc]');
+    var hotspots = photo.querySelectorAll('.hotspot');
+    var activeHotspot = null;
+
+    function showTooltip(btn) {
+      if (activeHotspot) activeHotspot.classList.remove('is-active');
+      activeHotspot = btn;
+      btn.classList.add('is-active');
+
+      titleEl.textContent = btn.getAttribute('data-hotspot-label') || '';
+      descEl.textContent = btn.getAttribute('data-hotspot-desc') || '';
+
+      var left = btn.style.left;
+      var top = btn.style.top;
+      tooltip.style.left = left;
+      tooltip.style.top = top;
+
+      var flip = btn.hasAttribute('data-hotspot-flip') || parseFloat(top) < 22;
+      tooltip.classList.toggle('is-flipped', flip);
+      tooltip.classList.add('is-visible');
+    }
+
+    function hideTooltip() {
+      tooltip.classList.remove('is-visible');
+      if (activeHotspot) activeHotspot.classList.remove('is-active');
+      activeHotspot = null;
+    }
+
+    hotspots.forEach(function (btn) {
+      btn.addEventListener('mouseenter', function () { showTooltip(btn); });
+      btn.addEventListener('focus', function () { showTooltip(btn); });
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (activeHotspot === btn) { hideTooltip(); } else { showTooltip(btn); }
+      });
+    });
+    photo.addEventListener('mouseleave', hideTooltip);
+    document.addEventListener('click', function (e) {
+      if (!photo.contains(e.target)) hideTooltip();
+    });
   })();
 
   /* ---------- Botón magnético (se deja atraer sutilmente por el cursor) ---------- */
