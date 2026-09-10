@@ -13,11 +13,26 @@
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---------- Header: sombra al hacer scroll + menú móvil ---------- */
+  /* ---------- Header: sombra + ocultar al bajar / mostrar al subir (móvil) + menú móvil ---------- */
   var header = document.querySelector('.site-header');
   if (header) {
+    var hideHeaderMq = window.matchMedia('(max-width: 980px)');
+    var reduceMotionHeader = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lastScrollY = window.scrollY;
     var onScroll = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 12);
+      var y = window.scrollY;
+      header.classList.toggle('is-scrolled', y > 12);
+
+      if (!reduceMotionHeader && hideHeaderMq.matches && !header.classList.contains('nav-open')) {
+        if (y > lastScrollY && y > 120) {
+          header.classList.add('is-hidden');
+        } else {
+          header.classList.remove('is-hidden');
+        }
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -27,6 +42,7 @@
       toggle.addEventListener('click', function () {
         var open = header.classList.toggle('nav-open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) header.classList.remove('is-hidden');
       });
       header.querySelectorAll('.nav-links a').forEach(function (a) {
         a.addEventListener('click', function () {
@@ -122,6 +138,62 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     revealTargets.forEach(function (el) { observer.observe(el); });
+  })();
+
+  /* ---------- Foto del hero: cambia según la hora real de quien visita ---------- */
+  (function () {
+    var imgEl = document.querySelector('[data-hero-photo-img]');
+    var sourceEl = document.querySelector('[data-hero-photo-source]');
+    if (!imgEl) return;
+
+    var hour = new Date().getHours();
+    var photo;
+
+    if (hour >= 6 && hour < 12) {
+      /* Mañana: pan recién hecho, fruta fresca */
+      photo = {
+        base: 'hero-mediterranea-square',
+        alt: 'Tabla mediterránea ALMA con pan artesano, jamón, quesos, higos y fruta fresca'
+      };
+    } else if (hour >= 12 && hour < 18) {
+      /* Mediodía / tarde: la tabla mixta, la más pedida */
+      photo = {
+        base: 'tabla-mixta-square',
+        alt: 'Tabla Mixta ALMA con rosetones de embutido y queso en pinchos, brie, encurtidos y miel'
+      };
+    } else if (hour >= 18 && hour < 23) {
+      /* Noche: mesa preparada para un evento */
+      photo = {
+        base: 'hero-mesa-flores-square',
+        alt: 'Varias tablas individuales decoradas con flores comestibles, servidas para un evento'
+      };
+    } else {
+      /* Madrugada: la torre, para planes de última hora con mucha gente */
+      photo = {
+        base: 'hero-torre-square',
+        alt: 'Torre de tres pisos de embutidos, quesos y fruta para grupos grandes'
+      };
+    }
+
+    var jpg = 'assets/img/' + photo.base + '.jpg';
+    var webp = 'assets/img/' + photo.base + '.webp';
+
+    /* Si ya es la que está precargada, no hace falta tocar nada */
+    if (imgEl.getAttribute('src') === jpg) return;
+
+    imgEl.style.transition = 'opacity .4s ease';
+    imgEl.style.opacity = '0';
+    var swap = function () {
+      if (sourceEl) sourceEl.srcset = webp;
+      imgEl.src = jpg;
+      imgEl.alt = photo.alt;
+      imgEl.style.opacity = '1';
+    };
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      swap();
+    } else {
+      setTimeout(swap, 120);
+    }
   })();
 
   /* ---------- Foco de luz que sigue al ratón en el hero ---------- */
