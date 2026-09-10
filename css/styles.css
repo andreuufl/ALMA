@@ -180,6 +180,9 @@ button{font-family:inherit;}
   position:fixed;top:0;left:0;right:0;
   z-index:500;
   padding:16px 0;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
+  will-change:transform;
 }
 .glass-nav{
   display:flex;align-items:center;justify-content:space-between;
@@ -192,6 +195,7 @@ button{font-family:inherit;}
   backdrop-filter:blur(20px) saturate(160%);
   -webkit-backdrop-filter:blur(20px) saturate(160%);
   position:relative;
+  transform:translateZ(0);
   transition:background .4s ease, box-shadow .4s ease;
 }
 .glass-nav::before{
@@ -714,11 +718,7 @@ button{font-family:inherit;}
 .avail-label{font-size:.85rem;font-weight:600;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
 .avail-label span{font-weight:500;color:var(--espresso-50);font-size:.78rem;}
 .day-picker{
-  display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;
-  scrollbar-width:thin;
-  -webkit-overflow-scrolling:touch;
-  scroll-snap-type:x proximity;
-  justify-content:center;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:6px;
 }
 .day-chip{
   flex:none;
@@ -748,15 +748,8 @@ button{font-family:inherit;}
 .time-chip:not(.is-selected):hover{border-color:var(--gold);}
 .time-picker-empty{font-size:.86rem;color:var(--espresso-50);font-style:italic;}
 
-/* En móvil: nada de scroll horizontal; se envuelven y se centran (incluida la última fila incompleta) */
+/* En móvil: chips algo más pequeños, y la etiqueta centrada */
 @media (max-width:980px){
-  .day-picker{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    overflow-x:visible;
-    padding-bottom:0;
-  }
   .day-chip{width:62px;flex:0 0 auto;}
   .time-picker{justify-content:center;}
   .avail-label{text-align:center;justify-content:center;}
