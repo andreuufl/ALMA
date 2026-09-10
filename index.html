@@ -320,6 +320,13 @@
     </div>
   </section>
 
+  <!-- ============ FRASE DESTACADA ============ -->
+  <section class="location-statement">
+    <div class="container">
+      <p class="location-statement-text">Déjate llevar por nuestra ubicación extraordinaria, en el corazón de Barcelona.</p>
+    </div>
+  </section>
+
   <!-- ============ FOTO ANOTADA ============ -->
   <section class="section hotspot-section">
     <div class="container">
@@ -329,21 +336,13 @@
         <p>Nada de fotos de banco de imágenes: esto es justo lo que preparamos, ingrediente a ingrediente.</p>
       </div>
 
-      <div class="hotspot-wrap">
+      <div class="hotspot-wrap" data-hotspot-root>
         <div class="hotspot-photo">
           <picture>
-            <source srcset="assets/img/hero-mediterranea-annotated.webp" type="image/webp">
-            <img src="assets/img/hero-mediterranea-annotated.jpg" alt="Tabla mediterránea ALMA con los ingredientes numerados del 1 al 8" loading="lazy" width="900" height="900">
+            <source data-hotspot-source srcset="assets/img/hero-mediterranea-annotated.webp" type="image/webp">
+            <img data-hotspot-img src="assets/img/hero-mediterranea-annotated.jpg" alt="Tabla ALMA con los ingredientes numerados" loading="lazy" width="900" height="900">
           </picture>
-
-          <button type="button" class="hotspot" style="top:19%;left:51%;" data-hotspot-num="1" data-hotspot-label="Salami enrollado a mano" data-hotspot-desc="Cortado fino y enrollado en el momento, para picar sin necesidad de cubiertos." aria-label="1. Salami enrollado a mano"></button>
-          <button type="button" class="hotspot" style="top:27%;left:68%;" data-hotspot-num="2" data-hotspot-label="Brie y queso curado" data-hotspot-desc="Dos texturas distintas en la misma tabla: cremoso por un lado, curado por otro." aria-label="2. Brie y queso curado"></button>
-          <button type="button" class="hotspot" style="top:42%;left:87%;" data-hotspot-num="3" data-hotspot-label="Uvas de temporada" data-hotspot-desc="Elegidas cada semana según lo que esté en su mejor momento." aria-label="3. Uvas de temporada"></button>
-          <button type="button" class="hotspot" style="top:48%;left:59%;" data-hotspot-num="4" data-hotspot-label="Jamón cortado a mano" data-hotspot-desc="A cuchillo, justo antes de servir — nada de bandejas precortadas." aria-label="4. Jamón cortado a mano"></button>
-          <button type="button" class="hotspot" style="top:54%;left:66%;" data-hotspot-num="5" data-hotspot-label="Miel de flores" data-hotspot-desc="El contrapunto dulce que rompe con lo salado en el momento justo." aria-label="5. Miel de flores"></button>
-          <button type="button" class="hotspot" style="top:70%;left:53%;" data-hotspot-num="6" data-hotspot-label="Pan artesano del día" data-hotspot-desc="Horneado la misma mañana, nunca el día anterior." aria-label="6. Pan artesano del día"></button>
-          <button type="button" class="hotspot" style="top:58%;left:10%;" data-hotspot-num="7" data-hotspot-label="Higos frescos" data-hotspot-desc="De temporada, partidos al momento para que no pierdan su punto." aria-label="7. Higos frescos"></button>
-          <button type="button" class="hotspot" style="top:72%;left:27%;" data-hotspot-num="8" data-hotspot-label="Aceitunas aliñadas" data-hotspot-desc="Con receta propia, no de bote genérico." aria-label="8. Aceitunas aliñadas"></button>
+          <div data-hotspot-buttons></div>
         </div>
 
         <div class="hotspot-detail" data-hotspot-detail>
