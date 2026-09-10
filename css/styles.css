@@ -1100,6 +1100,78 @@ button{font-family:inherit;}
 .faq-answer-inner p{padding:0 30px 22px 4px;color:var(--espresso-70);font-size:.98rem;max-width:640px;margin:0;}
 
 /* =========================================================
+   Foto interactiva — puntos con el nombre de cada ingrediente
+   ========================================================= */
+.hotspot-photo{
+  position:relative;
+  max-width:620px;
+  margin-inline:auto;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(42,27,16,.24);
+}
+.hotspot-photo picture,.hotspot-photo img{width:100%;height:100%;display:block;object-fit:cover;}
+.hotspot{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  width:30px;height:30px;
+  border:none;background:none;padding:0;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.hotspot-dot{
+  position:relative;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--paper);
+  border:2px solid var(--wine);
+  box-shadow:0 3px 10px rgba(0,0,0,.3);
+  transition:transform .25s ease, background .25s ease;
+}
+.hotspot-dot::after{
+  content:'';
+  position:absolute;inset:-9px;
+  border-radius:50%;
+  border:1.5px solid rgba(251,248,239,.85);
+  animation:hotspot-pulse 2.2s ease-out infinite;
+}
+.hotspot:hover .hotspot-dot,.hotspot:focus-visible .hotspot-dot,.hotspot.is-active .hotspot-dot{
+  background:var(--wine);
+  transform:scale(1.15);
+}
+@keyframes hotspot-pulse{
+  0%{transform:scale(.6);opacity:.9;}
+  100%{transform:scale(1.7);opacity:0;}
+}
+.hotspot-tooltip{
+  position:absolute;
+  z-index:5;
+  min-width:200px;max-width:240px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:var(--espresso);
+  color:var(--paper);
+  box-shadow:0 18px 34px rgba(0,0,0,.3);
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,-100%) translateY(-14px);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.hotspot-tooltip.is-visible{opacity:1;transform:translate(-50%,-100%) translateY(-20px);}
+.hotspot-tooltip.is-flipped{transform:translate(-50%,0) translateY(20px);}
+.hotspot-tooltip.is-flipped.is-visible{transform:translate(-50%,0) translateY(26px);}
+.hotspot-tooltip strong{display:block;font-family:var(--font-display);font-size:1.02rem;margin-bottom:4px;color:var(--paper);}
+.hotspot-tooltip p{margin:0;font-size:.82rem;color:rgba(243,236,218,.75);line-height:1.45;}
+
+@media (prefers-reduced-motion: reduce){
+  .hotspot-dot::after{animation:none;}
+}
+@media (max-width:560px){
+  .hotspot-tooltip{max-width:78vw;}
+}
+
+/* =========================================================
    Bodas y eventos
    ========================================================= */
 .events-section{background:var(--cream-2);}
