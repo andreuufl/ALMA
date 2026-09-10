@@ -1100,6 +1100,38 @@ button{font-family:inherit;}
 .faq-answer-inner p{padding:0 30px 22px 4px;color:var(--espresso-70);font-size:.98rem;max-width:640px;margin:0;}
 
 /* =========================================================
+   Frase destacada
+   ========================================================= */
+.location-statement{
+  padding:56px 0;
+  text-align:center;
+}
+.location-statement-text{
+  max-width:760px;
+  margin-inline:auto;
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  line-height:1.4;
+  color:var(--wine);
+  position:relative;
+  padding:0 30px;
+}
+.location-statement-text::before,.location-statement-text::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:44px;height:1px;
+  background:var(--gold);
+}
+.location-statement-text::before{left:-20px;}
+.location-statement-text::after{right:-20px;}
+@media (max-width:640px){
+  .location-statement-text::before,.location-statement-text::after{display:none;}
+}
+
+/* =========================================================
    Foto anotada — números fijos + panel de detalle único
    ========================================================= */
 .hotspot-wrap{
