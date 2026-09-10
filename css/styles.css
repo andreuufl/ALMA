@@ -183,6 +183,10 @@ button{font-family:inherit;}
   transform:translateZ(0);
   -webkit-transform:translateZ(0);
   will-change:transform;
+  transition:transform .35s var(--ease);
+}
+.site-header.is-hidden{
+  transform:translateY(-130%);
 }
 .glass-nav{
   display:flex;align-items:center;justify-content:space-between;
@@ -276,6 +280,15 @@ button{font-family:inherit;}
 .nav-toggle span::after{top:6px;}
 
 @media (max-width: 480px){
+  .brand-tagline{
+    font-size:.44rem;
+    padding-left:8px;
+    letter-spacing:.05em;
+  }
+  .brand-word{font-size:1.02rem;}
+  .brand img{width:36px;height:36px;}
+}
+@media (max-width: 360px){
   .brand-tagline{display:none;}
 }
 
@@ -1084,6 +1097,55 @@ button{font-family:inherit;}
 .faq-item.is-open .faq-answer{grid-template-rows:1fr;}
 .faq-answer-inner{overflow:hidden;}
 .faq-answer-inner p{padding:0 30px 22px 4px;color:var(--espresso-70);font-size:.98rem;max-width:640px;margin:0;}
+
+/* =========================================================
+   Bodas y eventos
+   ========================================================= */
+.events-section{background:var(--cream-2);}
+.events-wrap{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:56px;
+  align-items:center;
+}
+.events-photos{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  align-items:end;
+}
+.events-photo{border-radius:24px;overflow:hidden;box-shadow:0 24px 46px rgba(42,27,16,.2);}
+.events-photo picture,.events-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.events-photo-a{aspect-ratio:3/4;align-self:start;}
+.events-photo-b{aspect-ratio:3/4;transform:translateY(28px);}
+
+.events-copy p{color:var(--espresso-70);font-size:1.02rem;}
+.events-facts{
+  display:flex;gap:28px;flex-wrap:wrap;
+  margin:26px 0 30px;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.events-facts li{display:flex;flex-direction:column;gap:2px;}
+.events-facts strong{font-family:var(--font-display);font-size:1.3rem;color:var(--wine);}
+.events-facts span{font-size:.82rem;color:var(--espresso-50);}
+
+.events-copy .form-success{position:static;display:none;margin-bottom:20px;border-radius:20px;padding:24px;background:rgba(98,105,63,.12);}
+.events-copy .form-success.is-visible{display:flex;flex-direction:row;align-items:center;text-align:left;gap:16px;opacity:1;transform:none;pointer-events:auto;}
+.events-copy .form-success .success-icon{margin-bottom:0;flex:none;width:52px;height:52px;}
+.events-copy .form-success strong{display:block;margin-bottom:2px;}
+.events-copy .form-success p{margin:0;font-size:.88rem;}
+
+@media (max-width:900px){
+  .events-wrap{grid-template-columns:1fr;}
+  .events-photos{max-width:420px;margin-inline:auto;}
+}
+@media (max-width:560px){
+  .events-photos{grid-template-columns:1fr;}
+  .events-photo-b{transform:none;}
+}
 
 /* =========================================================
    Lo más solicitado — galería con fotos reales
