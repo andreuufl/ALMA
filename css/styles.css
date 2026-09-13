@@ -63,6 +63,30 @@ body::before{
   mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+body::after{
+  content:'';
+  position:fixed;
+  inset:-10%;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(38% 28% at 18% 15%, rgba(156,107,46,.16), transparent 65%),
+    radial-gradient(34% 30% at 85% 25%, rgba(110,31,36,.13), transparent 65%),
+    radial-gradient(42% 34% at 45% 90%, rgba(98,105,63,.13), transparent 65%),
+    radial-gradient(30% 26% at 95% 80%, rgba(156,107,46,.1), transparent 65%);
+  animation:aurora-drift 32s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift{
+  0%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(-2.5%,3%) scale(1.06);}
+  100%{transform:translate(3%,-2%) scale(1);}
+}
+@media (max-width:768px){
+  body::after{animation:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  body::after{animation:none;}
+}
 ::selection{
   background:var(--wine);
   color:var(--paper);
@@ -560,8 +584,20 @@ button{font-family:inherit;}
   border:1px solid var(--line);
   border-radius:var(--radius-lg);
   padding:30px 26px 28px;
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
   transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s ease;
 }
+.tabla-card::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(220px circle at var(--glare-x,50%) var(--glare-y,50%), rgba(255,255,255,.45), transparent 60%);
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+}
+.tabla-card:hover::after{opacity:1;}
 .tabla-card:hover{
   transform:translateY(-6px);
   box-shadow:0 24px 46px rgba(42,27,16,.14);
@@ -1413,6 +1449,18 @@ button{font-family:inherit;}
 .reveal.is-visible{
   opacity:1;
   transform:translateY(0);
+}
+.word-reveal{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(.4em);
+  filter:blur(4px);
+  transition:opacity .5s var(--ease), transform .5s var(--ease), filter .5s var(--ease);
+}
+.word-reveal-wrap.is-revealed .word-reveal{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
 }
 
 /* ---------- 404-friendly utility ---------- */
