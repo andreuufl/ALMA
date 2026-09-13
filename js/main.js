@@ -498,6 +498,55 @@
     });
   })();
 
+  /* ---------- Revelado de títulos palabra por palabra ---------- */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    var heads = document.querySelectorAll('.section-head h2');
+    if (!heads.length) return;
+
+    heads.forEach(function (h) {
+      var words = h.textContent.trim().split(/\s+/);
+      h.innerHTML = words.map(function (w, i) {
+        return '<span class="word-reveal" style="transition-delay:' + Math.min(i * 45, 500) + 'ms">' + w + '</span>';
+      }).join(' ');
+      h.classList.add('word-reveal-wrap');
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
+
+    heads.forEach(function (h) { observer.observe(h); });
+  })();
+
+  /* ---------- Inclinación 3D + reflejo de luz en las tarjetas de tablas (solo escritorio) ---------- */
+  (function () {
+    var tiltMq = window.matchMedia('(min-width: 981px) and (pointer: fine)');
+    if (!tiltMq.matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.querySelectorAll('.tabla-card').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var px = x / rect.width - 0.5;
+        var py = y / rect.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateX(' + (-py * 7) + 'deg) rotateY(' + (px * 9) + 'deg) translateY(-6px)';
+        card.style.setProperty('--glare-x', (x / rect.width * 100) + '%');
+        card.style.setProperty('--glare-y', (y / rect.height * 100) + '%');
+      });
+      card.addEventListener('pointerleave', function () {
+        card.style.transform = '';
+      });
+    });
+  })();
+
   /* ============================================================
      Preguntas frecuentes — acordeón
      ============================================================ */
