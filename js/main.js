@@ -115,7 +115,6 @@
       '.tabla-card',
       '.showcase-card',
       '.step',
-      '.testi-card',
       '.faq-item',
       '.insta-card',
       '.reserva-wrap',
@@ -494,7 +493,21 @@
       closeLightbox();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { closeLightbox(); return; }
+      if (e.key === 'Tab') {
+        var focusable = lightbox.querySelectorAll('a[href], button:not([disabled])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   })();
 
@@ -694,7 +707,8 @@
       email: { el: form.querySelector('#reserva-email'), validate: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }, msg: 'Introduce un email válido.' },
       telefono: { el: form.querySelector('#reserva-telefono'), validate: function (v) { return /^[+\d][\d\s]{7,}$/.test(v.trim()); }, msg: 'Introduce un teléfono válido.' },
       personas: { el: form.querySelector('#reserva-personas'), validate: function (v) { return v && parseInt(v, 10) >= 2; }, msg: 'Indica cuántos comensales sois (mín. 2).' },
-      tabla: { el: form.querySelector('#reserva-tabla'), validate: function (v) { return !!v; }, msg: 'Elige una tabla.' }
+      tabla: { el: form.querySelector('#reserva-tabla'), validate: function (v) { return !!v; }, msg: 'Elige una tabla.' },
+      consent: { el: form.querySelector('#reserva-consent'), validate: function () { return form.querySelector('#reserva-consent').checked; }, msg: 'Debes aceptar la política de privacidad para continuar.', isCheckbox: true }
     };
 
     function fieldWrap(el) {
@@ -712,12 +726,15 @@
     Object.keys(fields).forEach(function (key) {
       var f = fields[key];
       if (!f.el) return;
-      f.el.addEventListener('input', function () {
+      var evt = f.isCheckbox ? 'change' : 'input';
+      f.el.addEventListener(evt, function () {
         if (f.validate(f.el.value)) clearError(key);
       });
-      f.el.addEventListener('blur', function () {
-        if (!f.validate(f.el.value)) showError(key); else clearError(key);
-      });
+      if (!f.isCheckbox) {
+        f.el.addEventListener('blur', function () {
+          if (!f.validate(f.el.value)) showError(key); else clearError(key);
+        });
+      }
     });
 
     form.addEventListener('submit', function (e) {
@@ -820,7 +837,8 @@
       telefono: { el: eventsForm.querySelector('#events-telefono'), validate: function (v) { return /^[+\d][\d\s]{7,}$/.test(v.trim()); } },
       fecha: { el: eventsForm.querySelector('#events-fecha'), validate: function (v) { return !!v; } },
       invitados: { el: eventsForm.querySelector('#events-invitados'), validate: function (v) { return v && parseInt(v, 10) >= 10; } },
-      ubicacion: { el: eventsForm.querySelector('#events-ubicacion'), validate: function (v) { return v.trim().length >= 2; } }
+      ubicacion: { el: eventsForm.querySelector('#events-ubicacion'), validate: function (v) { return v.trim().length >= 2; } },
+      consent: { el: eventsForm.querySelector('#events-consent'), validate: function () { return eventsForm.querySelector('#events-consent').checked; }, isCheckbox: true }
     };
 
     function eFieldWrap(el) { return el ? el.closest('.field') : null; }
@@ -830,8 +848,11 @@
     Object.keys(eFields).forEach(function (key) {
       var f = eFields[key];
       if (!f.el) return;
-      f.el.addEventListener('input', function () { if (f.validate(f.el.value)) eClearError(key); });
-      f.el.addEventListener('blur', function () { if (!f.validate(f.el.value)) eShowError(key); else eClearError(key); });
+      var evt = f.isCheckbox ? 'change' : 'input';
+      f.el.addEventListener(evt, function () { if (f.validate(f.el.value)) eClearError(key); });
+      if (!f.isCheckbox) {
+        f.el.addEventListener('blur', function () { if (!f.validate(f.el.value)) eShowError(key); else eClearError(key); });
+      }
     });
 
     eventsForm.addEventListener('submit', function (e) {
