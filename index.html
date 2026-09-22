@@ -91,7 +91,6 @@
         <li><a href="#eventos">Bodas y eventos</a></li>
         <li><a href="#tablas">Nuestras tablas</a></li>
         <li><a href="#como-funciona">Cómo funciona</a></li>
-        <li><a href="#opiniones">Opiniones</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#reserva">Reserva</a></li>
       </ul>
@@ -122,9 +121,9 @@
           </a>
         </div>
         <div class="hero-meta">
-          <div><strong data-counter="180" data-suffix="+">0</strong><span>Tablas servidas este año</span></div>
-          <div><strong data-counter="4.9" data-decimals="1" data-suffix="/5" data-decimal-comma="1">0</strong><span>Valoración media</span></div>
           <div><strong>2–10</strong><span>Comensales por mesa</span></div>
+          <div><strong>Producto</strong><span>fresco de proximidad</span></div>
+          <div><strong>&lt;24h</strong><span>Respuesta por WhatsApp</span></div>
         </div>
       </div>
 
@@ -311,8 +310,16 @@
               <textarea id="events-mensaje" name="mensaje" placeholder="Estilo del evento, alergias, presupuesto orientativo…"></textarea>
             </div>
 
+            <div class="field field-consent" data-field="events-consent">
+              <label class="consent-check">
+                <input type="checkbox" id="events-consent" name="consent" required>
+                <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</span>
+              </label>
+              <p class="field-error">Debes aceptar la política de privacidad para continuar.</p>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">Solicitar presupuesto</button>
-            <p class="form-note">Sin compromiso. Te respondemos por WhatsApp para afinar los detalles.</p>
+            <p class="form-note">Sin compromiso. Te respondemos por WhatsApp para afinar los detalles. Solo usamos tus datos para gestionar tu solicitud.</p>
           </form>
         </div>
       </div>
@@ -372,7 +379,7 @@
             </div>
             <h3>Tabla Ibérica</h3>
             <p>Jamón 100% ibérico de bellota cortado a cuchillo, lomo, chorizo y salchichón de bellota.</p>
-            <div class="tabla-tags"><span>Best-seller</span><span>Para compartir</span></div>
+            <div class="tabla-tags"><span>Favorita de la casa</span><span>Para compartir</span></div>
             <div class="tabla-price"><strong>38€</strong><span>2 personas</span></div>
           </article>
 
@@ -414,8 +421,8 @@
               <svg viewBox="0 0 100 100" role="img" aria-label="Ilustración de copa de vino para maridaje" fill="none" stroke="#6E1F24" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 10 C30 34 34 46 50 46 C66 46 70 34 70 10 Z"/><path d="M50 46 L50 78"/><path d="M32 90 L68 90"/><path d="M50 78 L50 90"/><path d="M34 20 C40 26 60 26 66 20" opacity="0.5"/></svg>
             </div>
             <h3>Maridaje de Vinos</h3>
-            <p>Tres copas seleccionadas por nuestro sumiller, a juego con cada tabla que pidas.</p>
-            <div class="tabla-tags"><span>Con sumiller</span></div>
+            <p>Tres copas seleccionadas con cuidado, a juego con cada tabla que pidas.</p>
+            <div class="tabla-tags"><span>Selección cuidada</span></div>
             <div class="tabla-price"><strong>18€</strong><span>por persona</span></div>
           </article>
 
@@ -537,33 +544,6 @@
           <span class="step-num">04</span>
           <h3>A la mesa</h3>
           <p>Dos horas de tabla, buena charla y sin mirar el reloj.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ OPINIONES ============ -->
-  <section class="section" id="opiniones" style="padding-top:20px;">
-    <div class="container">
-      <div class="section-head center">
-        <p class="kicker">Opiniones</p>
-        <h2>Lo que se dice al terminar la sobremesa</h2>
-      </div>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Parecía la casa de un amigo con muy buen gusto para comprar jamón. Nos quedamos casi tres horas."</p>
-          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Marta</strong><span>Gràcia, Barcelona</span></div></div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"El maridaje con vermut fue la mejor sorpresa. Repetiremos con más gente la próxima vez."</p>
-          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Jordi</strong><span>Sants, Barcelona</span></div></div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p>"Reservamos para un cumpleaños y se adaptaron a todo, incluida una intolerancia. Muy recomendable."</p>
-          <div class="testi-who"><div class="testi-avatar"></div><div><strong>Laia</strong><span>Poblenou, Barcelona</span></div></div>
         </div>
       </div>
     </div>
@@ -772,8 +752,16 @@
               <textarea id="reserva-mensaje" name="mensaje" placeholder="Alergias, ocasión especial, preferencia de vino…"></textarea>
             </div>
 
+            <div class="field field-consent" data-field="consent">
+              <label class="consent-check">
+                <input type="checkbox" id="reserva-consent" name="consent" required>
+                <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</span>
+              </label>
+              <p class="field-error">Debes aceptar la política de privacidad para continuar.</p>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">Confirmar reserva por WhatsApp</button>
-            <p class="form-note">No cobramos nada al reservar. Confirmamos disponibilidad real por WhatsApp.</p>
+            <p class="form-note">No cobramos nada al reservar. Confirmamos disponibilidad real por WhatsApp. Solo usamos tus datos para gestionar esta reserva.</p>
           </form>
         </div>
 
@@ -797,7 +785,7 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              Cancelación gratuita hasta 24h antes del turno reservado.
+              Cancelación gratuita hasta 24h antes del turno reservado. Consulta la <a href="terminos.html#reembolso" style="color:inherit;text-decoration:underline;">política de cancelaciones</a>.
             </li>
           </ul>
           <p>¿Prefieres hablar antes de reservar?</p>
@@ -881,8 +869,10 @@
       <div class="footer-col">
         <h4>Legal</h4>
         <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
           <li><a href="privacidad.html">Política de privacidad</a></li>
           <li><a href="terminos.html">Términos y condiciones</a></li>
+          <li><a href="cookies.html">Política de cookies</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -896,7 +886,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span data-year></span> ALMA. Todos los derechos reservados.</span>
-      <span><a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a></span>
+      <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a> · <a href="cookies.html">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -931,10 +921,10 @@
 
 <!-- ============ COOKIES ============ -->
 <div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Aviso de cookies">
-  <p>Usamos cookies propias y de terceros para mejorar tu experiencia y medir el uso de la web. Puedes aceptar todas, rechazar las no esenciales o leer más en nuestra <a href="privacidad.html">política de privacidad</a>.</p>
+  <p>Esta web no usa cookies de analítica ni de publicidad. Solo guardamos en tu navegador la preferencia que elijas aquí, y cargamos las tipografías de Google Fonts (un servicio externo). Más información en nuestra <a href="cookies.html">política de cookies</a>.</p>
   <div class="cookie-actions">
-    <button type="button" class="btn btn-primary" data-cookie-action="accepted">Aceptar todas</button>
-    <button type="button" class="btn btn-outline" data-cookie-action="rejected">Rechazar no esenciales</button>
+    <button type="button" class="btn btn-primary" data-cookie-action="accepted">Aceptar</button>
+    <button type="button" class="btn btn-outline" data-cookie-action="rejected">Rechazar</button>
   </div>
 </div>
 

@@ -68,7 +68,7 @@
   <div class="container">
     <div class="footer-bottom">
       <span>© <span data-year></span> ALMA. Todos los derechos reservados.</span>
-      <span><a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a></span>
+      <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a> · <a href="cookies.html">Cookies</a></span>
     </div>
   </div>
 </footer>
@@ -83,6 +83,25 @@
     var personas = params.get('personas');
     var tabla = params.get('tabla');
 
+    function esc(s) {
+      var d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    /* Solo aceptamos texto simple y corto en estos parámetros: cualquier otra cosa se descarta,
+       y además se escapa antes de insertarse, para evitar que la URL pueda inyectar HTML. */
+    function sanitize(v, maxLen) {
+      if (!v) return '';
+      v = v.slice(0, maxLen || 60).replace(/[<>]/g, '');
+      return v;
+    }
+    nombre = sanitize(nombre, 60);
+    fecha = sanitize(fecha, 40);
+    hora = sanitize(hora, 10);
+    personas = sanitize(personas, 5);
+    tabla = sanitize(tabla, 60);
+
     if (nombre) {
       document.getElementById('thanks-title').textContent = '¡Gracias, ' + nombre + '!';
     }
@@ -90,9 +109,9 @@
       var box = document.getElementById('thanks-detail');
       box.style.display = 'block';
       box.innerHTML =
-        'Te esperamos el <strong>' + fecha + '</strong> a las <strong>' + hora + 'h</strong>' +
-        (personas ? ' para <strong>' + personas + ' personas</strong>' : '') +
-        (tabla ? ' — <strong>' + tabla + '</strong>' : '') +
+        'Te esperamos el <strong>' + esc(fecha) + '</strong> a las <strong>' + esc(hora) + 'h</strong>' +
+        (personas ? ' para <strong>' + esc(personas) + ' personas</strong>' : '') +
+        (tabla ? ' — <strong>' + esc(tabla) + '</strong>' : '') +
         '. En cuanto confirmemos disponibilidad real, te lo decimos por WhatsApp junto con la ubicación exacta.';
     }
   })();
