@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<title>Pedir catering en Barcelona — THYME Express Catering</title>
+<title>Catering a domicilio en Barcelona — THYME Express Catering</title>
 <meta name="description" content="Pide tu catering en Barcelona: bocados salados, tablas de ibéricos y quesos, dulces, cajas para eventos y servicios en directo. Pedido mínimo 100€, con 2 días hábiles de antelación.">
 <link rel="canonical" href="https://www.thymecatering.com/pedidos.html">
 <meta name="robots" content="index, follow">
@@ -41,13 +41,14 @@
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
-<div class="topbar" role="note">
+<div class="topbar">
   <div class="container topbar-inner">
-    <span><strong>Pedido mínimo de catering: 100€</strong></span>
-    <span class="topbar-sep" aria-hidden="true">·</span>
-    <span>Plazo mínimo de pedido: 2 días hábiles</span>
-    <span class="topbar-sep" aria-hidden="true">·</span>
-    <span>Barcelona y alrededores</span>
+    <span><strong>Pedido mínimo 100€</strong> · <span class="t-long">Encargos con 2 días hábiles de antelación</span><span class="t-short">2 días hábiles</span></span>
+    <div class="topbar-cp" data-cp-check>
+      <label for="cp-top">¿Entregamos en tu zona?</label>
+      <input id="cp-top" type="text" inputmode="numeric" maxlength="5" placeholder="Código postal" autocomplete="postal-code">
+      <span class="cp-result" data-cp-out aria-live="polite"></span>
+    </div>
   </div>
 </div>
 <header class="site-header site-header-topbar" data-header>
@@ -65,11 +66,14 @@
         <li><a href="index.html#eventos">Bodas y eventos</a></li>
         <li><a href="index.html#tablas">Tablas</a></li>
         <li><a href="menus.html">Menús</a></li>
-        <li><a href="pedidos.html" aria-current="page">Pedir catering</a></li>
+        <li><a href="pedidos.html" aria-current="page">A domicilio</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
       </ul>
       <div class="nav-actions">
-        <a class="btn btn-glass" href="index.html#reserva">Reservar</a>
+        <button type="button" class="cart-btn" data-abrir-cesta aria-label="Ver tu pedido">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count" data-cart-count hidden>0</span>
+        </button>
         <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
           <span></span>
         </button>
@@ -80,84 +84,197 @@
 
 <main id="main">
 
-  <!-- ============ BANDA DE CATEGORÍA ============ -->
+  <!-- ============ CABECERA DE TIENDA ============ -->
   <section class="catalogo-banner">
-    <div class="container">
-      <p class="kicker">Pedir catering</p>
-      <h1 data-catalogo-titulo>Todo el catálogo</h1>
+    <div class="container catalogo-banner-grid">
+      <div>
+        <p class="kicker">Pedir a domicilio</p>
+        <h1 data-catalogo-titulo>Catering a domicilio</h1>
+        <p class="catalogo-banner-lede">Tablas, bocados y dulces hechos por nosotros, por encargo, y entregados en tu casa, tu oficina o el lugar de tu evento en Barcelona.</p>
+      </div>
+      <ol class="pasos-pedido">
+        <li><span>1</span><div><strong>Elige</strong><small>Abre cada producto para ver ingredientes y alérgenos.</small></div></li>
+        <li><span>2</span><div><strong>Escoge día y franja</strong><small>Con 2 días hábiles de antelación.</small></div></li>
+        <li><span>3</span><div><strong>Confirma por WhatsApp</strong><small>Te respondemos con disponibilidad y envío.</small></div></li>
+      </ol>
     </div>
   </section>
 
+  <!-- ============ PROMESAS ============ -->
+  <section class="promesas">
+    <div class="container promesas-grid">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><strong>Hecho el día de la entrega</strong>Nada de cámaras ni stock: montamos tu pedido para ti.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><p><strong>Ingredientes a la vista</strong>Cada producto con su lista completa y sus alérgenos.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><p><strong>A domicilio o recogida</strong>En Barcelona ciudad y alrededores, en la franja que elijas.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/></svg><p><strong>Trato de persona a persona</strong>Hablas con nosotros por WhatsApp, no con un formulario.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ CATÁLOGO ============ -->
   <section class="section catalogo">
     <div class="container">
       <p class="catalogo-intro" data-catalogo-intro></p>
 
       <div class="cat-chips" role="toolbar" aria-label="Categorías">
-          <button type="button" class="cat-chip" data-cat="todos" aria-pressed="false">Todo</button>
-          <button type="button" class="cat-chip" data-cat="salados" aria-pressed="false">Salados</button>
-          <button type="button" class="cat-chip" data-cat="tablas" aria-pressed="false">Tablas</button>
-          <button type="button" class="cat-chip" data-cat="dulces" aria-pressed="false">Dulces</button>
-          <button type="button" class="cat-chip" data-cat="cajas" aria-pressed="false">Cajas para eventos</button>
-          <button type="button" class="cat-chip" data-cat="bebidas" aria-pressed="false">Bebidas y servicios</button>
+        <button type="button" class="cat-chip" data-cat="todos" aria-pressed="false">Todo</button>
+        <button type="button" class="cat-chip" data-cat="tablas" aria-pressed="false">Tablas</button>
+        <button type="button" class="cat-chip" data-cat="salados" aria-pressed="false">Salados</button>
+        <button type="button" class="cat-chip" data-cat="dulces" aria-pressed="false">Dulces</button>
+        <button type="button" class="cat-chip" data-cat="cajas" aria-pressed="false">Cajas para eventos</button>
+        <button type="button" class="cat-chip" data-cat="servicios" aria-pressed="false">Bebidas y servicios</button>
       </div>
 
       <div class="catalogo-layout">
         <div class="catalogo-main">
           <div class="catalogo-toolbar">
-            <span data-catalogo-count></span>
-            <label class="switch">
-              <input type="checkbox" data-filtro-veg>
-              <span class="switch-track" aria-hidden="true"></span>
-              Solo vegetariano
+            <div class="buscar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+              <input type="search" placeholder="Buscar: jamón, queso, croquetas…" aria-label="Buscar productos" data-buscar>
+            </div>
+            <label class="switch"><input type="checkbox" data-filtro="veg"><span class="switch-track" aria-hidden="true"></span>Vegetariano</label>
+            <label class="switch"><input type="checkbox" data-filtro="singluten"><span class="switch-track" aria-hidden="true"></span>Sin gluten</label>
+            <label class="orden">Ordenar
+              <select data-orden>
+                <option value="recomendado">Recomendado</option>
+                <option value="asc">Precio: menor a mayor</option>
+                <option value="desc">Precio: mayor a menor</option>
+              </select>
             </label>
+            <span class="catalogo-count" data-catalogo-count></span>
           </div>
           <div class="producto-grid" data-catalogo-grid aria-live="polite"></div>
         </div>
 
         <aside class="catalogo-side">
           <div class="side-card side-calc" data-calc>
-            <h2>Calculadora de cantidades</h2>
-            <label class="radio"><input type="radio" name="calc-tipo" value="comida"><span><strong>Cóctel – comida o cena</strong><small>Sustituye una comida</small></span></label>
-            <label class="radio"><input type="radio" name="calc-tipo" value="aperitivo"><span><strong>Cóctel – aperitivo</strong><small>No sustituye una comida</small></span></label>
+            <h2>¿Cuánto necesito?</h2>
+            <label class="radio"><input type="radio" name="calc-tipo" value="comida"><span><strong>Comida o cena</strong><small>El catering sustituye una comida</small></span></label>
+            <label class="radio"><input type="radio" name="calc-tipo" value="aperitivo"><span><strong>Aperitivo</strong><small>Para picar antes o entre horas</small></span></label>
             <label class="side-field">Nº de personas<input type="number" name="calc-personas" min="1" placeholder="Ej. 25"></label>
             <p class="calc-result" data-calc-result>Elige el tipo de cóctel e indica cuántas personas sois.</p>
             <p class="calc-note">Cálculo orientativo. Te ajustamos las cantidades al confirmar.</p>
           </div>
 
-          <div class="side-card">
-            <h2>Categorías</h2>
-            <ul class="side-cats">
-            <li><button type="button" data-cat="todos">Todo</button></li>
-            <li><button type="button" data-cat="salados">Salados</button></li>
-            <li><button type="button" data-cat="tablas">Tablas</button></li>
-            <li><button type="button" data-cat="dulces">Dulces</button></li>
-            <li><button type="button" data-cat="cajas">Cajas para eventos</button></li>
-            <li><button type="button" data-cat="bebidas">Bebidas y servicios</button></li>
-            </ul>
-          </div>
-
           <div class="side-card side-card-dark">
-            <h2>¿Evento grande o a medida?</h2>
-            <p>Bodas, empresas y cenas privadas: cuéntanos la fecha y el número de invitados y te preparamos una propuesta.</p>
+            <h2>¿Boda, empresa o evento grande?</h2>
+            <p>Cuéntanos fecha, invitados y lugar y te preparamos una propuesta a medida, con servicio y montaje.</p>
             <a class="btn btn-whatsapp btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Quiero%20un%20presupuesto%20a%20medida%20para%20mi%20evento.%0AFecha%3A%20%0AInvitados%3A%20%0AUbicaci%C3%B3n%3A%20" target="_blank" rel="noopener">Pedir presupuesto</a>
           </div>
         </aside>
       </div>
+    </div>
+  </section>
 
-      <div class="menu-conditions catalogo-conditions">
-        <div class="menu-condition">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-          <div><h3>Pedido mínimo de catering: 100€</h3><p>Plazo mínimo de pedido: 2 días hábiles. Confirmamos disponibilidad por WhatsApp.</p></div>
-        </div>
-        <div class="menu-condition">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/></svg>
-          <div><h3>Alergias e intolerancias</h3><p>Indícalas al hacer el pedido y adaptamos lo que sea posible. No podemos garantizar la ausencia total de trazas.</p></div>
-        </div>
+  <!-- ============ CÓMO LLEGA ============ -->
+  <section class="section entrega">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">Así llega a tu mesa</p>
+        <h2>Del obrador a tu puerta, sin prisas y en su punto</h2>
+      </div>
+      <div class="entrega-grid">
+        <div class="entrega-item"><span class="step-num">01</span><h3>Nos llega tu pedido</h3><p>Lo revisamos, te confirmamos disponibilidad y coste de envío por WhatsApp y resolvemos cualquier alergia.</p></div>
+        <div class="entrega-item"><span class="step-num">02</span><h3>Compramos y preparamos</h3><p>Con dos días hábiles tenemos tiempo de conseguir el mejor producto y montarlo a mano el mismo día de la entrega.</p></div>
+        <div class="entrega-item"><span class="step-num">03</span><h3>Lo llevamos listo para servir</h3><p>Llega en su envase, con indicaciones para servir y conservar. Tú solo tienes que ponerlo en la mesa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ENTREGA ============ -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head center">
+        <p class="kicker">Antes de pedir</p>
+        <h2>Preguntas sobre la entrega</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>¿Con cuánta antelación tengo que pedir?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Con un mínimo de 2 días hábiles (de lunes a viernes). El calendario del pedido solo te deja elegir fechas que cumplen ese plazo. Si lo necesitas antes, escríbenos y miramos si es posible.</p></div></div></div>
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>¿Hay pedido mínimo?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Sí, el pedido mínimo de catering es de 100 €. En tu pedido verás cuánto te falta para llegar.</p></div></div></div>
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>¿A qué zonas entregáis y cuánto cuesta el envío?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Entregamos en Barcelona ciudad y alrededores. Comprueba tu código postal arriba del todo. El coste de envío depende de la zona y te lo confirmamos junto con el pedido. También puedes recogerlo en nuestro espacio.</p></div></div></div>
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>¿Cómo se paga?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Al confirmar tu pedido por WhatsApp te indicamos las formas de pago disponibles. No se cobra nada al enviar el pedido desde la web.</p></div></div></div>
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>Tengo alergias o intolerancias</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Cada producto muestra sus alérgenos. Indícanos cualquier alergia en el campo de notas del pedido y adaptamos lo posible. Al elaborar todo en la misma cocina, no podemos garantizar la ausencia total de trazas.</p></div></div></div>
+        <div class="faq-item" data-faq-item><h3 class="faq-question-wrap"><button type="button" class="faq-question" data-faq-toggle aria-expanded="false"><span>¿Cómo lo conservo hasta servirlo?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h3><div class="faq-answer" data-faq-answer><div class="faq-answer-inner"><p>Cada ficha incluye cómo servir el producto. Como norma: tablas y dulces en frío hasta 20–30 minutos antes de servir; croquetas y mini burgers, unos minutos al horno para que recuperen el punto.</p></div></div></div>
       </div>
     </div>
   </section>
 
 </main>
+
+<!-- ============ FICHA DE PRODUCTO ============ -->
+<div class="ficha" data-ficha hidden>
+  <div class="ficha-backdrop" data-ficha-cerrar></div>
+  <div class="ficha-panel" role="dialog" aria-modal="true" aria-labelledby="ficha-titulo">
+    <button type="button" class="ficha-cerrar" data-ficha-cerrar aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="ficha-grid" data-ficha-contenido></div>
+  </div>
+</div>
+
+<!-- ============ TU PEDIDO (panel lateral) ============ -->
+<div class="cesta" data-cesta hidden>
+  <div class="cesta-backdrop" data-cesta-cerrar></div>
+  <aside class="cesta-panel" role="dialog" aria-modal="true" aria-labelledby="cesta-titulo">
+    <header class="cesta-head">
+      <h2 id="cesta-titulo">Tu pedido</h2>
+      <button type="button" class="ficha-cerrar" data-cesta-cerrar aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="cesta-body">
+      <div class="cesta-items" data-cesta-items></div>
+
+      <div class="cesta-resumen">
+        <div class="cesta-total"><span>Subtotal</span><strong data-cesta-total>0 €</strong></div>
+        <p class="cesta-consultar" data-cesta-consultar hidden>+ productos con precio a consultar</p>
+        <div class="cesta-progreso" data-cesta-progreso><span></span></div>
+        <p class="cesta-progreso-texto" data-cesta-progreso-texto></p>
+      </div>
+
+      <form class="cesta-form" data-cesta-form novalidate hidden>
+        <fieldset class="modo">
+          <legend>¿Cómo lo quieres?</legend>
+          <label><input type="radio" name="modo" value="domicilio" checked><span>Entrega a domicilio</span></label>
+          <label><input type="radio" name="modo" value="recogida"><span>Recogida en nuestro espacio</span></label>
+        </fieldset>
+        <div class="field-row">
+          <div class="field"><label for="c-fecha">Día</label><input type="date" id="c-fecha" name="fecha" required><p class="field-error">Elige una fecha con al menos 2 días hábiles.</p></div>
+          <div class="field"><label for="c-franja">Franja horaria</label><select id="c-franja" name="franja" required></select><p class="field-error">Elige una franja.</p></div>
+        </div>
+        <p class="field-hint" data-fecha-hint></p>
+        <div class="solo-domicilio">
+          <div class="field"><label for="c-dir">Dirección de entrega</label><input type="text" id="c-dir" name="direccion" autocomplete="street-address" placeholder="Calle, número, piso"><p class="field-error">Indica la dirección.</p></div>
+          <div class="field"><label for="c-cp">Código postal</label><input type="text" id="c-cp" name="cp" inputmode="numeric" maxlength="5" autocomplete="postal-code"><p class="field-error">Código postal de 5 cifras.</p><p class="cp-result" data-cesta-cp-out aria-live="polite"></p></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="c-nombre">Nombre</label><input type="text" id="c-nombre" name="nombre" autocomplete="name"><p class="field-error">Escribe tu nombre.</p></div>
+          <div class="field"><label for="c-tel">Teléfono</label><input type="tel" id="c-tel" name="telefono" autocomplete="tel" placeholder="+34 6XX XXX XXX"><p class="field-error">Teléfono válido.</p></div>
+        </div>
+        <div class="field"><label for="c-notas">Notas (opcional)</label><textarea id="c-notas" name="notas" placeholder="Alergias, ocasión, timbre, a quién entregar…"></textarea></div>
+        <div class="field field-consent">
+          <label class="consent-check"><input type="checkbox" name="consent"><span>Acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener">términos</a>.</span></label>
+          <p class="field-error">Debes aceptarla para continuar.</p>
+        </div>
+        <button type="submit" class="btn btn-whatsapp btn-block">Enviar pedido por WhatsApp</button>
+        <p class="form-note">No se cobra nada ahora. Te confirmamos disponibilidad, envío y forma de pago por WhatsApp.</p>
+      </form>
+
+      <div class="cesta-ok" data-cesta-ok hidden>
+        <strong>¡Pedido preparado en WhatsApp!</strong>
+        <p>Envía el mensaje que se ha abierto y te respondemos con la confirmación. Si no se ha abierto, revisa que tu navegador permita ventanas emergentes.</p>
+        <button type="button" class="btn btn-glass" data-cesta-nuevo>Volver al pedido</button>
+        <button type="button" class="btn btn-outline" data-cesta-vaciar>Vaciar y empezar otro</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Barra fija de pedido (móvil) y aviso -->
+<button type="button" class="cart-bar" data-cart-bar data-abrir-cesta hidden>
+  <span data-cart-bar-text></span><strong>Ver pedido →</strong>
+</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
@@ -234,6 +351,7 @@
 </div>
 
 <script src="js/main.js"></script>
-<script src="js/catalogo.js"></script>
+<script src="js/productos.js"></script>
+<script src="js/tienda.js"></script>
 </body>
 </html>
