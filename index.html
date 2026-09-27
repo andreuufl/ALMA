@@ -33,7 +33,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
-<link rel="preload" as="image" href="assets/img/logo.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="assets/img/hero-mediterranea-square.jpg" fetchpriority="high">
 
 <link rel="stylesheet" href="css/styles.css">
@@ -81,19 +80,19 @@
 <header class="site-header" data-header>
   <div class="container">
     <nav class="glass-nav" aria-label="Navegación principal">
-      <a href="index.html" class="brand">
-        <img src="assets/img/logo.jpg" alt="THYME" width="42" height="42">
-        <span class="brand-word">THYME</span>
+      <a href="index.html" class="brand" aria-label="THYME Express Catering, ir al inicio">
+        <img class="brand-mark" src="assets/img/thyme-mark.svg" alt="" width="46" height="46">
+        <span class="brand-text">
+          <span class="brand-word">THYME</span>
+          <span class="brand-sub">Express Catering</span>
+        </span>
       </a>
-      <span class="brand-tagline">Express<br>Catering</span>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experiencia">La experiencia</a></li>
         <li><a href="#eventos">Bodas y eventos</a></li>
-        <li><a href="#tablas">Nuestras tablas</a></li>
-        <li><a href="menus.html">Menús para eventos</a></li>
-        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#tablas">Tablas</a></li>
+        <li><a href="menus.html">Menús</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#reserva">Reserva</a></li>
       </ul>
       <div class="nav-actions">
         <a class="btn btn-glass" href="#reserva">Reservar</a>
@@ -112,7 +111,8 @@
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1>Reunidos alrededor de una experiencia, en el corazón de la ciudad, en l'Eixample</h1>
+        <p class="kicker">Express Catering · Barcelona</p>
+        <h1>Reunidos alrededor de una <em>experiencia</em>, en el corazón de la ciudad, en l'Eixample</h1>
         <p class="lede">THYME prepara cada tabla con el mismo mimo de una sobremesa entre amigos: jamón cortado al momento, quesos de temporada y embutidos artesanales. Ya sea una mesa íntima para pocos, o el catering de tu boda o evento.</p>
         <div class="hero-actions">
           <a href="#reserva" class="btn btn-primary" data-magnetic>Reservar mi tabla</a>
@@ -138,39 +138,12 @@
             </picture>
           </div>
 
-          <div class="floaty f-grapes">
-            <svg viewBox="0 0 100 100" role="img" aria-label="Racimo de uvas">
-              <g fill="#6E1F24"><circle cx="38" cy="40" r="9"/><circle cx="54" cy="38" r="9"/><circle cx="46" cy="52" r="9"/><circle cx="62" cy="50" r="9"/><circle cx="38" cy="62" r="9"/><circle cx="54" cy="64" r="9"/><circle cx="46" cy="76" r="9"/></g>
-              <path d="M50 12 C42 16 40 24 44 30" fill="none" stroke="#62693F" stroke-width="3" stroke-linecap="round"/>
-              <path d="M52 14 C60 10 66 14 66 20" fill="none" stroke="#62693F" stroke-width="3" stroke-linecap="round"/>
-            </svg>
+          <div class="hero-badge hero-badge-a">
+            <span class="hero-badge-dot"></span>
+            <div><strong>Producto de proximidad</strong><span>Cortado y montado al momento</span></div>
           </div>
-          <div class="floaty f-cheese">
-            <svg viewBox="0 0 100 100" role="img" aria-label="Cuña de queso">
-              <path d="M8 78 L50 14 L92 78 Z" fill="#F0C879" stroke="#9C6B2E" stroke-width="3" stroke-linejoin="round"/>
-              <circle cx="55" cy="50" r="4" fill="#9C6B2E"/><circle cx="68" cy="64" r="3.2" fill="#9C6B2E"/><circle cx="44" cy="62" r="3" fill="#9C6B2E"/><circle cx="60" cy="38" r="2.6" fill="#9C6B2E"/>
-            </svg>
-          </div>
-          <div class="floaty f-fig">
-            <svg viewBox="0 0 100 100" role="img" aria-label="Higo cortado">
-              <path d="M50 10 C74 10 86 32 86 52 C86 76 70 90 50 90 C30 90 14 76 14 52 C14 32 26 10 50 10 Z" fill="#6E1F24"/>
-              <circle cx="50" cy="52" r="26" fill="#B23A3A"/>
-              <g stroke="#F3ECDA" stroke-width="1.6"><line x1="50" y1="52" x2="50" y2="30"/><line x1="50" y1="52" x2="68" y2="40"/><line x1="50" y1="52" x2="70" y2="58"/><line x1="50" y1="52" x2="60" y2="72"/><line x1="50" y1="52" x2="38" y2="72"/><line x1="50" y1="52" x2="30" y2="58"/><line x1="50" y1="52" x2="32" y2="40"/></g>
-            </svg>
-          </div>
-          <div class="floaty f-wine">
-            <svg viewBox="0 0 100 100" role="img" aria-label="Copa de vino" fill="none" stroke="#6E1F24" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M30 10 C30 34 34 46 50 46 C66 46 70 34 70 10 Z"/>
-              <path d="M50 46 L50 78"/><path d="M32 90 L68 90"/><path d="M50 78 L50 90"/>
-              <path d="M34 20 C40 26 60 26 66 20" opacity="0.5"/>
-            </svg>
-          </div>
-          <div class="floaty f-sprig">
-            <svg viewBox="0 0 100 60" role="img" aria-label="Ramita de romero">
-              <path d="M50 30 C50 14 40 6 30 6 C34 18 40 26 50 30 Z" fill="#62693F"/>
-              <path d="M50 30 C50 14 60 6 70 6 C66 18 60 26 50 30 Z" fill="#7C8556"/>
-              <circle cx="50" cy="30" r="3" fill="#9C6B2E"/>
-            </svg>
+          <div class="hero-badge hero-badge-b">
+            <strong>2–200+</strong><span>comensales, de la mesa íntima a la boda</span>
           </div>
         </div>
       </div>
@@ -375,9 +348,7 @@
 
         <div class="tablas-grid">
           <article class="tabla-card">
-            <div class="tabla-visual">
-              <svg viewBox="0 0 100 140" role="img" aria-label="Ilustración de jamón ibérico"><path d="M40 4 L60 4 L64 26 C80 36 88 60 82 84 C76 110 60 128 50 136 C40 128 24 110 18 84 C12 60 20 36 36 26 Z" fill="#C24B4B" stroke="#6E1F24" stroke-width="3" stroke-linejoin="round"/><path d="M30 58 L72 50 M28 76 L74 70 M32 96 L68 92" stroke="#FBF7EC" stroke-width="1.6" opacity=".5" fill="none"/></svg>
-            </div>
+            <span class="tabla-num">01</span>
             <h3>Tabla Ibérica</h3>
             <p>Jamón 100% ibérico de bellota cortado a cuchillo, lomo, chorizo y salchichón de bellota.</p>
             <div class="tabla-tags"><span>Favorita de la casa</span><span>Para compartir</span></div>
@@ -385,9 +356,7 @@
           </article>
 
           <article class="tabla-card">
-            <div class="tabla-visual">
-              <svg viewBox="0 0 100 100" role="img" aria-label="Ilustración de cuña de queso"><path d="M8 78 L50 14 L92 78 Z" fill="#F0C879" stroke="#9C6B2E" stroke-width="3" stroke-linejoin="round"/><circle cx="55" cy="50" r="4" fill="#9C6B2E"/><circle cx="68" cy="64" r="3.2" fill="#9C6B2E"/><circle cx="44" cy="62" r="3" fill="#9C6B2E"/><circle cx="60" cy="38" r="2.6" fill="#9C6B2E"/></svg>
-            </div>
+            <span class="tabla-num">02</span>
             <h3>Tabla de Quesos</h3>
             <p>Selección de quesos artesanos de leche cruda, mermelada casera y frutos secos tostados.</p>
             <div class="tabla-tags"><span>Vegetariana</span></div>
@@ -395,22 +364,15 @@
           </article>
 
           <article class="tabla-card">
-            <div class="tabla-visual tabla-visual-photo">
-              <picture>
-                <source srcset="assets/img/tabla-mixta-card.webp" type="image/webp">
-                <img src="assets/img/tabla-mixta-card.jpg" alt="Tabla Mixta Bendita servida: rosetones de embutido y queso en pinchos, brie, encurtidos, aceitunas, miel y mermelada casera" loading="lazy" width="800" height="600">
-              </picture>
-            </div>
-            <h3>Tabla Mixta Bendita</h3>
+            <span class="tabla-num">03</span>
+            <h3>Tabla Mixta THYME</h3>
             <p>La firma de la casa: embutido, queso, encurtidos y frutos, en el equilibrio que más pedimos nosotros.</p>
             <div class="tabla-tags"><span>La más pedida</span></div>
             <div class="tabla-price"><strong>42€</strong><span>2 personas</span></div>
           </article>
 
           <article class="tabla-card">
-            <div class="tabla-visual">
-              <svg viewBox="0 0 100 100" role="img" aria-label="Ilustración de higo y queso azul con miel"><path d="M50 10 C74 10 86 32 86 52 C86 76 70 90 50 90 C30 90 14 76 14 52 C14 32 26 10 50 10 Z" fill="#6E1F24"/><circle cx="50" cy="52" r="26" fill="#B23A3A"/><g stroke="#F3ECDA" stroke-width="1.6"><line x1="50" y1="52" x2="50" y2="30"/><line x1="50" y1="52" x2="68" y2="40"/><line x1="50" y1="52" x2="70" y2="58"/><line x1="50" y1="52" x2="60" y2="72"/><line x1="50" y1="52" x2="38" y2="72"/><line x1="50" y1="52" x2="30" y2="58"/><line x1="50" y1="52" x2="32" y2="40"/></g></svg>
-            </div>
+            <span class="tabla-num">04</span>
             <h3>Tabla Dulce</h3>
             <p>Quesos azules, miel de flores, higos, chocolate negro y frutos rojos para cerrar la sobremesa.</p>
             <div class="tabla-tags"><span>Para el final</span></div>
@@ -418,9 +380,7 @@
           </article>
 
           <article class="tabla-card">
-            <div class="tabla-visual">
-              <svg viewBox="0 0 100 100" role="img" aria-label="Ilustración de copa de vino para maridaje" fill="none" stroke="#6E1F24" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 10 C30 34 34 46 50 46 C66 46 70 34 70 10 Z"/><path d="M50 46 L50 78"/><path d="M32 90 L68 90"/><path d="M50 78 L50 90"/><path d="M34 20 C40 26 60 26 66 20" opacity="0.5"/></svg>
-            </div>
+            <span class="tabla-num">05</span>
             <h3>Maridaje de Vinos</h3>
             <p>Tres copas seleccionadas con cuidado, a juego con cada tabla que pidas.</p>
             <div class="tabla-tags"><span>Selección cuidada</span></div>
@@ -428,9 +388,7 @@
           </article>
 
           <article class="tabla-card">
-            <div class="tabla-visual">
-              <svg viewBox="0 0 100 60" role="img" aria-label="Ilustración de vegetales y hierbas de temporada"><path d="M20 30 C20 14 10 6 0 6 C4 18 10 26 20 30 Z" fill="#62693F"/><path d="M20 30 C20 14 30 6 40 6 C36 18 30 26 20 30 Z" fill="#7C8556"/><path d="M80 30 C80 14 70 6 60 6 C64 18 70 26 80 30 Z" fill="#7C8556"/><path d="M80 30 C80 14 90 6 100 6 C96 18 90 26 80 30 Z" fill="#62693F"/><circle cx="50" cy="34" r="14" fill="#C99A4F"/></svg>
-            </div>
+            <span class="tabla-num">06</span>
             <h3>Tabla Vegetal</h3>
             <p>Hummus casero, encurtidos, vegetales de temporada y quesos veganos. Sin lácteos disponible.</p>
             <div class="tabla-tags"><span>Sin lácteos disponible</span></div>
@@ -740,7 +698,7 @@
                 <option value="">Elige una tabla</option>
                 <option value="iberica">Tabla Ibérica</option>
                 <option value="quesos">Tabla de Quesos</option>
-                <option value="mixta">Tabla Mixta Bendita</option>
+                <option value="mixta">Tabla Mixta THYME</option>
                 <option value="dulce">Tabla Dulce</option>
                 <option value="vegetal">Tabla Vegetal</option>
                 <option value="sin-decidir">Aún no lo sé, que me aconsejen</option>
@@ -786,7 +744,7 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              Cancelación gratuita hasta 24h antes del turno reservado. Consulta la <a href="terminos.html#reembolso" style="color:inherit;text-decoration:underline;">política de cancelaciones</a>.
+              <span>Cancelación gratuita hasta 24h antes del turno reservado. Consulta la <a href="terminos.html#reembolso" style="color:inherit;text-decoration:underline;">política de cancelaciones</a>.</span>
             </li>
           </ul>
           <p>¿Prefieres hablar antes de reservar?</p>
@@ -843,8 +801,11 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="assets/img/logo.jpg" alt="THYME" width="40" height="40">
-          <span>THYME</span>
+          <img class="brand-mark" src="assets/img/thyme-mark.svg" alt="" width="52" height="52">
+          <span class="brand-text">
+            <span class="brand-word">THYME</span>
+            <span class="brand-sub">Express Catering · Barcelona</span>
+          </span>
         </div>
         <p style="font-size:.92rem;max-width:280px;">Tablas gourmet y catering para bodas y eventos en Barcelona. Jamón, quesos y embutidos artesanales, con maridaje a medida.</p>
         <div class="footer-social">
