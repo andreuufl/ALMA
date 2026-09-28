@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 <link rel="preload" as="image" href="assets/img/hero-mediterranea-square.jpg" fetchpriority="high">
 
-<link rel="stylesheet" href="thyme.css?v=10">
+<link rel="stylesheet" href="thyme.css?v=13">
 
 <script type="application/ld+json">
 {
@@ -123,10 +123,11 @@
             Escríbenos por WhatsApp
           </a>
         </div>
+        <p class="hero-events-link"><a href="#eventos">¿Organizas una boda o un evento de empresa? Hacemos también el catering completo →</a></p>
         <div class="hero-meta">
           <div><strong>2–10</strong><span>Comensales por mesa</span></div>
           <div><strong>Producto</strong><span>fresco de proximidad</span></div>
-          <div><strong>&lt;24h</strong><span>Respuesta por WhatsApp</span></div>
+          <div><strong>&lt;<span data-counter="24" data-suffix="h">24h</span></strong><span>Respuesta por WhatsApp</span></div>
         </div>
       </div>
 
@@ -155,21 +156,29 @@
   <!-- ============ CONFIANZA A PRIMER VISTAZO ============ -->
   <section class="trust-strip">
     <div class="container trust-strip-inner">
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Reservar no cuesta nada</strong> — se paga el mismo día</span>
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          <span><strong>Reservar no cuesta nada</strong> — se paga el mismo día</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span><strong>&lt;<span data-counter="24" data-suffix="h">24h</span></strong> de respuesta por WhatsApp</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.6"/></svg>
+          <span><strong>Barcelona</strong> y alrededores</span>
+        </div>
       </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-        <span><strong>&lt;24h</strong> de respuesta por WhatsApp</span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.6"/></svg>
-        <span><strong>Barcelona</strong> y alrededores</span>
-      </div>
-      <div class="trust-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3c0 5 1 8 5 8s5-3 5-8"/><path d="M12 11v7"/><path d="M8 21h8"/></svg>
-        <span><strong>Producto fresco</strong> de proximidad, cortado al momento</span>
+      <div class="trust-row trust-row-secondary">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3c0 5 1 8 5 8s5-3 5-8"/><path d="M12 11v7"/><path d="M8 21h8"/></svg>
+          <span><strong>Producto fresco</strong> de proximidad, cortado al momento</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7z"/></svg>
+          <span><strong>Catering completo</strong> para bodas y cualquier evento</span>
+        </div>
       </div>
     </div>
   </section>
@@ -425,12 +434,16 @@
         </div>
 
         <div class="events-copy">
-          <p class="kicker">Bodas y eventos</p>
-          <h2>Catering THYME, donde tú lo necesites</h2>
-          <p>Para celebraciones más grandes, llevamos la misma filosofía de la mesa íntima a la ubicación que elijas: tu boda, tu evento de empresa, tu cumpleaños. Adaptamos el formato al aforo y al estilo de tu celebración.</p>
+          <p class="kicker">Catering para eventos</p>
+          <h2>No solo tablas: catering completo para tu evento</h2>
+          <p>Llevamos la misma filosofía de la mesa íntima a cualquier celebración, del tamaño que sea. Bodas, comuniones y bautizos, eventos de empresa, cumpleaños, aniversarios e inauguraciones: nos ocupamos de la comida de principio a fin y adaptamos el formato al aforo y al estilo de tu evento.</p>
+
+          <ul class="events-tags">
+            <li>Bodas</li><li>Comuniones y bautizos</li><li>Eventos de empresa</li><li>Cumpleaños</li><li>Aniversarios</li><li>Inauguraciones</li>
+          </ul>
 
           <ul class="events-facts">
-            <li><strong>10–200+</strong><span>invitados</span></li>
+            <li><strong>10–<span data-counter="200" data-suffix="+">200+</span></strong><span>invitados</span></li>
             <li><strong>Barcelona</strong><span>y alrededores</span></li>
             <li><strong>A medida</strong><span>según tu evento</span></li>
           </ul>
@@ -518,6 +531,10 @@
       </div>
     </div>
   </section>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" width="100%" height="40"><path d="M0,18 C260,42 340,-4 620,16 C860,34 980,-2 1200,18 L1200,40 L0,40 Z"/></svg>
+  </div>
 
   <!-- ============ A DOMICILIO ============ -->
   <section class="section domicilio-teaser">
@@ -837,6 +854,6 @@
   </div>
 </div>
 
-<script src="thyme-main.js?v=4"></script>
+<script src="thyme-main.js?v=5"></script>
 </body>
 </html>
