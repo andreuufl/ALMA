@@ -145,7 +145,7 @@ var PRODUCTOS = [
   /* ===================== SALADOS ===================== */
   {
     id: 'mini-burgers', cat: 'salados', nombre: 'Mini burgers gourmet', formato: '12 unidades', raciones: 6,
-    precio: 36, provisional: true, foto: null,
+    precio: 36, provisional: true, foto: 'mini-burgers',
     resumen: 'Pan brioche, ternera, queso curado y cebolla caramelizada.',
     historia: [
       'Dos bocados de hamburguesa de verdad. Carne de ternera jugosa, queso curado fundido y cebolla caramelizada a fuego lento, en un pan brioche tierno que aguanta sin deshacerse.',
@@ -199,7 +199,7 @@ var PRODUCTOS = [
   /* ===================== DULCES ===================== */
   {
     id: 'donuts', cat: 'dulces', nombre: 'Mini donuts de chocolate', formato: '12 unidades', raciones: 6,
-    precio: 18, provisional: true, foto: null, veg: true,
+    precio: 18, provisional: true, foto: 'donuts', veg: true,
     resumen: 'Esponjosos y bañados en chocolate.',
     historia: ['Masa esponjosa y un baño de chocolate que cruje al morder. Los favoritos de las pausas de media mañana.'],
     ingredientes: ['Harina de trigo', 'Huevo', 'Leche', 'Mantequilla', 'Chocolate'],
@@ -217,7 +217,7 @@ var PRODUCTOS = [
   },
   {
     id: 'gofres', cat: 'dulces', nombre: 'Mini gofres con Nutella', formato: '12 unidades', raciones: 6,
-    precio: 20, provisional: true, foto: null, veg: true,
+    precio: 20, provisional: true, foto: 'gofres', veg: true,
     resumen: 'Gofre recién hecho con crema de avellanas y fruta.',
     historia: ['Gofre dorado, crema de avellanas y fruta fresca por encima. Un capricho en dos bocados.'],
     ingredientes: ['Masa de gofre', 'Crema de cacao y avellanas', 'Fruta fresca'],
@@ -226,7 +226,7 @@ var PRODUCTOS = [
   },
   {
     id: 'croissants', cat: 'dulces', nombre: 'Mini croissants', formato: '12 unidades', raciones: 6,
-    precio: 16, provisional: true, foto: null, veg: true,
+    precio: 16, provisional: true, foto: 'croissants', veg: true,
     resumen: 'De mantequilla, dorados y crujientes.',
     historia: ['Croissants de mantequilla en formato mini: crujientes por fuera, tiernos por dentro.'],
     ingredientes: ['Harina de trigo', 'Mantequilla', 'Huevo', 'Azúcar'],
