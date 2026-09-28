@@ -67,6 +67,17 @@
   /* ---------------- CATÁLOGO ---------------- */
   var estado = { cat: 'todos', veg: false, singluten: false, orden: 'recomendado', q: '' };
 
+  function alergenoChips(p) {
+    var lista = p.alergenos || [];
+    if (!lista.length && !p.veg) return '';
+    var chips = '';
+    if (p.veg) chips += '<span class="producto-alergeno is-ok" title="Vegetariano">🌱</span>';
+    if (lista.indexOf('gluten') === -1) chips += '<span class="producto-alergeno is-ok" title="Sin gluten">GF</span>';
+    lista.slice(0, 3).forEach(function (a) {
+      chips += '<span class="producto-alergeno" title="' + esc(ALERGENOS[a] || a) + '">' + esc((ALERGENOS[a] || a).slice(0, 2)) + '</span>';
+    });
+    return '<div class="producto-alergenos" aria-hidden="true">' + chips + '</div>';
+  }
   function tarjeta(p) {
     var tags = '';
     if (p.etiqueta) tags += '<span class="producto-tag">' + esc(p.etiqueta) + '</span>';
@@ -82,6 +93,7 @@
           '<p class="producto-formato">' + esc(p.formato) + '</p>' +
           '<h3><button type="button" data-abrir="' + p.id + '">' + esc(p.nombre) + '</button></h3>' +
           '<p class="producto-desc">' + esc(p.resumen) + '</p>' +
+          alergenoChips(p) +
           '<div class="producto-precio">' +
             (p.precio != null ? '<strong>' + euros(p.precio) + '</strong><span>' + precioPersona(p) + '</span>' : '<strong class="producto-consultar">Consultar precio</strong>') +
           '</div>' +

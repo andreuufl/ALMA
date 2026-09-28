@@ -140,17 +140,7 @@
         }
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    revealTargets.forEach(function (el) {
-      /* Dentro de carruseles horizontales (móvil) se muestran siempre, si no quedarían invisibles al deslizar */
-      if (el.closest('.tablas-grid, .cat-chips')) { el.classList.add('is-visible'); return; }
-      observer.observe(el);
-    });
-    /* Red de seguridad: nada se queda oculto si el navegador no dispara el observador */
-    setTimeout(function () {
-      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
-        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
-      });
-    }, 2500);
+    revealTargets.forEach(function (el) { observer.observe(el); });
   })();
 
 
@@ -461,7 +451,12 @@
     var titleEl = lightbox.querySelector('[data-lightbox-title]');
     var descEl = lightbox.querySelector('[data-lightbox-desc]');
     var ctaEl = lightbox.querySelector('[data-lightbox-cta]');
+    var ingredientsEl = lightbox.querySelector('[data-lightbox-ingredients]');
+    var allergensEl = lightbox.querySelector('[data-lightbox-allergens]');
+    var occasionEl = lightbox.querySelector('[data-lightbox-occasion]');
     var lastTrigger = null;
+    var ctaDefaultText = ctaEl ? ctaEl.textContent : '';
+    var ctaDefaultHref = ctaEl ? ctaEl.getAttribute('href') : '';
 
     function openLightbox(trigger) {
       var img = trigger.querySelector('img');
@@ -476,6 +471,48 @@
       } else {
         ctaEl.removeAttribute('data-tabla-value');
       }
+
+      if (ingredientsEl) {
+        var ingredientsAttr = trigger.getAttribute('data-ingredients');
+        ingredientsEl.innerHTML = '';
+        if (ingredientsAttr) {
+          ingredientsAttr.split(';').forEach(function (item) {
+            item = item.trim();
+            if (!item) return;
+            var li = document.createElement('li');
+            li.textContent = item;
+            ingredientsEl.appendChild(li);
+          });
+          ingredientsEl.style.display = '';
+        } else {
+          ingredientsEl.style.display = 'none';
+        }
+      }
+      if (allergensEl) {
+        var allergensAttr = trigger.getAttribute('data-allergens');
+        allergensEl.textContent = allergensAttr || '';
+        allergensEl.style.display = allergensAttr ? '' : 'none';
+      }
+      if (occasionEl) {
+        var occasionAttr = trigger.getAttribute('data-occasion');
+        occasionEl.textContent = occasionAttr || '';
+        occasionEl.style.display = occasionAttr ? '' : 'none';
+      }
+      if (ctaEl) {
+        var ctaHref = trigger.getAttribute('data-cta-href');
+        if (ctaHref) {
+          ctaEl.setAttribute('href', ctaHref);
+          ctaEl.setAttribute('target', '_blank');
+          ctaEl.setAttribute('rel', 'noopener');
+          ctaEl.textContent = trigger.getAttribute('data-cta-label') || ctaDefaultText;
+        } else {
+          ctaEl.setAttribute('href', ctaDefaultHref);
+          ctaEl.removeAttribute('target');
+          ctaEl.removeAttribute('rel');
+          ctaEl.textContent = ctaDefaultText;
+        }
+      }
+
       lastTrigger = trigger;
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
@@ -624,7 +661,7 @@
   function buildDayPicker() {
     if (!dayPicker) return;
     var today = new Date();
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var d = new Date(today);
       d.setDate(today.getDate() + i);
       var dow = d.getDay();
