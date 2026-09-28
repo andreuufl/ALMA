@@ -2320,6 +2320,22 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 .antojo-caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px;color:var(--paper);}
 .antojo-caption strong{display:block;font-family:var(--font-display);font-size:1.1rem;font-weight:500;}
 .antojo-caption span{font-size:.78rem;opacity:.85;}
+.antojo-card.is-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(201,154,79,.24), transparent 55%),
+    linear-gradient(150deg,var(--cream-2),var(--cream));
+}
+.antojo-card.is-placeholder::before{
+  content:'';position:absolute;width:56%;height:56%;max-width:110px;max-height:110px;border-radius:50%;
+  border:1px solid rgba(156,107,46,.28);z-index:1;
+}
+.antojo-placeholder-icon{position:relative;z-index:2;width:24%;height:24%;color:var(--gold);}
+.antojo-placeholder-icon svg{width:100%;height:100%;}
+.antojo-placeholder-kicker{
+  position:relative;z-index:2;margin-top:10px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;color:var(--gold-deep);opacity:.85;
+}
 .antojo-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:30px;text-align:center;}
 .antojo-cta p{margin:0;font-size:.88rem;color:var(--espresso-70);}
 .btn-urgente{
