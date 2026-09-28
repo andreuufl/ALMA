@@ -2119,3 +2119,92 @@ html{scroll-padding-top:118px;}
 .nav-cta-mobile .btn-outline{color:var(--espresso)!important;background:#fff;}
 .nav-cta-mobile a::after{display:none!important;}
 .legal{padding-left:24px!important;padding-right:24px!important;}
+
+/* =========================================================
+   Menús → enlaces a las páginas de cada box
+   ========================================================= */
+.menu-block-link{text-decoration:none;color:inherit;background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .35s var(--ease);}
+.menu-block-link:hover{background-size:100% 1.5px;}
+.menu-options li > a{position:relative;padding-left:18px;text-decoration:none;color:inherit;transition:color .2s ease;}
+.menu-options li > a::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--gold-soft);}
+.menu-options li > a:hover{color:var(--wine);}
+.menu-options li > a::after{content:' →';opacity:0;transition:opacity .2s ease;}
+.menu-options li > a:hover::after{opacity:1;}
+.menu-block-cta{display:grid;gap:10px;}
+.menu-block-cta .btn-outline{background:#fff;font-size:.88rem;white-space:normal;}
+
+/* =========================================================
+   Página de cada menú (boxes)
+   ========================================================= */
+.box-banner{padding-top:150px;}
+.migas{font-size:.82rem;color:rgba(251,248,239,.6);margin-bottom:22px;}
+.migas a{color:rgba(251,248,239,.8);text-decoration:none;}
+.migas a:hover{color:var(--gold-soft);}
+.migas span{margin:0 6px;}
+.migas strong{color:var(--paper);font-weight:500;}
+.box-banner h1{font-size:clamp(2.6rem,5.5vw,4.2rem)!important;}
+.box-banner-datos{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+.box-banner-datos span{
+  font-size:.84rem;padding:9px 16px;border-radius:100px;
+  border:1px solid rgba(201,154,79,.35);background:rgba(251,248,239,.06);color:rgba(251,248,239,.85);
+}
+.box-banner-datos strong{color:var(--gold-soft);font-weight:600;margin-right:4px;}
+.box-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;}
+.box-card{
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 14px 34px rgba(42,27,16,.06);transition:box-shadow .35s var(--ease),transform .35s var(--ease);
+}
+.box-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(42,27,16,.12);}
+.box-card:target{outline:2px solid var(--gold);outline-offset:4px;}
+.box-media{position:relative;min-height:100%;background:var(--cream-2);}
+.box-media picture,.box-media img,.box-media .producto-placeholder{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.box-media .producto-placeholder svg{width:38%;height:38%;}
+.box-tag{position:absolute;top:14px;left:14px;}
+.box-num{position:absolute;bottom:14px;left:16px;font-family:var(--font-display);font-style:italic;font-size:1.4rem;color:var(--gold-deep);background:rgba(251,248,239,.85);padding:2px 10px;border-radius:10px;}
+.box-body{padding:26px 26px 24px;display:flex;flex-direction:column;}
+.box-body h2{font-size:1.45rem;margin-bottom:10px;}
+.box-texto{font-size:.93rem;color:var(--espresso-70);line-height:1.6;}
+.box-det{margin:4px 0 14px;border-top:1px solid var(--line);padding-top:12px;}
+.box-det summary{cursor:pointer;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold-deep);list-style:none;display:flex;justify-content:space-between;}
+.box-det summary::-webkit-details-marker{display:none;}
+.box-det summary::after{content:'+';font-size:1.1rem;line-height:1;}
+.box-det[open] summary::after{content:'−';}
+.box-det .ficha-ingredientes{margin-top:10px;grid-template-columns:1fr;}
+.box-aler{margin-bottom:16px;}
+.box-aler > span{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold-deep);margin-bottom:8px;}
+.box-aler .ficha-alergenos li{font-size:.72rem;padding:4px 10px;}
+.box-pie{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);}
+.box-pie .producto-precio{margin-bottom:12px;}
+.box-botones{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.box-botones .btn{padding:11px 20px;font-size:.9rem;}
+.box-ficha{font-size:.86rem;color:var(--espresso-70);text-underline-offset:3px;}
+.box-ficha:hover{color:var(--wine);}
+.box-completa{padding-top:0;}
+.box-completa-card{align-items:stretch;}
+.box-personas{display:grid;gap:6px;font-size:.85rem;font-weight:600;max-width:240px;margin:6px 0 16px;color:rgba(251,248,239,.85);}
+.box-personas input{padding:12px 14px;border-radius:12px;border:1px solid rgba(201,154,79,.4);background:rgba(251,248,239,.08);color:var(--paper);font:inherit;}
+.box-otro{
+  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:48px;text-decoration:none;
+  background:radial-gradient(circle at 70% 30%,rgba(201,154,79,.25),transparent 60%),#3a2618;color:var(--paper);
+  transition:background .3s ease;
+}
+.box-otro:hover{background:radial-gradient(circle at 70% 30%,rgba(201,154,79,.35),transparent 60%),#452d1c;}
+.box-otro .kicker{color:var(--gold-soft);}
+.box-otro strong{font-family:var(--font-display);font-size:1.9rem;font-weight:500;line-height:1.15;}
+.box-otro small{color:rgba(251,248,239,.7);font-size:.95rem;}
+.toast a{background:var(--gold-soft);color:var(--espresso);font-weight:600;font-size:.8rem;padding:7px 14px;border-radius:100px;text-decoration:none;white-space:nowrap;}
+@media (max-width:1060px){.box-grid{grid-template-columns:1fr;max-width:760px;margin-inline:auto;}}
+@media (max-width:620px){
+  .box-card{grid-template-columns:1fr;}
+  .box-media{aspect-ratio:4/3;min-height:0;}
+  .box-body{padding:20px 18px;}
+  .box-otro{padding:30px 26px;}
+  .box-banner{padding-top:130px;}
+}
+body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
+.domicilio-card > *{min-width:0;}
+@media (max-width:860px){.domicilio-card{grid-template-columns:minmax(0,1fr)!important;}.domicilio-copy .btn{white-space:normal;text-align:center;}}
+.menu-blocks > *{min-width:0;}
+.menu-block-cta .btn{white-space:normal;text-align:center;}
+@media (max-width:980px){.menu-blocks{grid-template-columns:minmax(0,1fr)!important;}}

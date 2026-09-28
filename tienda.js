@@ -407,4 +407,5 @@
   render();
   pintarCarrito();
   if (byId[h]) abrirFicha(h);
+  if (h === 'pedido') abrirCesta();
 })();
