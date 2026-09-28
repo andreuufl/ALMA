@@ -1826,7 +1826,7 @@ button{font-family:inherit;}
 }
 .topbar-cp input::placeholder{color:rgba(251,248,239,.45);}
 .topbar-cp .cp-result{
-  position:absolute;right:0;top:calc(100% + 8px);width:280px;
+  position:absolute;right:0;top:calc(100% + 8px);width:280px;max-width:calc(100vw - 32px);
   background:var(--paper);color:var(--espresso);padding:10px 12px;border-radius:12px;
   box-shadow:0 12px 30px rgba(0,0,0,.18);font-size:.8rem;line-height:1.4;
 }
@@ -1841,7 +1841,7 @@ button{font-family:inherit;}
   .topbar-inner > span{font-size:.7rem;}
   .topbar-cp label{display:none;}
   .topbar-cp input{width:140px;padding:3px 10px;}
-  .topbar-cp .cp-result{right:50%;transform:translateX(50%);}
+  .topbar-cp .cp-result{right:auto;left:50%;transform:translateX(-50%);}
   .site-header-topbar{top:58px;}
   .catalogo-banner{padding-top:190px!important;}
 }
