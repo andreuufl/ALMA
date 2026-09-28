@@ -2268,3 +2268,58 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
   .trust-strip-inner{gap:14px 22px;}
   .trust-item{font-size:.82rem;}
 }
+
+/* =========================================================
+   Antojo / showcase — despierta el hambre y crea urgencia
+   ========================================================= */
+.antojo{padding:8px 0 52px;}
+.antojo-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px;}
+.antojo-head h2{margin:4px 0 0;font-size:clamp(1.5rem,2.6vw,2rem);}
+.antojo-urgente{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--wine);color:var(--paper);
+  padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;
+  animation:antojoPulse 2.4s ease-in-out infinite;
+  white-space:nowrap;
+}
+.antojo-urgente::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold-soft);flex:none;}
+@keyframes antojoPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(122,30,38,.35);}
+  50%{box-shadow:0 0 0 8px rgba(122,30,38,0);}
+}
+.antojo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
+.antojo-card{
+  position:relative;border-radius:var(--radius-md,18px);overflow:hidden;aspect-ratio:1/1;
+  box-shadow:0 14px 30px rgba(42,27,16,.14);
+}
+.antojo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);filter:saturate(1.1) contrast(1.05);}
+.antojo-card:hover img{transform:scale(1.08);}
+.antojo-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,12,7,.82) 100%);
+  pointer-events:none;
+}
+.antojo-tag{
+  position:absolute;top:10px;left:10px;z-index:2;
+  background:rgba(251,248,239,.92);color:var(--espresso);
+  font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:5px 10px;border-radius:100px;
+}
+.antojo-caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px;color:var(--paper);}
+.antojo-caption strong{display:block;font-family:var(--font-display);font-size:1.1rem;font-weight:500;}
+.antojo-caption span{font-size:.78rem;opacity:.85;}
+.antojo-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin-top:30px;text-align:center;}
+.antojo-cta p{margin:0;font-size:.88rem;color:var(--espresso-70);}
+.btn-urgente{
+  background:var(--wine);color:var(--paper);border:1px solid var(--wine);
+  animation:antojoPulse 2.4s ease-in-out infinite;
+}
+.btn-urgente:hover{background:var(--wine-deep);border-color:var(--wine-deep);}
+@media (max-width:900px){
+  .antojo-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:640px){
+  .antojo-grid{gap:12px;}
+  .antojo-caption{padding:12px;}
+  .antojo-caption strong{font-size:.95rem;}
+}

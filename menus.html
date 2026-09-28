@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=5">
+<link rel="stylesheet" href="thyme.css?v=6">
 
 <script type="application/ld+json">
 {
@@ -95,7 +95,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html#experiencia">La experiencia</a></li>
         <li><a href="index.html#eventos">Bodas y eventos</a></li>
-        <li><a href="index.html#tablas">Tablas</a></li>
+        <li><a href="#tablas">Tablas</a></li>
         <li><a href="menus.html" aria-current="page">Menús</a></li>
         <li><a href="pedidos.html">A domicilio</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
@@ -122,6 +122,7 @@
         <p>Elige el formato que mejor encaja con tu evento. Pedido mínimo de catering 100€, con al menos 2 días hábiles de antelación.</p>
       </div>
       <div class="menu-jump-links">
+        <a href="#tablas">Tablas</a>
         <a href="#coffee-break">Coffee Break Box</a>
         <a href="#cocktail-box">Cocktail Box</a>
         <a href="#cenas-privadas">Cenas privadas</a>
@@ -129,9 +130,104 @@
     </div>
   </section>
 
+  <!-- ============ ANTOJO / SHOWCASE ============ -->
+  <section class="antojo">
+    <div class="container">
+      <div class="antojo-head">
+        <div>
+          <p class="kicker">Recién horneado</p>
+          <h2>Esto es lo que te vas a encontrar al abrir la caja</h2>
+        </div>
+        <span class="antojo-urgente">Se preparan el mismo día del reparto</span>
+      </div>
+      <div class="antojo-grid">
+        <a class="antojo-card" href="coffee-break.html#donuts">
+          <picture><source srcset="assets/img/donuts.webp" type="image/webp"><img src="assets/img/donuts.jpg" alt="Mini donuts de chocolate THYME" loading="lazy" width="600" height="600"></picture>
+          <span class="antojo-tag">Coffee Break</span>
+          <span class="antojo-caption"><strong>Mini donuts de chocolate</strong><span>Con topping crujiente</span></span>
+        </a>
+        <a class="antojo-card" href="coffee-break.html#gofres">
+          <picture><source srcset="assets/img/gofres.webp" type="image/webp"><img src="assets/img/gofres.jpg" alt="Mini gofres con Nutella, fresa y plátano THYME" loading="lazy" width="600" height="600"></picture>
+          <span class="antojo-tag">Coffee Break</span>
+          <span class="antojo-caption"><strong>Mini gofres con Nutella</strong><span>Fresa, plátano y avellana</span></span>
+        </a>
+        <a class="antojo-card" href="coffee-break.html#croissants">
+          <picture><source srcset="assets/img/croissants.webp" type="image/webp"><img src="assets/img/croissants.jpg" alt="Mini croissants rellenos THYME" loading="lazy" width="600" height="600"></picture>
+          <span class="antojo-tag">Coffee Break</span>
+          <span class="antojo-caption"><strong>Mini croissants rellenos</strong><span>Dulces y salados, a elegir</span></span>
+        </a>
+        <a class="antojo-card" href="cocktail-box.html#mini-burgers">
+          <picture><source srcset="assets/img/mini-burgers.webp" type="image/webp"><img src="assets/img/mini-burgers.jpg" alt="Mini burgers gourmet THYME" loading="lazy" width="600" height="600"></picture>
+          <span class="antojo-tag">Cocktail Box</span>
+          <span class="antojo-caption"><strong>Mini burgers gourmet</strong><span>La más pedida en cócteles</span></span>
+        </a>
+      </div>
+      <div class="antojo-cta">
+        <a class="btn btn-primary btn-urgente" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20He%20visto%20la%20web%20y%20quiero%20pedir%20para%20mi%20evento." target="_blank" rel="noopener">Quiero probarlo, pedir ahora</a>
+        <p>Encargo mínimo con 2 días hábiles de antelación — las fechas con turno confirmado se cierran rápido.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CATÁLOGO DE MENÚS ============ -->
   <section class="section" style="padding-top:20px;">
     <div class="container">
+      <div class="section-head center" id="tablas" style="scroll-margin-top:110px;">
+        <p class="kicker">Precios y raciones</p>
+        <h2>Todas las tablas, de un vistazo</h2>
+        <p>Ingredientes de proximidad, presentación cuidada y raciones para el centro de la mesa. Se pueden combinar varias tablas en una misma reserva, y todas ellas se pueden acompañar con cava o vino.</p>
+      </div>
+
+      <div class="tablas-grid" style="margin-bottom:56px;">
+        <article class="tabla-card">
+          <span class="tabla-num">01</span>
+          <h3>Tabla Ibérica</h3>
+          <p>Jamón 100% ibérico de bellota cortado a cuchillo, lomo, chorizo y salchichón de bellota.</p>
+          <div class="tabla-tags"><span>Favorita de la casa</span><span>Para compartir</span></div>
+          <div class="tabla-price"><strong>38€</strong><span>2 personas</span></div>
+        </article>
+
+        <article class="tabla-card">
+          <span class="tabla-num">02</span>
+          <h3>Tabla de Quesos</h3>
+          <p>Selección de quesos artesanos de leche cruda, mermelada casera y frutos secos tostados.</p>
+          <div class="tabla-tags"><span>Vegetariana</span></div>
+          <div class="tabla-price"><strong>32€</strong><span>2 personas</span></div>
+        </article>
+
+        <article class="tabla-card">
+          <span class="tabla-num">03</span>
+          <h3>Tabla Mixta THYME</h3>
+          <p>La firma de la casa: embutido, queso, encurtidos y frutos, en el equilibrio que más pedimos nosotros.</p>
+          <div class="tabla-tags"><span>La más pedida</span></div>
+          <div class="tabla-price"><strong>42€</strong><span>2 personas</span></div>
+        </article>
+
+        <article class="tabla-card">
+          <span class="tabla-num">04</span>
+          <h3>Tabla Dulce</h3>
+          <p>Quesos azules, miel de flores, higos, chocolate negro y frutos rojos para cerrar la sobremesa.</p>
+          <div class="tabla-tags"><span>Para el final</span></div>
+          <div class="tabla-price"><strong>26€</strong><span>2 personas</span></div>
+        </article>
+
+        <article class="tabla-card">
+          <span class="tabla-num">05</span>
+          <h3>Maridaje de Vinos</h3>
+          <p>Tres copas seleccionadas con cuidado, a juego con cada tabla que pidas.</p>
+          <div class="tabla-tags"><span>Selección cuidada</span></div>
+          <div class="tabla-price"><strong>18€</strong><span>por persona</span></div>
+        </article>
+
+        <article class="tabla-card">
+          <span class="tabla-num">06</span>
+          <h3>Tabla Vegetal</h3>
+          <p>Hummus casero, encurtidos, vegetales de temporada y quesos veganos. Sin lácteos disponible.</p>
+          <div class="tabla-tags"><span>Sin lácteos disponible</span></div>
+          <div class="tabla-price"><strong>28€</strong><span>2 personas</span></div>
+        </article>
+      </div>
+
       <div class="menu-blocks">
 
         <article class="menu-block" id="coffee-break">
@@ -231,7 +327,7 @@
         <ul>
           <li><a href="index.html#experiencia">La experiencia</a></li>
           <li><a href="index.html#eventos">Bodas y eventos</a></li>
-          <li><a href="index.html#tablas">Nuestras tablas</a></li>
+          <li><a href="#tablas">Nuestras tablas</a></li>
           <li><a href="menus.html">Menús para eventos</a></li>
           <li><a href="pedidos.html">A domicilio</a></li>
           <li><a href="index.html#reserva">Reserva</a></li>
