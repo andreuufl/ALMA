@@ -118,7 +118,14 @@
       '.faq-item',
       '.insta-card',
       '.reserva-wrap',
-      '.thanks-card'
+      '.thanks-card',
+      '.antojo-card',
+      '.trust-item',
+      '.producto',
+      '.box-card',
+      '.menu-block',
+      '.menu-condition',
+      '.banner-photo'
     ];
     groups.forEach(function (selector) {
       document.querySelectorAll(selector).forEach(function (el, i) {
