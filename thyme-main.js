@@ -17,15 +17,43 @@
 
   function enviarReservaABackend(payload) {
     if (!RESERVA_ENDPOINT_URL) return;
+    var body = JSON.stringify(payload);
     try {
+      /* sendBeacon está pensado exactamente para esto: un envío que sobrevive
+         aunque la página navegue a gracias.html justo después. Content-Type
+         text/plain evita el preflight CORS contra Apps Script. */
+      if (navigator.sendBeacon) {
+        var blob = new Blob([body], { type: 'text/plain;charset=utf-8' });
+        navigator.sendBeacon(RESERVA_ENDPOINT_URL, blob);
+        return;
+      }
       fetch(RESERVA_ENDPOINT_URL, {
         method: 'POST',
         mode: 'no-cors',
+        keepalive: true,
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
+        body: body
       });
     } catch (err) {
       /* Si falla el envío automático, la reserva por WhatsApp ya se ha hecho igualmente */
+    }
+  }
+
+  /* Muchos navegadores de móvil (sobre todo Safari en iOS, y navegadores
+     integrados en apps como Instagram/Facebook) bloquean window.open()
+     cuando lo llama JavaScript, aunque sea en el mismo clic del usuario.
+     Si el navegador lo bloquea (devuelve null/undefined), navegamos
+     directamente en la misma pestaña como último recurso: eso nunca lo
+     bloquea ningún navegador. */
+  function abrirWhatsApp(url) {
+    var nuevaVentana = null;
+    try {
+      nuevaVentana = window.open(url, '_blank', 'noopener');
+    } catch (err) {
+      nuevaVentana = null;
+    }
+    if (!nuevaVentana) {
+      window.location.href = url;
     }
   }
 
@@ -864,9 +892,9 @@
 
       var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
 
-      /* Abrir WhatsApp de forma síncrona con el clic, para que el navegador no lo bloquee */
-      window.open(url, '_blank', 'noopener');
-
+      /* Primero disparamos el envío a Calendar/email (sendBeacon sobrevive
+         a una posible navegación fuera de la página), y luego intentamos
+         abrir WhatsApp con el método más compatible con móviles. */
       enviarReservaABackend({
         tipo: 'mesa',
         nombre: nombre,
@@ -878,6 +906,8 @@
         hora: selectedTime,
         mensaje: mensaje.trim()
       });
+
+      abrirWhatsApp(url);
 
       var successBox = document.querySelector('.form-success');
       if (successBox) successBox.classList.add('is-visible');
@@ -982,7 +1012,6 @@
         (mensaje.trim() ? ('\n- Comentario: ' + mensaje.trim()) : '');
 
       var url = 'https://wa.me/34607864393?text=' + encodeURIComponent(texto);
-      window.open(url, '_blank', 'noopener');
 
       enviarReservaABackend({
         tipo: 'evento',
@@ -995,6 +1024,8 @@
         ubicacion: ubicacion,
         mensaje: mensaje.trim()
       });
+
+      abrirWhatsApp(url);
 
       var successBox = document.querySelector('[data-events-success]');
       if (successBox) successBox.classList.add('is-visible');
