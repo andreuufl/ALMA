@@ -208,7 +208,7 @@ var PRODUCTOS = [
   },
   {
     id: 'napolitanas', cat: 'dulces', nombre: 'Mini napolitanas', formato: '12 unidades', raciones: 6,
-    precio: 18, provisional: true, foto: null, veg: true,
+    precio: 18, provisional: true, foto: 'napolitanas', veg: true,
     resumen: 'Hojaldre de mantequilla relleno de chocolate.',
     historia: ['Hojaldre de mantequilla con capas que se deshacen y un corazón de chocolate. Horneadas el mismo día.'],
     ingredientes: ['Hojaldre de mantequilla', 'Chocolate', 'Huevo'],
@@ -235,7 +235,7 @@ var PRODUCTOS = [
   },
   {
     id: 'magdalenas', cat: 'dulces', nombre: 'Mini magdalenas', formato: '12 unidades', raciones: 6,
-    precio: 14, provisional: true, foto: null, veg: true,
+    precio: 14, provisional: true, foto: 'magdalenas', veg: true,
     resumen: 'Receta casera con un toque de limón.',
     historia: ['Las de toda la vida, con su copete y un aroma a limón que llena la sala.'],
     ingredientes: ['Harina de trigo', 'Huevo', 'Aceite de oliva', 'Azúcar', 'Limón'],
