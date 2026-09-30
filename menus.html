@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=15">
+<link rel="stylesheet" href="thyme.css?v=16">
 
 <script type="application/ld+json">
 {
@@ -62,13 +62,13 @@
     {
       "@type": "MenuSection",
       "name": "Coffee Break Box",
-      "description": "Mini donuts de chocolate, mini napolitanas, mini gofres con nutella, mini croissants, mini magdalenas, mini pulgas de queso y mini pulgas de jamón.",
+      "description": "Mini donuts de chocolate, mini napolitanas, mini gofres con nutella, mini croissants, mini magdalenas, mini pulgas de queso y mini pulgas de jamón. Formato 15 unidades por bandeja.",
       "hasMenuItem": [
-        { "@type": "MenuItem", "name": "Mini donuts de chocolate" },
-        { "@type": "MenuItem", "name": "Mini napolitanas" },
-        { "@type": "MenuItem", "name": "Mini gofres con nutella" },
-        { "@type": "MenuItem", "name": "Mini croissants" },
-        { "@type": "MenuItem", "name": "Mini magdalenas" },
+        { "@type": "MenuItem", "name": "Mini donuts de chocolate", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini napolitanas de chocolate", "offers": { "@type": "Offer", "price": "15", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini gofres con nutella", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini croissants", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini magdalenas", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" } },
         { "@type": "MenuItem", "name": "Mini pulgas de queso" },
         { "@type": "MenuItem", "name": "Mini pulgas de jamón" }
       ]
@@ -76,16 +76,63 @@
     {
       "@type": "MenuSection",
       "name": "Cocktail Box",
-      "description": "Mini burgers gourmet, tablas de quesos y embutidos, croquetas caseras, y servicios en directo como cortador de jamón, show cooking y barra con bartender.",
+      "description": "Mini bocadillos, mini burgers gourmet, focaccias, mini pizza y sandwiches para cócteles y celebraciones de pie.",
       "hasMenuItem": [
-        { "@type": "MenuItem", "name": "Mini burgers gourmet" },
-        { "@type": "MenuItem", "name": "Tabla de quesos variados con crackers y frutos secos" },
-        { "@type": "MenuItem", "name": "Tabla mixta de quesos y embutidos" },
-        { "@type": "MenuItem", "name": "Tabla de selección gourmet ibéricos" },
-        { "@type": "MenuItem", "name": "Surtido de croquetas caseras" },
-        { "@type": "MenuItem", "name": "Cortador de jamón en directo (servicio adicional)" },
-        { "@type": "MenuItem", "name": "Show cooking de risotto de ceps (servicio adicional)" },
-        { "@type": "MenuItem", "name": "Barra de bebidas con bartender (servicio adicional)" }
+        { "@type": "MenuItem", "name": "Mini bocadillo de queso manchego", "offers": { "@type": "Offer", "price": "22.50", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini bocadillo de jamón ibérico", "offers": { "@type": "Offer", "price": "31", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini bocadillo vegetal", "offers": { "@type": "Offer", "price": "25", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini bocadillos variados", "offers": { "@type": "Offer", "price": "38", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Burger de ternera y queso", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Burger de pollo y queso", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Burger vegetal Heura y pesto", "offers": { "@type": "Offer", "price": "22", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Focaccia de jamón y queso brie con trufa", "offers": { "@type": "Offer", "price": "35", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Focaccia de bacon y queso", "offers": { "@type": "Offer", "price": "30", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Focaccia vegetal", "offers": { "@type": "Offer", "price": "28", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Mini pizza de champiñones y mozzarella", "offers": { "@type": "Offer", "price": "26", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Sandwich de pollo asado", "offers": { "@type": "Offer", "price": "27", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Sandwich de salmón y queso fresco con pepino", "offers": { "@type": "Offer", "price": "35", "priceCurrency": "EUR" } }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Tabla Box",
+      "description": "Tablas por peso para compartir en tu evento.",
+      "hasMenuItem": [
+        { "@type": "MenuItem", "name": "Tabla de quesos variados (700 grs)", "offers": { "@type": "Offer", "price": "48", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Tabla mixta de quesos y embutidos (700 grs)", "offers": { "@type": "Offer", "price": "50", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Tabla selección gourmet de ibéricos (500 grs)", "offers": { "@type": "Offer", "price": "58", "priceCurrency": "EUR" } }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Cocktail Box 2",
+      "description": "Surtido de croquetas caseras, en bandejas de 20 unidades.",
+      "hasMenuItem": [
+        { "@type": "MenuItem", "name": "Croquetas de jamón ibérico (20 unid.)", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Croquetas de marisco (20 unid.)", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Croquetas de ceps (20 unid.)", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Croquetas variadas (20 unid.)", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Extra Service Premium",
+      "description": "Servicios adicionales en directo para tu evento: barra de bebidas con bartender, estación de cortador de jamón, show cooking con chef, cenas privadas para grupos reducidos y servicio de cafetería. Precio a consultar según el evento."
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Barra de Bebidas",
+      "description": "Bebidas por unidad para acompañar tu evento.",
+      "hasMenuItem": [
+        { "@type": "MenuItem", "name": "Zumo de naranja, piña o melocotón", "offers": { "@type": "Offer", "price": "1.90", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Coca-Cola / Coca-Cola Zero", "offers": { "@type": "Offer", "price": "2.00", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Fanta naranja, limón o Sprite", "offers": { "@type": "Offer", "price": "2.00", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Agua mineral con o sin gas", "offers": { "@type": "Offer", "price": "1.50", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Cerveza Estrella", "offers": { "@type": "Offer", "price": "2.30", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Vino tinto reserva", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Vino blanco Albariño", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Cava Codorníu Non Plus Ultra", "offers": { "@type": "Offer", "price": "18", "priceCurrency": "EUR" } },
+        { "@type": "MenuItem", "name": "Cava Juvé & Camps Reserva", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } }
       ]
     },
     {
@@ -143,6 +190,10 @@
         <a href="#tablas">Tablas</a>
         <a href="#coffee-break">Coffee Break Box</a>
         <a href="#cocktail-box">Cocktail Box</a>
+        <a href="#tabla-box">Tabla Box</a>
+        <a href="#cocktail-box-2">Cocktail Box 2</a>
+        <a href="#extra-service">Extra Service Premium</a>
+        <a href="#barra-bebidas">Barra de Bebidas</a>
         <a href="#cenas-privadas">Cenas privadas</a>
       </div>
     </div>
@@ -246,14 +297,14 @@
           <header class="menu-block-head">
             <span class="menu-block-num">01</span>
             <h2><a class="menu-block-link" href="coffee-break.html">Menú Coffee Break Box</a></h2>
-            <p>Bocados dulces y salados para pausas, jornadas de trabajo y reuniones.</p>
+            <p>Bocados dulces y salados para pausas, jornadas de trabajo y reuniones. Bandejas de 15 unidades.</p>
           </header>
           <ul class="menu-options">
-            <li><a href="coffee-break.html#donuts">Mini donuts de chocolate</a></li>
-            <li><a href="coffee-break.html#napolitanas">Mini napolitanas</a></li>
-            <li><a href="coffee-break.html#gofres">Mini gofres con Nutella</a></li>
-            <li><a href="coffee-break.html#croissants">Mini croissants</a></li>
-            <li><a href="coffee-break.html#magdalenas">Mini magdalenas</a></li>
+            <li><a href="coffee-break.html#donuts">Mini donuts de chocolate</a><span class="menu-price">15 unid · 18€</span></li>
+            <li><a href="coffee-break.html#napolitanas">Mini napolitanas de chocolate</a><span class="menu-price">15 unid · 15€</span></li>
+            <li><a href="coffee-break.html#gofres">Mini gofres con Nutella</a><span class="menu-price">15 unid · 22€</span></li>
+            <li><a href="coffee-break.html#croissants">Mini croissants</a><span class="menu-price">15 unid · 18€</span></li>
+            <li><a href="coffee-break.html#magdalenas">Mini magdalenas</a><span class="menu-price">15 unid · 18€</span></li>
             <li><a href="coffee-break.html#pulgas-queso">Mini pulgas de queso</a></li>
             <li><a href="coffee-break.html#pulgas-jamon">Mini pulgas de jamón</a></li>
           </ul>
@@ -263,25 +314,95 @@
         <article class="menu-block" id="cocktail-box">
           <header class="menu-block-head">
             <span class="menu-block-num">02</span>
-            <h2><a class="menu-block-link" href="cocktail-box.html">Menú Cocktail Box</a></h2>
-            <p>Picoteo y tablas para cócteles, eventos de empresa y celebraciones de pie.</p>
+            <h2>Menú Cocktail Box</h2>
+            <p>Bocadillos, burgers, focaccias, pizza y sandwiches para cócteles y celebraciones de pie.</p>
           </header>
           <ul class="menu-options">
-            <li><a href="cocktail-box.html#mini-burgers">Mini burgers</a></li>
-            <li><a href="cocktail-box.html#tabla-quesos">Tabla de quesos variados con crackers y frutos secos</a></li>
-            <li><a href="cocktail-box.html#tabla-mixta">Tabla mixta de quesos y embutidos</a></li>
-            <li><a href="cocktail-box.html#tabla-gourmet">Tabla selección gourmet de ibéricos</a></li>
-            <li><a href="cocktail-box.html#croquetas">Surtido de croquetas caseras</a></li>
-            <li><a href="cocktail-box.html#barra-bartender">Barra de bebidas con bartender</a> <span class="menu-live">En directo</span></li>
-            <li><a href="cocktail-box.html#cortador">Cortador de jamón</a> <span class="menu-live">En directo</span></li>
-            <li><a href="cocktail-box.html#show-cooking">Show cooking de risotto de ceps</a> <span class="menu-live">En directo</span></li>
+            <li><span>Mini bocadillo de queso manchego</span><span class="menu-price">15 unid · 22,50€</span></li>
+            <li><span>Mini bocadillo de jamón ibérico</span><span class="menu-price">15 unid · 31€</span></li>
+            <li><span>Mini bocadillo vegetal</span><span class="menu-price">15 unid · 25€</span></li>
+            <li><span>Mini bocadillos variados</span><span class="menu-price">20 unid · 38€</span></li>
+            <li><span>Burger de ternera y queso</span><span class="menu-price">15 unid · 22€</span></li>
+            <li><span>Burger de pollo y queso</span><span class="menu-price">15 unid · 22€</span></li>
+            <li><span>Burger vegetal Heura y pesto</span><span class="menu-price">15 unid · 22€</span></li>
+            <li><span>Focaccia de jamón y queso brie con trufa</span><span class="menu-price">15 unid · 35€</span></li>
+            <li><span>Focaccia de bacon y queso</span><span class="menu-price">15 unid · 30€</span></li>
+            <li><span>Focaccia vegetal</span><span class="menu-price">20 unid · 28€</span></li>
+            <li><span>Mini pizza de champiñones y mozzarella</span><span class="menu-price">20 unid · 26€</span></li>
+            <li><span>Sandwich de pollo asado</span><span class="menu-price">15 unid · 27€</span></li>
+            <li><span>Sandwich de salmón y queso fresco con pepino</span><span class="menu-price">15 unid · 35€</span></li>
           </ul>
-          <div class="menu-block-cta"><a class="btn btn-primary btn-block" href="cocktail-box.html">Ver los boxes →</a><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20el%20Men%C3%BA%20Cocktail%20Box%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Cocktail Box por WhatsApp</a></div>
+          <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20el%20Men%C3%BA%20Cocktail%20Box%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Cocktail Box por WhatsApp</a></div>
+        </article>
+
+        <article class="menu-block" id="tabla-box">
+          <header class="menu-block-head">
+            <span class="menu-block-num">03</span>
+            <h2>Tabla Box</h2>
+            <p>Tablas por peso, listas para compartir en tu evento.</p>
+          </header>
+          <ul class="menu-options">
+            <li><span>Tabla de quesos variados</span><span class="menu-price">700 grs · 48€</span></li>
+            <li><span>Tabla mixta de quesos y embutidos</span><span class="menu-price">700 grs · 50€</span></li>
+            <li><span>Tabla selección gourmet de ibéricos</span><span class="menu-price">500 grs · 58€</span></li>
+          </ul>
+          <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20la%20Tabla%20Box%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Tabla Box por WhatsApp</a></div>
+        </article>
+
+        <article class="menu-block" id="cocktail-box-2">
+          <header class="menu-block-head">
+            <span class="menu-block-num">04</span>
+            <h2>Cocktail Box 2</h2>
+            <p>Surtido de croquetas caseras, en bandejas de 20 unidades.</p>
+          </header>
+          <ul class="menu-options">
+            <li><span>Croquetas de jamón ibérico</span><span class="menu-price">20 unid · 20€</span></li>
+            <li><span>Croquetas de marisco</span><span class="menu-price">20 unid · 20€</span></li>
+            <li><span>Croquetas de ceps</span><span class="menu-price">20 unid · 20€</span></li>
+            <li><span>Croquetas variadas</span><span class="menu-price">20 unid · 20€</span></li>
+          </ul>
+          <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20la%20Cocktail%20Box%202%20(croquetas)%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Cocktail Box 2 por WhatsApp</a></div>
+        </article>
+
+        <article class="menu-block" id="extra-service">
+          <header class="menu-block-head">
+            <span class="menu-block-num">05</span>
+            <h2>Extra Service Premium</h2>
+            <p>Servicios en directo que suman a cualquier evento.</p>
+          </header>
+          <ul class="menu-options">
+            <li><span>Barra de bebidas con bartender</span><span class="menu-tbd">Bajo consulta</span></li>
+            <li><span>Estación de cortador de jamón</span><span class="menu-tbd">Bajo consulta</span></li>
+            <li><span>Show cooking con chef</span><span class="menu-tbd">Bajo consulta</span></li>
+            <li><span>Cenas privadas para grupos reducidos</span><span class="menu-tbd">Bajo consulta</span></li>
+            <li><span>Servicio de cafetería</span><span class="menu-tbd">Bajo consulta</span></li>
+          </ul>
+          <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20un%20Extra%20Service%20Premium%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Consultar Extra Service Premium</a></div>
+        </article>
+
+        <article class="menu-block" id="barra-bebidas">
+          <header class="menu-block-head">
+            <span class="menu-block-num">06</span>
+            <h2>Barra de Bebidas</h2>
+            <p>Bebidas por unidad para acompañar cualquier box o evento.</p>
+          </header>
+          <ul class="menu-options">
+            <li><span>Zumos naranja, piña o melocotón</span><span class="menu-price">1,90€</span></li>
+            <li><span>Coca-Cola / Coca-Cola Zero</span><span class="menu-price">2,00€</span></li>
+            <li><span>Fanta naranja, limón o Sprite</span><span class="menu-price">2,00€</span></li>
+            <li><span>Agua mineral con o sin gas</span><span class="menu-price">1,50€</span></li>
+            <li><span>Cerveza Estrella</span><span class="menu-price">2,30€</span></li>
+            <li><span>Vino tinto reserva</span><span class="menu-price">18€</span></li>
+            <li><span>Vino blanco Albariño</span><span class="menu-price">20€</span></li>
+            <li><span>Cava Codorníu Non Plus Ultra</span><span class="menu-price">18€</span></li>
+            <li><span>Cava Juvé &amp; Camps Reserva</span><span class="menu-price">20€</span></li>
+          </ul>
+          <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20a%C3%B1adir%20la%20Barra%20de%20Bebidas%20a%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Barra de Bebidas por WhatsApp</a></div>
         </article>
 
         <article class="menu-block menu-block-dark" id="cenas-privadas">
           <header class="menu-block-head">
-            <span class="menu-block-num">03</span>
+            <span class="menu-block-num">07</span>
             <h2>Cenas privadas para grupos reducidos</h2>
             <p>Una cena a tu medida, en tu casa o en el espacio que elijas.</p>
           </header>
