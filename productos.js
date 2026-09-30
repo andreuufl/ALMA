@@ -171,7 +171,7 @@ var PRODUCTOS = [
   },
   {
     id: 'pulgas-jamon', cat: 'salados', nombre: 'Mini pulgas de jamón', formato: '12 unidades', raciones: 6,
-    precio: 32, provisional: true, foto: null,
+    precio: 32, provisional: true, foto: 'pulgas-jamon',
     resumen: 'Pan de cristal, tomate y jamón curado cortado fino.',
     historia: [
       'El clásico que nunca falla: pan crujiente, tomate restregado, un hilo de aceite y jamón cortado fino.',
@@ -184,7 +184,7 @@ var PRODUCTOS = [
   },
   {
     id: 'pulgas-queso', cat: 'salados', nombre: 'Mini pulgas de queso', formato: '12 unidades', raciones: 6,
-    precio: 28, provisional: true, foto: null, veg: true,
+    precio: 28, provisional: true, foto: 'pulgas-queso', veg: true,
     resumen: 'Queso curado de oveja, aceite de oliva y un toque de membrillo.',
     historia: [
       'Queso curado de oveja con su punto de membrillo, sobre un pan crujiente.',
