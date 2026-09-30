@@ -288,12 +288,14 @@
     var modo = form.elements.modo.value;
     var nombre = form.elements.nombre.value.trim();
     var tel = form.elements.telefono.value.trim();
+    var email = (form.elements.email ? form.elements.email.value : '').trim();
     var fecha = form.elements.fecha.value;
     var franja = form.elements.franja.value;
     var dir = form.elements.direccion.value.trim();
     var cp = form.elements.cp.value.trim();
     if (!nombre) err('nombre');
     if (!/^[+\d][\d\s]{8,}$/.test(tel)) err('telefono');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) err('email');
     if (!fecha || fecha < iso(fechaMinima())) err('fecha');
     if (!franja) err('franja');
     if (modo === 'domicilio') { if (!dir) err('direccion'); if (!/^\d{5}$/.test(cp)) err('cp'); }
@@ -313,7 +315,32 @@
       '\n👤 ' + nombre + ' · ' + tel +
       (form.elements.notas.value.trim() ? '\n📝 ' + form.elements.notas.value.trim() : '') +
       '\n\n¿Me confirmáis disponibilidad' + (modo === 'domicilio' ? ' y coste de envío' : '') + '?';
-    window.open('https://wa.me/' + TIENDA.whatsapp + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+
+    var urlWhatsapp = 'https://wa.me/' + TIENDA.whatsapp + '?text=' + encodeURIComponent(txt);
+
+    if (window.THYME && window.THYME.enviarABackend) {
+      window.THYME.enviarABackend({
+        tipo: 'pedido',
+        nombre: nombre,
+        email: email,
+        telefono: tel,
+        modo: modo,
+        fechaISO: fecha,
+        franja: franja,
+        direccion: modo === 'domicilio' ? dir : '',
+        cp: modo === 'domicilio' ? cp : '',
+        lineas: lineas.join(' | '),
+        subtotal: euros(t.total) + (t.consultar ? ' (+ productos a consultar)' : ''),
+        notas: form.elements.notas.value.trim()
+      });
+    }
+
+    if (window.THYME && window.THYME.abrirWhatsApp) {
+      window.THYME.abrirWhatsApp(urlWhatsapp);
+    } else {
+      window.open(urlWhatsapp, '_blank', 'noopener');
+    }
+
     $('[data-cesta-ok]').hidden = false;
     form.hidden = true;
   }
