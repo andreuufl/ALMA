@@ -39,24 +39,6 @@
     }
   }
 
-  /* Muchos navegadores de móvil (sobre todo Safari en iOS, y navegadores
-     integrados en apps como Instagram/Facebook) bloquean window.open()
-     cuando lo llama JavaScript, aunque sea en el mismo clic del usuario.
-     Si el navegador lo bloquea (devuelve null/undefined), navegamos
-     directamente en la misma pestaña como último recurso: eso nunca lo
-     bloquea ningún navegador. */
-  function abrirWhatsApp(url) {
-    var nuevaVentana = null;
-    try {
-      nuevaVentana = window.open(url, '_blank', 'noopener');
-    } catch (err) {
-      nuevaVentana = null;
-    }
-    if (!nuevaVentana) {
-      window.location.href = url;
-    }
-  }
-
   /* ---------- Año en el footer ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();
@@ -890,11 +872,8 @@
         '- Teléfono: ' + telefono +
         (mensaje.trim() ? ('\n- Comentario: ' + mensaje.trim()) : '');
 
-      var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
-
-      /* Primero disparamos el envío a Calendar/email (sendBeacon sobrevive
-         a una posible navegación fuera de la página), y luego intentamos
-         abrir WhatsApp con el método más compatible con móviles. */
+      /* Registramos la reserva: evento en Calendar + email a THYME + email
+         de confirmación al cliente (sendBeacon sobrevive a la navegación). */
       enviarReservaABackend({
         tipo: 'mesa',
         nombre: nombre,
@@ -907,17 +886,24 @@
         mensaje: mensaje.trim()
       });
 
-      abrirWhatsApp(url);
+      /* Ya no abrimos WhatsApp aquí: la reserva queda registrada (Calendar +
+         emails) y en la página de gracias el cliente tiene el botón de
+         WhatsApp con este mismo mensaje ya escrito. */
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Confirmando…'; }
 
       var successBox = document.querySelector('.form-success');
       if (successBox) successBox.classList.add('is-visible');
 
       var params = new URLSearchParams({
+        tipo: 'mesa',
         nombre: nombre,
         fecha: fechaLegible,
         hora: selectedTime,
         personas: personas,
-        tabla: tablaTexto
+        tabla: tablaTexto,
+        email: email,
+        wa: texto
       });
 
       /* Dejamos que se vea la animación de confirmación antes de navegar */
@@ -1011,8 +997,6 @@
         '- Teléfono: ' + telefono +
         (mensaje.trim() ? ('\n- Comentario: ' + mensaje.trim()) : '');
 
-      var url = 'https://wa.me/34607864393?text=' + encodeURIComponent(texto);
-
       enviarReservaABackend({
         tipo: 'evento',
         nombre: nombre,
@@ -1025,12 +1009,20 @@
         mensaje: mensaje.trim()
       });
 
-      abrirWhatsApp(url);
+      var eSubmitBtn = eventsForm.querySelector('button[type="submit"]');
+      if (eSubmitBtn) { eSubmitBtn.disabled = true; eSubmitBtn.textContent = 'Enviando…'; }
 
       var successBox = document.querySelector('[data-events-success]');
       if (successBox) successBox.classList.add('is-visible');
 
-      var params = new URLSearchParams({ nombre: nombre, fecha: fechaLegible, tabla: tipo + ' — ' + invitados + ' invitados' });
+      var params = new URLSearchParams({
+        tipo: 'evento',
+        nombre: nombre,
+        fecha: fechaLegible,
+        tabla: tipo + ' — ' + invitados + ' invitados',
+        email: eFields.email.el.value.trim(),
+        wa: texto
+      });
       setTimeout(function () {
         window.location.href = 'gracias.html?' + params.toString();
       }, 1300);
