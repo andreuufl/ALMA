@@ -71,7 +71,7 @@
   /* ---------- Header: sombra + ocultar al bajar / mostrar al subir (móvil) + menú móvil ---------- */
   var header = document.querySelector('.site-header');
   if (header) {
-    var hideHeaderMq = window.matchMedia('(max-width: 1140px)');
+    var hideHeaderMq = window.matchMedia('(max-width: 1300px)');
     var reduceMotionHeader = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var lastScrollY = window.scrollY;
     var onScroll = function () {

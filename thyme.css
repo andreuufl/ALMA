@@ -321,6 +321,46 @@ button{font-family:inherit;}
 .nav-toggle span::before{top:-6px;}
 .nav-toggle span::after{top:6px;}
 
+/* ---------- Desplegable de la barra de navegación ---------- */
+.nav-dropdown{position:relative;}
+.nav-dropdown > a::before{
+  content:'';
+  position:absolute;right:-13px;top:50%;
+  width:5px;height:5px;margin-top:-4px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform .3s var(--ease);
+}
+.nav-dropdown{padding-right:14px;}
+.nav-dropdown-menu{
+  list-style:none;margin:0;padding:10px;
+  position:absolute;top:calc(100% + 14px);left:-14px;
+  min-width:232px;
+  display:flex;flex-direction:column;gap:2px;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:var(--glass-shadow);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;
+}
+.nav-dropdown-menu::before{
+  content:'';position:absolute;top:-14px;left:0;right:0;height:14px;
+}
+.nav-dropdown-menu a{
+  display:block;padding:10px 14px;border-radius:12px;
+  font-size:.88rem;color:var(--espresso-70);
+  transition:background .25s ease,color .25s ease;
+}
+.nav-dropdown-menu a::after{display:none;}
+.nav-dropdown-menu a:hover{background:rgba(156,107,46,.1);color:var(--wine);}
+.nav-dropdown:hover > a::before{transform:rotate(225deg);margin-top:-1px;}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+
 @media (max-width: 480px){
   .brand{gap:10px;}
   .brand-mark{width:48px;height:48px;margin:-4px 0;}
@@ -332,7 +372,18 @@ button{font-family:inherit;}
   .brand-sub{display:none;}
 }
 
-@media (max-width: 1140px){
+@media (max-width: 1300px){
+  /* En móvil el desplegable se muestra siempre abierto, anidado bajo su categoría */
+  .nav-dropdown{padding-right:0;}
+  .nav-dropdown > a::before{display:none;}
+  .nav-dropdown-menu{
+    position:static;opacity:1;visibility:visible;transform:none;
+    background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+    padding:0 0 4px 14px;min-width:0;
+    border-left:1.5px solid var(--line);margin-left:10px;
+  }
+  .nav-dropdown-menu a{font-size:.95rem;padding:10px 12px;}
+
   .nav-links{
     position:fixed;top:88px;left:16px;right:16px;
     z-index:550;
@@ -2272,7 +2323,7 @@ button{font-family:inherit;}
 html{scroll-padding-top:118px;}
 [id]{scroll-margin-top:118px;}
 .nav-cta-mobile{display:none;}
-@media (max-width:1140px){
+@media (max-width:1300px){
   .nav-links{
     background:rgba(251,248,239,.985)!important;
     backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
@@ -2335,6 +2386,8 @@ html{scroll-padding-top:118px;}
    Página de cada menú (boxes)
    ========================================================= */
 .box-banner{padding-top:150px;}
+.box-banner-solo .catalogo-banner-grid{grid-template-columns:1fr;}
+.box-banner-solo .catalogo-banner-lede{max-width:640px;}
 .migas{font-size:.82rem;color:rgba(251,248,239,.6);margin-bottom:22px;}
 .migas a{color:rgba(251,248,239,.8);text-decoration:none;}
 .migas a:hover{color:var(--gold-soft);}
