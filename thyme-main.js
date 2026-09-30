@@ -182,6 +182,7 @@
       '.menu-block',
       '.menu-condition',
       '.banner-photo',
+      '.marca-pagina',
       '.sello-marca',
       '.sello-claim',
       '.sello-lema'
