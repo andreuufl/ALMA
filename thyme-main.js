@@ -13,7 +13,7 @@
      (ver instrucciones en /google-apps-script/DEPLOY.md). Mientras esté
      vacía, las reservas seguirán funcionando solo por WhatsApp como hasta
      ahora — esto es un envío adicional, no sustituye nada. */
-  var RESERVA_ENDPOINT_URL = '';
+  var RESERVA_ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbwhOlWFo8NrIsEhQmZoZM7JQUOv0ShLXY0KnqZG3FhgiLvJjrctNpdhrTFlP011U5d12A/exec';
 
   function enviarReservaABackend(payload) {
     if (!RESERVA_ENDPOINT_URL) return;
