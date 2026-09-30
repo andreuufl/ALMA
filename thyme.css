@@ -140,8 +140,14 @@ button{font-family:inherit;}
   color:var(--wine);
   margin-bottom:14px;
 }
-.kicker::before,.kicker::after{
-  content:'';width:26px;height:1px;background:var(--gold);
+.kicker::before{
+  content:'';flex:none;box-sizing:border-box;
+  width:16px;height:16px;border-radius:50%;
+  border:1.5px solid var(--gold);
+  background:radial-gradient(circle, var(--gold) 3px, transparent 3.5px) no-repeat center;
+}
+.kicker::after{
+  content:'';width:22px;height:1px;background:var(--gold);
 }
 
 .section{
@@ -465,6 +471,17 @@ button{font-family:inherit;}
   object-fit:cover;
   display:block;
 }
+.plate-glass-photo img{
+  animation:heroKenBurns 18s ease-in-out infinite alternate;
+  transform-origin:52% 46%;
+}
+@keyframes heroKenBurns{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.09);}
+}
+@media (prefers-reduced-motion: reduce){
+  .plate-glass-photo img{animation:none;}
+}
 .floaty{
   position:absolute;
   transform-style:preserve-3d;
@@ -541,7 +558,11 @@ button{font-family:inherit;}
   align-items:center;
 }
 .experience .kicker{color:var(--gold-soft);}
-.experience .kicker::before,.experience .kicker::after{background:var(--gold-soft);}
+.experience .kicker::before{
+  border-color:var(--gold-soft);
+  background:radial-gradient(circle, var(--gold-soft) 3px, transparent 3.5px) no-repeat center;
+}
+.experience .kicker::after{background:var(--gold-soft);}
 .experience h2{
   font-size:clamp(2rem,3.6vw,2.9rem);
   color:var(--paper);
@@ -691,7 +712,15 @@ button{font-family:inherit;}
   border-radius:var(--radius-md);
   background:var(--paper);
   border:1px solid var(--line);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
 }
+.step:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 36px rgba(42,27,16,.12);
+  border-color:rgba(201,154,79,.5);
+}
+.step:hover .step-num{color:var(--wine);}
+.step-num{transition:color .35s var(--ease);}
 .step-num{
   font-family:var(--font-display);
   font-style:italic;
@@ -920,6 +949,18 @@ button{font-family:inherit;}
   transition:transform .6s var(--ease);
 }
 .insta-card-photo:hover img{transform:scale(1.08);}
+.insta-overlay{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(180deg,rgba(42,27,16,0) 40%,rgba(42,27,16,.72) 100%);
+  color:var(--paper);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.insta-overlay svg{width:26px;height:26px;}
+.insta-overlay span{font-size:.8rem;font-weight:600;letter-spacing:.02em;}
+.insta-card-photo:hover .insta-overlay{opacity:1;transform:translateY(0);}
 .insta-cta{
   grid-column:span 1;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -1151,8 +1192,9 @@ button{font-family:inherit;}
   display:flex;
   flex-direction:column;
 }
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-item:first-child{border-top:1px solid var(--line);}
+.faq-item{border-bottom:1.5px solid var(--line);transition:border-color .3s ease;}
+.faq-item:first-child{border-top:1.5px solid var(--line);}
+.faq-item:hover{border-color:rgba(201,154,79,.55);}
 .faq-question-wrap{margin:0;font-weight:normal;}
 .faq-question{
   width:100%;
@@ -1167,8 +1209,14 @@ button{font-family:inherit;}
   transition:color .25s ease;
 }
 .faq-question:hover{color:var(--wine);}
-.faq-chevron{width:20px;height:20px;flex:none;color:var(--gold);transition:transform .4s var(--ease);}
-.faq-item.is-open .faq-chevron{transform:rotate(180deg);}
+.faq-chevron{
+  width:34px;height:34px;flex:none;padding:8px;box-sizing:border-box;
+  border-radius:50%;border:1.5px solid var(--line);
+  color:var(--gold-deep);
+  transition:transform .4s var(--ease),background .3s ease,border-color .3s ease,color .3s ease;
+}
+.faq-question:hover .faq-chevron{border-color:rgba(201,154,79,.6);}
+.faq-item.is-open .faq-chevron{transform:rotate(180deg);background:var(--gold-deep);border-color:var(--gold-deep);color:var(--paper);}
 .faq-item.is-open .faq-question{color:var(--wine);}
 .faq-answer{
   display:grid;
@@ -2398,12 +2446,25 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
   background:var(--paper);
+  position:relative;
+  overflow:hidden;
 }
+.trust-strip::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(42,27,16,.05) 1px, transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(600px 120px at 50% 50%, black, transparent 85%);
+  pointer-events:none;
+}
+.trust-strip-inner{position:relative;z-index:1;}
 .trust-strip-inner{display:flex;flex-direction:column;gap:12px;}
 .trust-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 40px;}
 .trust-row-secondary{padding-top:12px;border-top:1px solid var(--line);}
-.trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--espresso-70);}
-.trust-item svg{width:20px;height:20px;flex:none;color:var(--olive);}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--espresso-70);transition:transform .3s var(--ease);}
+.trust-item:hover{transform:translateY(-2px);}
+.trust-item:hover svg{color:var(--wine);}
+.trust-item svg{width:20px;height:20px;flex:none;color:var(--olive);transition:color .3s ease;}
 .trust-item strong{color:var(--espresso);font-weight:600;}
 .trust-row-secondary .trust-item svg{color:var(--gold-deep);}
 @media (max-width:640px){
@@ -2418,7 +2479,21 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 /* =========================================================
    Antojo / showcase — despierta el hambre y crea urgencia
    ========================================================= */
-.antojo{padding:8px 0 52px;}
+.antojo{padding:8px 0 52px;position:relative;overflow:hidden;}
+.antojo::before{
+  content:'';
+  position:absolute;right:-140px;top:-140px;
+  width:340px;height:340px;border-radius:50%;
+  border:1.5px solid rgba(156,107,46,.16);
+  pointer-events:none;
+}
+.antojo::after{
+  content:'';
+  position:absolute;right:-60px;top:-60px;
+  width:200px;height:200px;border-radius:50%;
+  border:1.5px solid rgba(156,107,46,.12);
+  pointer-events:none;
+}
 .antojo-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px;}
 .antojo-head h2{margin:4px 0 0;font-size:clamp(1.5rem,2.6vw,2rem);}
 .antojo-urgente{
@@ -2433,11 +2508,20 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
   0%,100%{box-shadow:0 0 0 0 rgba(122,30,38,.35);}
   50%{box-shadow:0 0 0 8px rgba(122,30,38,0);}
 }
-.antojo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
+.antojo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:clamp(120px,16vw,220px);
+  gap:18px;
+}
 .antojo-card{
-  position:relative;border-radius:var(--radius-md,18px);overflow:hidden;aspect-ratio:1/1;
+  position:relative;border-radius:var(--radius-md,18px);overflow:hidden;
   box-shadow:0 14px 30px rgba(42,27,16,.14);
 }
+.antojo-card:nth-child(1){grid-column:1 / 3;grid-row:1 / 3;}
+.antojo-card:nth-child(2){grid-column:3 / 4;grid-row:1 / 2;}
+.antojo-card:nth-child(3){grid-column:4 / 5;grid-row:1 / 2;}
+.antojo-card:nth-child(4){grid-column:3 / 5;grid-row:2 / 3;}
 .antojo-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);filter:saturate(1.1) contrast(1.05);}
 .antojo-card:hover img{transform:scale(1.08);}
 .antojo-card::after{
@@ -2478,7 +2562,9 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 }
 .btn-urgente:hover{background:var(--wine-deep);border-color:var(--wine-deep);}
 @media (max-width:900px){
-  .antojo-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .antojo-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;}
+  .antojo-card{aspect-ratio:1/1;}
+  .antojo-card:nth-child(1),.antojo-card:nth-child(2),.antojo-card:nth-child(3),.antojo-card:nth-child(4){grid-column:auto;grid-row:auto;}
 }
 @media (max-width:640px){
   .antojo-grid{gap:12px;}
