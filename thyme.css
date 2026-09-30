@@ -2398,14 +2398,14 @@ html{scroll-padding-top:118px;}
    Página de cada menú (boxes)
    ========================================================= */
 /* ---------- Sello de marca (home) ---------- */
-/* Va al principio de la home: es lo primero que se ve, así que
-   es este bloque el que deja sitio a la barra de navegación fija. */
+/* Va al principio de la home. La barra de navegación es fija (ocupa 86px),
+   así que el bloque arranca justo por debajo, sin solaparse con ella. */
 .sello{
   background:var(--espresso);
   color:var(--cream);
-  border-radius:0 0 40px 40px;
-  margin:0 24px;
-  padding:124px 24px 58px;
+  border-radius:40px;
+  margin:98px 24px 0;
+  padding:58px 24px 56px;
   text-align:center;
   overflow:hidden;
   position:relative;
@@ -2472,7 +2472,7 @@ body:has(.sello) .glass-nav{background:rgba(251,248,239,.94);}
   text-wrap:balance;
 }
 @media (max-width:760px){
-  .sello{margin:0 10px;border-radius:0 0 26px 26px;padding:104px 18px 42px;}
+  .sello{margin:92px 10px 0;border-radius:26px;padding:44px 18px 42px;}
   .sello + .hero{padding-top:40px;}
   .sello-rule{display:none;}
   .sello-claim{margin-top:26px;}
