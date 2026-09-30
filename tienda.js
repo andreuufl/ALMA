@@ -272,7 +272,7 @@
     var n = parseInt(cp, 10);
     if (n >= TIENDA.cpBarcelona[0] && n <= TIENDA.cpBarcelona[1]) return { ok: true, txt: 'Entregamos en tu zona (Barcelona ciudad).' };
     if (cp.slice(0, 2) === '08') return { ok: 'consultar', txt: 'Provincia de Barcelona: entregamos en muchas zonas; te confirmamos coste y disponibilidad.' };
-    return { ok: false, txt: 'De momento no llegamos a este código postal. Escríbenos y buscamos una solución.' };
+    return { ok: 'consultar', txt: 'Enviamos catering a toda España: te confirmamos coste y plazo de envío para tu zona.' };
   }
 
   function mostrarZona(input, out) {
