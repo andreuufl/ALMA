@@ -1048,6 +1048,35 @@
   })();
 
   /* ============================================================
+     Efecto moneda: el sello gira sobre su eje vertical con el scroll
+     ============================================================ */
+  (function () {
+    var monedas = document.querySelectorAll('[data-moneda]');
+    if (!monedas.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /* Grados de giro por píxel desplazado: una vuelta completa cada ~1030px */
+    var GRADOS_POR_PIXEL = 0.35;
+    var pendiente = false;
+
+    function girar() {
+      var grados = window.scrollY * GRADOS_POR_PIXEL;
+      for (var i = 0; i < monedas.length; i++) {
+        monedas[i].style.transform = 'rotateY(' + grados + 'deg)';
+      }
+      pendiente = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (pendiente) return;
+      pendiente = true;
+      requestAnimationFrame(girar);
+    }, { passive: true });
+
+    girar();
+  })();
+
+  /* ============================================================
      Carrusel horizontal de opciones de menú
      Se desliza con el dedo en móvil (scroll nativo) y con las
      flechas en escritorio. Las flechas se ocultan en los extremos.

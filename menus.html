@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=29">
+<link rel="stylesheet" href="thyme.css?v=30">
 
 <script type="application/ld+json">
 {
@@ -116,7 +116,7 @@
     },
     {
       "@type": "MenuSection",
-      "name": "Extra Service Premium",
+      "name": "Service Premium",
       "description": "Servicios adicionales en directo para tu evento: barra de bebidas con bartender, estación de cortador de jamón, show cooking con chef, cenas privadas para grupos reducidos y servicio de cafetería. Precio a consultar según el evento."
     },
     {
@@ -147,7 +147,17 @@
 <body>
 <a href="#main" class="skip-link">Saltar al contenido</a>
 
-<header class="site-header" data-header>
+<div class="topbar">
+  <div class="container topbar-inner topbar-aviso">
+    <span><strong>Envío gratis</strong> a partir de 100€</span>
+    <span class="topbar-sep">·</span>
+    <span>Encargos con 2 días hábiles de antelación</span>
+    <span class="topbar-sep">·</span>
+    <span>Barcelona y alrededores</span>
+  </div>
+</div>
+
+<header class="site-header site-header-topbar" data-header>
   <div class="container">
     <nav class="glass-nav" aria-label="Navegación principal">
       <a href="index.html" class="brand" aria-label="THYME Express Catering, ir al inicio">
@@ -170,7 +180,7 @@
             <li><a href="barra-bebidas.html">Barra de bebidas</a></li>
           </ul>
         </li>
-        <li><a href="extra-service-premium.html">Extra Service Premium</a></li>
+        <li><a href="extra-service-premium.html">Service Premium</a></li>
         <li><a href="pedidos.html">A domicilio</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
         <li class="nav-cta-mobile"><a class="btn btn-primary btn-block" href="index.html#reserva">Reservar mesa</a><a class="btn btn-outline btn-block" href="pedidos.html">Pedir a domicilio</a></li>
@@ -188,13 +198,23 @@
 <main id="main">
 
   <!-- ============ HERO MENÚS ============ -->
-  <section class="section" style="padding-top:106px;padding-bottom:12px;">
+  <section class="section" style="padding-top:140px;padding-bottom:12px;">
     <div class="container">
       <div class="marca-pagina">
-        <picture>
-          <source srcset="logo-thyme.webp" type="image/webp">
-          <img src="logo-thyme.jpg" alt="THYME Express Catering" width="512" height="512" decoding="async">
-        </picture>
+      <div class="moneda" data-moneda>
+        <div class="moneda-cara">
+          <picture>
+            <source srcset="logo-thyme.webp" type="image/webp">
+            <img src="logo-thyme.jpg" alt="THYME Express Catering" width="512" height="512" decoding="async">
+          </picture>
+        </div>
+        <div class="moneda-cara moneda-dorso" aria-hidden="true">
+          <picture>
+            <source srcset="logo-thyme.webp" type="image/webp">
+            <img src="logo-thyme.jpg" alt="" width="512" height="512" decoding="async">
+          </picture>
+        </div>
+      </div>
       </div>
       <div class="section-head center">
         <p class="kicker">Menús para eventos</p>
@@ -207,7 +227,7 @@
         <a href="#croquetas-box">Croquetas Box</a>
         <a href="#tabla-box">Tabla Box</a>
         <a href="#barra-bebidas">Barra de bebidas</a>
-        <a href="#extra-service">Extra Service Premium</a>
+        <a href="#extra-service">Service Premium</a>
       </div>
     </div>
   </section>
@@ -408,7 +428,7 @@
           <article class="menu-block-addon" id="extra-service">
             <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 4v3"/><circle cx="12" cy="3" r="1"/></svg></span>
             <header class="menu-block-head">
-              <h3>Extra Service Premium</h3>
+              <h3>Service Premium</h3>
               <p>Servicios en directo que suman a cualquier evento.</p>
             </header>
             <ul class="menu-options">
@@ -506,7 +526,7 @@
           <li><a href="menus.html">Menús para eventos</a></li>
           <li><a href="tabla-box.html">Tabla Box</a></li>
           <li><a href="barra-bebidas.html">Barra de bebidas</a></li>
-          <li><a href="extra-service-premium.html">Extra Service Premium</a></li>
+          <li><a href="extra-service-premium.html">Service Premium</a></li>
           <li><a href="pedidos.html">A domicilio</a></li>
           <li><a href="index.html#reserva">Reserva</a></li>
         </ul>
@@ -576,6 +596,6 @@
   </div>
 </div>
 
-<script src="thyme-main.js?v=15"></script>
+<script src="thyme-main.js?v=16"></script>
 </body>
 </html>

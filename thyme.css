@@ -1891,7 +1891,7 @@ button{font-family:inherit;}
   .site-header-topbar{top:32px;}
 }
 .catalogo-banner{
-  margin-top:0;padding:176px 0 56px;
+  margin-top:0;padding:206px 0 56px;
   background:
     radial-gradient(600px 300px at 85% 0%, rgba(201,154,79,.22), transparent 60%),
     linear-gradient(180deg,#2A1B10,#3a2618);
@@ -2404,7 +2404,7 @@ html{scroll-padding-top:118px;}
   background:var(--espresso);
   color:var(--cream);
   border-radius:40px;
-  margin:98px 24px 0;
+  margin:132px 24px 0;
   padding:58px 24px 56px;
   text-align:center;
   overflow:hidden;
@@ -2444,16 +2444,9 @@ body:has(.sello) .glass-nav{background:rgba(251,248,239,.94);}
   flex:none;line-height:0;
   width:clamp(168px,24vw,252px);
   aspect-ratio:1/1;
-  border-radius:50%;
-  overflow:hidden;
-  box-shadow:0 18px 40px rgba(0,0,0,.42);
+  perspective:1100px;
 }
-.sello-marca img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  transform:translate(0.8%,1.8%) scale(1.045);
-}
+.sello-marca .moneda-cara{box-shadow:0 18px 40px rgba(0,0,0,.42);}
 .sello-claim{
   position:relative;z-index:1;
   margin:32px auto 0;max-width:760px;
@@ -2472,7 +2465,7 @@ body:has(.sello) .glass-nav{background:rgba(251,248,239,.94);}
   text-wrap:balance;
 }
 @media (max-width:760px){
-  .sello{margin:92px 10px 0;border-radius:26px;padding:44px 18px 42px;}
+  .sello{margin:134px 10px 0;border-radius:26px;padding:44px 18px 42px;}
   .sello + .hero{padding-top:40px;}
   .sello-rule{display:none;}
   .sello-claim{margin-top:26px;}
@@ -2486,18 +2479,38 @@ body:has(.sello) .glass-nav{background:rgba(251,248,239,.94);}
   width:clamp(94px,11vw,126px);
   aspect-ratio:1/1;
   margin:0 auto 24px;
+  line-height:0;
+  perspective:800px;
+}
+.marca-pagina .moneda-cara{box-shadow:0 12px 28px rgba(42,27,16,.17);}
+@media (max-width:640px){
+  .marca-pagina{margin-bottom:18px;}
+}
+
+/* ---------- Efecto moneda: el logo gira sobre su eje al hacer scroll ----------
+   Dos caras con el mismo logo (la trasera girada 180°) para que nunca se
+   vea reflejado. El giro lo aplica thyme-main.js según el scroll. */
+.moneda{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.moneda-cara{
+  position:absolute;inset:0;
   border-radius:50%;
   overflow:hidden;
-  line-height:0;
-  box-shadow:0 12px 28px rgba(42,27,16,.17);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
-.marca-pagina img{
+.moneda-dorso{transform:rotateY(180deg);}
+.moneda-cara img{
   width:100%;height:100%;
   object-fit:cover;display:block;
   transform:translate(0.8%,1.8%) scale(1.045);
 }
-@media (max-width:640px){
-  .marca-pagina{margin-bottom:18px;}
+/* Si el usuario ha pedido menos animación, la moneda se queda quieta */
+@media (prefers-reduced-motion:reduce){
+  .moneda{transform:none!important;}
 }
 
 /* ---------- Carrusel horizontal de opciones de menú ---------- */
@@ -2590,7 +2603,7 @@ a.carrusel-card:hover .carrusel-foto img{transform:scale(1.07);}
   .carrusel-card{flex-basis:clamp(144px,40vw,168px);}
 }
 
-.box-banner{padding-top:150px;}
+.box-banner{padding-top:184px;}
 .box-banner-solo .catalogo-banner-grid{grid-template-columns:1fr;}
 .box-banner-solo .catalogo-banner-lede{max-width:640px;}
 .migas{font-size:.82rem;color:rgba(251,248,239,.6);margin-bottom:22px;}
@@ -2656,7 +2669,7 @@ a.carrusel-card:hover .carrusel-foto img{transform:scale(1.07);}
   .box-media{aspect-ratio:4/3;min-height:0;}
   .box-body{padding:20px 18px;}
   .box-otro{padding:30px 26px;}
-  .box-banner{padding-top:130px;}
+  .box-banner{padding-top:164px;}
 }
 body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 .domicilio-card > *{min-width:0;}
@@ -2844,4 +2857,21 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 .banner-photo-single{aspect-ratio:1/1;}
 @media (max-width:900px){
   .banner-photos{margin-top:24px;max-width:340px;}
+}
+
+/* ---------- Barra de aviso (envío gratis) ----------
+   Va al final a propósito: la barra de pedidos.html usa space-between
+   porque tiene dos bloques; esta es un solo mensaje y va centrada. */
+.topbar-inner.topbar-aviso{justify-content:center;gap:0 14px;}
+@media (max-width:760px){
+  .topbar-inner.topbar-aviso{
+    flex-direction:row!important;
+    justify-content:center;
+    flex-wrap:wrap!important;
+    gap:0 8px;
+    padding-block:7px;
+  }
+  /* En pantalla pequeña dejamos solo lo esencial */
+  .topbar-aviso .topbar-sep,
+  .topbar-aviso > span:nth-child(n+3){display:none;}
 }
