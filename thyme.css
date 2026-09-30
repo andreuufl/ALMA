@@ -2388,6 +2388,7 @@ html{scroll-padding-top:118px;}
 /* ---------- Sello de marca (home) ---------- */
 .sello{
   background:var(--espresso);
+  color:var(--cream);
   border-radius:40px;
   margin:0 24px;
   padding:76px 24px 64px;
@@ -2417,11 +2418,23 @@ html{scroll-padding-top:118px;}
 .sello-inner .sello-rule:last-child{
   background:linear-gradient(90deg, rgba(201,154,79,.55), transparent);
 }
-.sello-marca{flex:none;line-height:0;}
-.sello-marca img{
-  width:clamp(168px,24vw,252px);height:auto;
+/* El logo original es un JPEG con fondo blanco cuadrado: lo recortamos
+   en círculo y lo reencuadramos para que no asome nada de ese blanco.
+   El círculo del logo no está centrado en el lienzo (centro 252/247 de 512),
+   de ahí el desplazamiento. */
+.sello-marca{
+  flex:none;line-height:0;
+  width:clamp(168px,24vw,252px);
+  aspect-ratio:1/1;
   border-radius:50%;
-  filter:drop-shadow(0 18px 40px rgba(0,0,0,.42));
+  overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.42);
+}
+.sello-marca img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transform:translate(0.8%,1.8%) scale(1.045);
 }
 .sello-claim{
   position:relative;z-index:1;
