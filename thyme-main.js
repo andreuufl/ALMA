@@ -181,7 +181,10 @@
       '.box-card',
       '.menu-block',
       '.menu-condition',
-      '.banner-photo'
+      '.banner-photo',
+      '.sello-marca',
+      '.sello-claim',
+      '.sello-lema'
     ];
     groups.forEach(function (selector) {
       document.querySelectorAll(selector).forEach(function (el, i) {

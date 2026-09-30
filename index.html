@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 <link rel="preload" as="image" href="assets/img/hero-mediterranea-square.jpg" fetchpriority="high">
 
-<link rel="stylesheet" href="thyme.css?v=21">
+<link rel="stylesheet" href="thyme.css?v=23">
 
 <script type="application/ld+json">
 {
@@ -192,6 +192,22 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ============ SELLO DE MARCA ============ -->
+  <section class="sello" aria-label="THYME Express Catering">
+    <div class="sello-inner">
+      <span class="sello-rule" aria-hidden="true"></span>
+      <div class="sello-marca">
+        <picture>
+          <source srcset="assets/img/logo-sello.webp" type="image/webp">
+          <img src="assets/img/logo-sello.png" alt="Sello de THYME Express Catering, events &amp; gastronomic experiences, Barcelona" width="440" height="440" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <span class="sello-rule" aria-hidden="true"></span>
+    </div>
+    <p class="sello-claim">Del primer aperitivo al último brindis</p>
+    <p class="sello-lema">Bodas · Eventos de empresa · Celebraciones · Cenas privadas</p>
   </section>
 
   <!-- ============ DOS FORMAS DE VIVIR THYME ============ -->
@@ -454,128 +470,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ============ BODAS Y EVENTOS ============ -->
-  <section class="section events-section" id="eventos">
-    <div class="container">
-      <div class="events-wrap">
-        <div class="events-photos">
-          <div class="events-photo events-photo-a">
-            <picture>
-              <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
-              <img src="assets/img/card-mesa-flores.jpg" alt="Tablas individuales decoradas con flores comestibles para una boda" loading="lazy" width="1000" height="750">
-            </picture>
-          </div>
-          <div class="events-photo events-photo-b">
-            <picture>
-              <source srcset="assets/img/card-torre.webp" type="image/webp">
-              <img src="assets/img/card-torre.jpg" alt="Torre de embutidos, quesos y fruta para un evento grande" loading="lazy" width="800" height="1000">
-            </picture>
-          </div>
-        </div>
-
-        <div class="events-copy">
-          <p class="kicker">Catering para eventos</p>
-          <h2>No solo tablas: catering completo para tu evento</h2>
-          <p>Llevamos la misma filosofía de la mesa íntima a cualquier celebración, del tamaño que sea. Bodas, comuniones y bautizos, congresos y eventos de empresa, cumpleaños, aniversarios e inauguraciones: nos ocupamos de la comida de principio a fin y adaptamos el formato al aforo y al estilo de tu evento.</p>
-
-          <ul class="events-tags">
-            <li>Bodas</li><li>Comuniones y bautizos</li><li>Congresos</li><li>Eventos de empresa</li><li>Cumpleaños</li><li>Aniversarios</li><li>Inauguraciones</li>
-          </ul>
-
-          <ul class="events-facts">
-            <li><strong>10–<span data-counter="200" data-suffix="+">200+</span></strong><span>invitados</span></li>
-            <li><strong>Barcelona</strong><span>y alrededores</span></li>
-            <li><strong>A medida</strong><span>según tu evento</span></li>
-          </ul>
-
-          <div class="form-success" role="status" aria-live="polite" data-events-success>
-            <div class="success-icon">
-              <svg class="success-check" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
-                <circle class="success-check-circle" cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2.5"/>
-                <path class="success-check-mark" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M14 27l7 7 16-16"/>
-              </svg>
-            </div>
-            <strong>¡Solicitud enviada!</strong>
-            <p>Hemos abierto WhatsApp con los datos de tu evento. Te llevamos a confirmarlo…</p>
-          </div>
-
-          <form id="events-form" novalidate>
-            <div class="field-row">
-              <div class="field">
-                <label for="events-nombre">Nombre</label>
-                <input type="text" id="events-nombre" name="nombre" autocomplete="name" required>
-                <p class="field-error">Escribe tu nombre.</p>
-              </div>
-              <div class="field">
-                <label for="events-tipo">Tipo de evento</label>
-                <select id="events-tipo" name="tipo" required>
-                  <option value="">Elige una opción</option>
-                  <option value="Boda">Boda</option>
-                  <option value="Evento corporativo">Evento corporativo</option>
-                  <option value="Cumpleaños">Cumpleaños</option>
-                  <option value="Otro">Otro</option>
-                </select>
-                <p class="field-error">Elige el tipo de evento.</p>
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="events-email">Email</label>
-                <input type="email" id="events-email" name="email" autocomplete="email" required>
-                <p class="field-error">Introduce un email válido.</p>
-              </div>
-              <div class="field">
-                <label for="events-telefono">Teléfono</label>
-                <input type="tel" id="events-telefono" name="telefono" autocomplete="tel" placeholder="+34 6XX XXX XXX" required>
-                <p class="field-error">Introduce un teléfono válido.</p>
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="events-fecha">Fecha aproximada</label>
-                <input type="date" id="events-fecha" name="fecha" required>
-                <p class="field-error">Indica una fecha aproximada.</p>
-              </div>
-              <div class="field">
-                <label for="events-invitados">Nº de invitados</label>
-                <input type="number" id="events-invitados" name="invitados" min="10" placeholder="Ej. 60" required>
-                <p class="field-error">Indica cuántos invitados (mínimo 10).</p>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="events-ubicacion">Ubicación del evento</label>
-              <input type="text" id="events-ubicacion" name="ubicacion" placeholder="Ciudad o nombre del espacio" required>
-              <p class="field-error">Indica dónde se celebra el evento.</p>
-            </div>
-
-            <div class="field">
-              <label for="events-mensaje">Cuéntanos más (opcional)</label>
-              <textarea id="events-mensaje" name="mensaje" placeholder="Estilo del evento, alergias, presupuesto orientativo…"></textarea>
-            </div>
-
-            <div class="field field-consent" data-field="events-consent">
-              <label class="consent-check">
-                <input type="checkbox" id="events-consent" name="consent" required>
-                <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</span>
-              </label>
-              <p class="field-error">Debes aceptar la política de privacidad para continuar.</p>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Solicitar presupuesto</button>
-            <p class="form-note">Sin compromiso. Te respondemos por WhatsApp para afinar los detalles. Solo usamos tus datos para gestionar tu solicitud.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" width="100%" height="40"><path d="M0,18 C260,42 340,-4 620,16 C860,34 980,-2 1200,18 L1200,40 L0,40 Z"/></svg>
-  </div>
 
   <!-- ============ A DOMICILIO ============ -->
   <section class="section domicilio-teaser">
@@ -850,6 +744,128 @@
     </div>
   </section>
 
+  <!-- ============ BODAS Y EVENTOS ============ -->
+  <section class="section events-section" id="eventos">
+    <div class="container">
+      <div class="events-wrap">
+        <div class="events-photos">
+          <div class="events-photo events-photo-a">
+            <picture>
+              <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
+              <img src="assets/img/card-mesa-flores.jpg" alt="Tablas individuales decoradas con flores comestibles para una boda" loading="lazy" width="1000" height="750">
+            </picture>
+          </div>
+          <div class="events-photo events-photo-b">
+            <picture>
+              <source srcset="assets/img/card-torre.webp" type="image/webp">
+              <img src="assets/img/card-torre.jpg" alt="Torre de embutidos, quesos y fruta para un evento grande" loading="lazy" width="800" height="1000">
+            </picture>
+          </div>
+        </div>
+
+        <div class="events-copy">
+          <p class="kicker">Catering para eventos</p>
+          <h2>No solo tablas: catering completo para tu evento</h2>
+          <p>Llevamos la misma filosofía de la mesa íntima a cualquier celebración, del tamaño que sea. Bodas, comuniones y bautizos, congresos y eventos de empresa, cumpleaños, aniversarios e inauguraciones: nos ocupamos de la comida de principio a fin y adaptamos el formato al aforo y al estilo de tu evento.</p>
+
+          <ul class="events-tags">
+            <li>Bodas</li><li>Comuniones y bautizos</li><li>Congresos</li><li>Eventos de empresa</li><li>Cumpleaños</li><li>Aniversarios</li><li>Inauguraciones</li>
+          </ul>
+
+          <ul class="events-facts">
+            <li><strong>10–<span data-counter="200" data-suffix="+">200+</span></strong><span>invitados</span></li>
+            <li><strong>Barcelona</strong><span>y alrededores</span></li>
+            <li><strong>A medida</strong><span>según tu evento</span></li>
+          </ul>
+
+          <div class="form-success" role="status" aria-live="polite" data-events-success>
+            <div class="success-icon">
+              <svg class="success-check" viewBox="0 0 52 52" width="52" height="52" aria-hidden="true">
+                <circle class="success-check-circle" cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <path class="success-check-mark" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M14 27l7 7 16-16"/>
+              </svg>
+            </div>
+            <strong>¡Solicitud enviada!</strong>
+            <p>Hemos abierto WhatsApp con los datos de tu evento. Te llevamos a confirmarlo…</p>
+          </div>
+
+          <form id="events-form" novalidate>
+            <div class="field-row">
+              <div class="field">
+                <label for="events-nombre">Nombre</label>
+                <input type="text" id="events-nombre" name="nombre" autocomplete="name" required>
+                <p class="field-error">Escribe tu nombre.</p>
+              </div>
+              <div class="field">
+                <label for="events-tipo">Tipo de evento</label>
+                <select id="events-tipo" name="tipo" required>
+                  <option value="">Elige una opción</option>
+                  <option value="Boda">Boda</option>
+                  <option value="Evento corporativo">Evento corporativo</option>
+                  <option value="Cumpleaños">Cumpleaños</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <p class="field-error">Elige el tipo de evento.</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="events-email">Email</label>
+                <input type="email" id="events-email" name="email" autocomplete="email" required>
+                <p class="field-error">Introduce un email válido.</p>
+              </div>
+              <div class="field">
+                <label for="events-telefono">Teléfono</label>
+                <input type="tel" id="events-telefono" name="telefono" autocomplete="tel" placeholder="+34 6XX XXX XXX" required>
+                <p class="field-error">Introduce un teléfono válido.</p>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="events-fecha">Fecha aproximada</label>
+                <input type="date" id="events-fecha" name="fecha" required>
+                <p class="field-error">Indica una fecha aproximada.</p>
+              </div>
+              <div class="field">
+                <label for="events-invitados">Nº de invitados</label>
+                <input type="number" id="events-invitados" name="invitados" min="10" placeholder="Ej. 60" required>
+                <p class="field-error">Indica cuántos invitados (mínimo 10).</p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="events-ubicacion">Ubicación del evento</label>
+              <input type="text" id="events-ubicacion" name="ubicacion" placeholder="Ciudad o nombre del espacio" required>
+              <p class="field-error">Indica dónde se celebra el evento.</p>
+            </div>
+
+            <div class="field">
+              <label for="events-mensaje">Cuéntanos más (opcional)</label>
+              <textarea id="events-mensaje" name="mensaje" placeholder="Estilo del evento, alergias, presupuesto orientativo…"></textarea>
+            </div>
+
+            <div class="field field-consent" data-field="events-consent">
+              <label class="consent-check">
+                <input type="checkbox" id="events-consent" name="consent" required>
+                <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</span>
+              </label>
+              <p class="field-error">Debes aceptar la política de privacidad para continuar.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Solicitar presupuesto</button>
+            <p class="form-note">Sin compromiso. Te respondemos por WhatsApp para afinar los detalles. Solo usamos tus datos para gestionar tu solicitud.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" width="100%" height="40"><path d="M0,18 C260,42 340,-4 620,16 C860,34 980,-2 1200,18 L1200,40 L0,40 Z"/></svg>
+  </div>
+
 </main>
 
 <!-- ============ FOOTER ============ -->
@@ -952,6 +968,6 @@
   </div>
 </div>
 
-<script src="thyme-main.js?v=11"></script>
+<script src="thyme-main.js?v=13"></script>
 </body>
 </html>
