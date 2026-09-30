@@ -114,6 +114,7 @@
       '.experience-facts li',
       '.showcase-card',
       '.entrega-item',
+      '.path-card',
       '.step',
       '.faq-item',
       '.insta-card',
