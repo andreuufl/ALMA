@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=24">
+<link rel="stylesheet" href="thyme.css?v=27">
 
 <script type="application/ld+json">
 {
@@ -158,8 +158,7 @@
         </span>
       </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html#experiencia">La experiencia</a></li>
-        <li><a href="index.html#eventos">Bodas y eventos</a></li>
+        <li><a href="index.html#eventos">Eventos</a></li>
         <li><a href="#tablas">Tablas</a></li>
         <li><a href="menus.html" aria-current="page">Menús</a></li>
         <li class="nav-dropdown">
@@ -197,14 +196,10 @@
         <p>Elige el formato que mejor encaja con tu evento. Pedido mínimo de catering 100€, con al menos 2 días hábiles de antelación.</p>
       </div>
       <div class="menu-jump-links">
-        <a href="#tablas">Tablas</a>
         <a href="#coffee-break">Coffee Break Box</a>
         <a href="#cocktail-box">Cocktail Box</a>
         <a href="#tabla-box">Tabla Box</a>
-        <a href="#cocktail-box-2">Cocktail Box 2</a>
-        <a href="#extra-service">Extra Service Premium</a>
-        <a href="#barra-bebidas">Barra de Bebidas</a>
-        <a href="#cenas-privadas">Cenas privadas</a>
+        <a href="#barra-bebidas">Barra de bebidas</a>
       </div>
     </div>
   </section>
@@ -312,15 +307,23 @@
               <h2><a class="menu-block-link" href="coffee-break.html">Menú Coffee Break Box</a></h2>
               <p>Bocados dulces y salados para pausas, jornadas de trabajo y reuniones. Bandejas de 15 unidades.</p>
             </header>
-            <ul class="menu-options">
-              <li><a href="coffee-break.html#donuts">Mini donuts de chocolate</a><span class="menu-price">15 unid · 18€</span></li>
-              <li><a href="coffee-break.html#napolitanas">Mini napolitanas de chocolate</a><span class="menu-price">15 unid · 15€</span></li>
-              <li><a href="coffee-break.html#gofres">Mini gofres con Nutella</a><span class="menu-price">15 unid · 22€</span></li>
-              <li><a href="coffee-break.html#croissants">Mini croissants</a><span class="menu-price">15 unid · 18€</span></li>
-              <li><a href="coffee-break.html#magdalenas">Mini magdalenas</a><span class="menu-price">15 unid · 18€</span></li>
-              <li><a href="coffee-break.html#pulgas-queso">Mini pulgas de queso</a></li>
-              <li><a href="coffee-break.html#pulgas-jamon">Mini pulgas de jamón</a></li>
-            </ul>
+            <div class="carrusel" data-carrusel>
+              <button class="carrusel-nav carrusel-prev" type="button" data-carrusel-prev aria-label="Ver anteriores">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div class="carrusel-pista" data-carrusel-pista tabindex="0" role="group" aria-label="Opciones del Coffee Break Box">
+                <a class="carrusel-card" href="coffee-break.html#donuts"><span class="carrusel-foto"><picture><source srcset="assets/img/menu-donuts-card.webp" type="image/webp"><img src="assets/img/menu-donuts-card.jpg" alt="Mini donuts de chocolate de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini donuts de chocolate</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>18€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#napolitanas"><span class="carrusel-foto"><picture><source srcset="assets/img/napolitanas.webp" type="image/webp"><img src="assets/img/napolitanas.jpg" alt="Mini napolitanas de chocolate de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini napolitanas de chocolate</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>15€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#gofres"><span class="carrusel-foto"><picture><source srcset="assets/img/menu-gofres-card.webp" type="image/webp"><img src="assets/img/menu-gofres-card.jpg" alt="Mini gofres con Nutella de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini gofres con Nutella</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>22€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#croissants"><span class="carrusel-foto"><picture><source srcset="assets/img/menu-croissants-card.webp" type="image/webp"><img src="assets/img/menu-croissants-card.jpg" alt="Mini croissants de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini croissants</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>18€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#magdalenas"><span class="carrusel-foto"><picture><source srcset="assets/img/magdalenas.webp" type="image/webp"><img src="assets/img/magdalenas.jpg" alt="Mini magdalenas de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini magdalenas</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>18€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#pulgas-queso"><span class="carrusel-foto"><picture><source srcset="assets/img/pulgas-queso.webp" type="image/webp"><img src="assets/img/pulgas-queso.jpg" alt="Mini pulgas de queso de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini pulgas de queso</span><span class="carrusel-precio"><strong>Consultar</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#pulgas-jamon"><span class="carrusel-foto"><picture><source srcset="assets/img/pulgas-jamon.webp" type="image/webp"><img src="assets/img/pulgas-jamon.jpg" alt="Mini pulgas de jamón de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini pulgas de jamón</span><span class="carrusel-precio"><strong>Consultar</strong></span></span></a>
+              </div>
+              <button class="carrusel-nav carrusel-next" type="button" data-carrusel-next aria-label="Ver siguientes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
             <div class="menu-block-cta"><a class="btn btn-primary btn-block" href="coffee-break.html">Ver los boxes →</a><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20el%20Men%C3%BA%20Coffee%20Break%20Box%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Coffee Break Box por WhatsApp</a></div>
           </article>
 
@@ -331,21 +334,29 @@
               <h2>Menú Cocktail Box</h2>
               <p>Bocadillos, burgers, focaccias, pizza y sandwiches para cócteles y celebraciones de pie.</p>
             </header>
-            <ul class="menu-options menu-options-compact">
-              <li><span>Bocadillo manchego</span><span class="menu-price">15u · 22,50€</span></li>
-              <li><span>Bocadillo jamón ibérico</span><span class="menu-price">15u · 31€</span></li>
-              <li><span>Bocadillo vegetal</span><span class="menu-price">15u · 25€</span></li>
-              <li><span>Bocadillos variados</span><span class="menu-price">20u · 38€</span></li>
-              <li><span>Burger ternera y queso</span><span class="menu-price">15u · 22€</span></li>
-              <li><span>Burger pollo y queso</span><span class="menu-price">15u · 22€</span></li>
-              <li><span>Burger vegetal Heura</span><span class="menu-price">15u · 22€</span></li>
-              <li><span>Focaccia jamón y brie trufa</span><span class="menu-price">15u · 35€</span></li>
-              <li><span>Focaccia bacon y queso</span><span class="menu-price">15u · 30€</span></li>
-              <li><span>Focaccia vegetal</span><span class="menu-price">20u · 28€</span></li>
-              <li><span>Mini pizza champiñones</span><span class="menu-price">20u · 26€</span></li>
-              <li><span>Sandwich pollo asado</span><span class="menu-price">15u · 27€</span></li>
-              <li><span>Sandwich salmón y pepino</span><span class="menu-price">15u · 35€</span></li>
-            </ul>
+            <div class="carrusel" data-carrusel>
+              <button class="carrusel-nav carrusel-prev" type="button" data-carrusel-prev aria-label="Ver anteriores">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div class="carrusel-pista" data-carrusel-pista tabindex="0" role="group" aria-label="Opciones del Cocktail Box">
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Bocadillo manchego</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>22,50€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Bocadillo jamón ibérico</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>31€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Bocadillo vegetal</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>25€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Bocadillos variados</span><span class="carrusel-precio"><span class="carrusel-unid">20 u</span><strong>38€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><picture><source srcset="assets/img/menu-miniburgers-card.webp" type="image/webp"><img src="assets/img/menu-miniburgers-card.jpg" alt="Burger ternera y queso de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Burger ternera y queso</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>22€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Burger pollo y queso</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>22€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Burger vegetal Heura</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>22€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Focaccia jamón y brie trufa</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>35€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Focaccia bacon y queso</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>30€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Focaccia vegetal</span><span class="carrusel-precio"><span class="carrusel-unid">20 u</span><strong>28€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Mini pizza champiñones</span><span class="carrusel-precio"><span class="carrusel-unid">20 u</span><strong>26€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Sandwich pollo asado</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>27€</strong></span></span></div>
+                <div class="carrusel-card"><span class="carrusel-foto"><span class="carrusel-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/></svg></span></span><span class="carrusel-info"><span class="carrusel-nombre">Sandwich salmón y pepino</span><span class="carrusel-precio"><span class="carrusel-unid">15 u</span><strong>35€</strong></span></span></div>
+              </div>
+              <button class="carrusel-nav carrusel-next" type="button" data-carrusel-next aria-label="Ver siguientes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
             <p style="font-size:.78rem;color:var(--espresso-50);margin:14px 0 0;">u = unidades</p>
             <div class="menu-block-cta"><a class="btn btn-outline btn-block" href="https://wa.me/34607864393?text=%C2%A1Hola%20THYME%21%20Me%20interesa%20el%20Men%C3%BA%20Cocktail%20Box%20para%20mi%20evento.%20%C2%BFMe%20pas%C3%A1is%20disponibilidad%20y%20precio%3F" target="_blank" rel="noopener">Pedir Cocktail Box por WhatsApp</a></div>
           </article>
@@ -482,7 +493,7 @@
         <h4>Explorar</h4>
         <ul>
           <li><a href="index.html#experiencia">La experiencia</a></li>
-          <li><a href="index.html#eventos">Bodas y eventos</a></li>
+          <li><a href="index.html#eventos">Eventos</a></li>
           <li><a href="#tablas">Nuestras tablas</a></li>
           <li><a href="menus.html">Menús para eventos</a></li>
           <li><a href="tabla-box.html">Tabla Box</a></li>
@@ -535,7 +546,7 @@
       <ul class="menu-ingredients-list" data-lightbox-ingredients></ul>
       <p class="menu-allergens-note" data-lightbox-allergens></p>
       <p class="menu-occasion-note" data-lightbox-occasion></p>
-      <a href="#reserva" class="btn btn-primary" data-lightbox-cta>Reservar esta tabla</a>
+      <a href="index.html#reserva" class="btn btn-primary" data-lightbox-cta>Reservar esta tabla</a>
     </div>
   </div>
 </div>
@@ -557,6 +568,6 @@
   </div>
 </div>
 
-<script src="thyme-main.js?v=13"></script>
+<script src="thyme-main.js?v=14"></script>
 </body>
 </html>

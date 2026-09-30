@@ -1047,6 +1047,65 @@
   })();
 
   /* ============================================================
+     Carrusel horizontal de opciones de menú
+     Se desliza con el dedo en móvil (scroll nativo) y con las
+     flechas en escritorio. Las flechas se ocultan en los extremos.
+     ============================================================ */
+  (function () {
+    var carruseles = document.querySelectorAll('[data-carrusel]');
+    if (!carruseles.length) return;
+
+    carruseles.forEach(function (car) {
+      var pista = car.querySelector('[data-carrusel-pista]');
+      var prev = car.querySelector('[data-carrusel-prev]');
+      var next = car.querySelector('[data-carrusel-next]');
+      if (!pista) return;
+
+      /* Avanzamos un número entero de tarjetas, para no dejar ninguna cortada */
+      function paso() {
+        var card = pista.querySelector('.carrusel-card');
+        if (!card) return pista.clientWidth;
+        var estilo = window.getComputedStyle(pista);
+        var hueco = parseFloat(estilo.columnGap || estilo.gap) || 14;
+        var ancho = card.getBoundingClientRect().width + hueco;
+        var caben = Math.max(1, Math.floor(pista.clientWidth / ancho));
+        return ancho * caben;
+      }
+
+      function actualizarFlechas() {
+        var max = pista.scrollWidth - pista.clientWidth;
+        var x = pista.scrollLeft;
+        if (prev) prev.hidden = x <= 2;
+        if (next) next.hidden = x >= max - 2;
+      }
+
+      if (prev) prev.addEventListener('click', function () {
+        pista.scrollBy({ left: -paso(), behavior: 'smooth' });
+      });
+      if (next) next.addEventListener('click', function () {
+        pista.scrollBy({ left: paso(), behavior: 'smooth' });
+      });
+
+      /* Flechas del teclado cuando la pista tiene el foco */
+      pista.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); pista.scrollBy({ left: paso(), behavior: 'smooth' }); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); pista.scrollBy({ left: -paso(), behavior: 'smooth' }); }
+      });
+
+      var pendiente = false;
+      pista.addEventListener('scroll', function () {
+        if (pendiente) return;
+        pendiente = true;
+        requestAnimationFrame(function () { actualizarFlechas(); pendiente = false; });
+      });
+      window.addEventListener('resize', actualizarFlechas);
+      actualizarFlechas();
+      /* Las fotos pueden cambiar el ancho al cargar */
+      window.addEventListener('load', actualizarFlechas);
+    });
+  })();
+
+  /* ============================================================
      Botón "Volver arriba"
      ============================================================ */
   (function () {

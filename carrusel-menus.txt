@@ -1,0 +1,202 @@
+CARRUSEL DE MENÚS — THYME
+=========================================================================
+Código de los carruseles de "Menú Coffee Break Box" y "Menú Cocktail Box"
+(menus.html). Ya está aplicado en la web. Esto es la referencia por si
+quieres reutilizarlo en Tabla Box, Barra de Bebidas, etc.
+
+CÓMO FUNCIONA
+La pista es un scroll horizontal nativo del navegador, así que en móvil se
+desliza con el dedo sin necesidad de ninguna librería externa. Las flechas
+son solo para escritorio y se ocultan solas al llegar a cada extremo.
+Avanzan un número entero de tarjetas, nunca dejan una cortada.
+
+
+=========================================================================
+1) HTML  —  dentro de cada <article class="menu-block"> en menus.html
+=========================================================================
+
+<div class="carrusel" data-carrusel>
+              <button class="carrusel-nav carrusel-prev" type="button" data-carrusel-prev aria-label="Ver anteriores">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div class="carrusel-pista" data-carrusel-pista tabindex="0" role="group" aria-label="Opciones del Coffee Break Box">
+                <a class="carrusel-card" href="coffee-break.html#donuts"><span class="carrusel-foto"><picture><source srcset="assets/img/menu-donuts-card.webp" type="image/webp"><img src="assets/img/menu-donuts-card.jpg" alt="Mini donuts de chocolate de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini donuts de chocolate</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>18€</strong></span></span></a>
+                <a class="carrusel-card" href="coffee-break.html#napolitanas"><span class="carrusel-foto"><picture><source srcset="assets/img/napolitanas.webp" type="image/webp"><img src="assets/img/napolitanas.jpg" alt="Mini napolitanas de chocolate de THYME" loading="lazy" decoding="async" width="700" height="814"></picture></span><span class="carrusel-info"><span class="carrusel-nombre">Mini napolitanas de chocolate</span><span class="carrusel-precio"><span class="carrusel-unid">15 unid</span><strong>15€</strong></span></span></a>
+
+                <!-- … resto de tarjetas igual … -->
+
+              </div>
+              <button class="carrusel-nav carrusel-next" type="button" data-carrusel-next aria-label="Ver siguientes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+
+
+Para una tarjeta SIN foto, se sustituye el bloque <picture> por esto:
+
+                  <span class="carrusel-sinfoto" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.05" stroke-linecap="round"
+                         stroke-linejoin="round" aria-hidden="true">
+                      <path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/>
+                    </svg>
+                  </span>
+
+
+=========================================================================
+2) CSS  —  en thyme.css
+=========================================================================
+
+/* ---------- Carrusel horizontal de opciones de menú ---------- */
+.carrusel{position:relative;margin:4px 0 22px;}
+.carrusel-pista{
+  display:flex;gap:14px;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:4px 2px 10px;
+  scroll-padding-left:2px;
+}
+.carrusel-pista::-webkit-scrollbar{display:none;}
+.carrusel-pista:focus-visible{outline:3px solid var(--gold-deep);outline-offset:4px;border-radius:16px;}
+
+.carrusel-card{
+  flex:0 0 clamp(150px,42vw,182px);
+  scroll-snap-align:start;
+  display:flex;flex-direction:column;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  text-decoration:none;color:inherit;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+}
+a.carrusel-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 30px rgba(42,27,16,.13);
+  border-color:rgba(201,154,79,.5);
+}
+.carrusel-foto{
+  display:block;position:relative;
+  aspect-ratio:1/1;overflow:hidden;
+  background:var(--cream-2);
+}
+.carrusel-foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
+a.carrusel-card:hover .carrusel-foto img{transform:scale(1.07);}
+/* Placeholder para los productos que aún no tienen foto */
+.carrusel-sinfoto{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(201,154,79,.14), transparent 62%),
+    var(--cream-2);
+}
+.carrusel-sinfoto svg{width:38%;height:38%;color:var(--gold);opacity:.62;}
+
+.carrusel-info{display:flex;flex-direction:column;gap:6px;padding:13px 14px 15px;flex:1;}
+.carrusel-nombre{
+  font-family:var(--font-display);
+  font-size:.95rem;line-height:1.25;color:var(--espresso);
+  display:block;
+}
+.carrusel-precio{
+  margin-top:auto;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;
+}
+.carrusel-unid{font-size:.74rem;color:var(--espresso-50);letter-spacing:.03em;}
+.carrusel-precio strong{font-size:.98rem;color:var(--wine);font-weight:600;}
+
+/* Flechas de navegación */
+.carrusel-nav{
+  position:absolute;top:calc(50% - 30px);transform:translateY(-50%);
+  z-index:3;
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--glass-border);
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:0 8px 20px rgba(42,27,16,.18);
+  color:var(--espresso);cursor:pointer;
+  transition:opacity .3s ease,visibility .3s ease,background .25s ease,color .25s ease;
+}
+.carrusel-nav svg{width:19px;height:19px;}
+.carrusel-nav:hover{background:var(--gold-deep);color:var(--paper);border-color:var(--gold-deep);}
+.carrusel-prev{left:-14px;}
+.carrusel-next{right:-14px;}
+.carrusel-nav[hidden]{opacity:0;visibility:hidden;pointer-events:none;display:flex;}
+
+@media (max-width:1140px){
+  .carrusel-prev{left:-6px;}
+  .carrusel-next{right:-6px;}
+}
+@media (max-width:760px){
+  /* En móvil se desliza con el dedo: las flechas sobran */
+  .carrusel-nav{display:none;}
+  .carrusel-card{flex-basis:clamp(144px,40vw,168px);}
+}
+
+
+=========================================================================
+3) JAVASCRIPT  —  en thyme-main.js, dentro del IIFE principal
+=========================================================================
+
+  /* ============================================================
+     Carrusel horizontal de opciones de menú
+     Se desliza con el dedo en móvil (scroll nativo) y con las
+     flechas en escritorio. Las flechas se ocultan en los extremos.
+     ============================================================ */
+  (function () {
+    var carruseles = document.querySelectorAll('[data-carrusel]');
+    if (!carruseles.length) return;
+
+    carruseles.forEach(function (car) {
+      var pista = car.querySelector('[data-carrusel-pista]');
+      var prev = car.querySelector('[data-carrusel-prev]');
+      var next = car.querySelector('[data-carrusel-next]');
+      if (!pista) return;
+
+      /* Avanzamos un número entero de tarjetas, para no dejar ninguna cortada */
+      function paso() {
+        var card = pista.querySelector('.carrusel-card');
+        if (!card) return pista.clientWidth;
+        var estilo = window.getComputedStyle(pista);
+        var hueco = parseFloat(estilo.columnGap || estilo.gap) || 14;
+        var ancho = card.getBoundingClientRect().width + hueco;
+        var caben = Math.max(1, Math.floor(pista.clientWidth / ancho));
+        return ancho * caben;
+      }
+
+      function actualizarFlechas() {
+        var max = pista.scrollWidth - pista.clientWidth;
+        var x = pista.scrollLeft;
+        if (prev) prev.hidden = x <= 2;
+        if (next) next.hidden = x >= max - 2;
+      }
+
+      if (prev) prev.addEventListener('click', function () {
+        pista.scrollBy({ left: -paso(), behavior: 'smooth' });
+      });
+      if (next) next.addEventListener('click', function () {
+        pista.scrollBy({ left: paso(), behavior: 'smooth' });
+      });
+
+      /* Flechas del teclado cuando la pista tiene el foco */
+      pista.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); pista.scrollBy({ left: paso(), behavior: 'smooth' }); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); pista.scrollBy({ left: -paso(), behavior: 'smooth' }); }
+      });
+
+      var pendiente = false;
+      pista.addEventListener('scroll', function () {
+        if (pendiente) return;
+        pendiente = true;
+        requestAnimationFrame(function () { actualizarFlechas(); pendiente = false; });
+      });
+      window.addEventListener('resize', actualizarFlechas);
+      actualizarFlechas();
+      /* Las fotos pueden cambiar el ancho al cargar */
+      window.addEventListener('load', actualizarFlechas);
+    });
+  })();
