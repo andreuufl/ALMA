@@ -8,6 +8,27 @@
 
   var WHATSAPP_NUMBER = '34607864393';
 
+  /* ---------- Reservas automáticas → email + Google Calendar ----------
+     Pega aquí la URL de tu Google Apps Script publicado como Web App
+     (ver instrucciones en /google-apps-script/DEPLOY.md). Mientras esté
+     vacía, las reservas seguirán funcionando solo por WhatsApp como hasta
+     ahora — esto es un envío adicional, no sustituye nada. */
+  var RESERVA_ENDPOINT_URL = '';
+
+  function enviarReservaABackend(payload) {
+    if (!RESERVA_ENDPOINT_URL) return;
+    try {
+      fetch(RESERVA_ENDPOINT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      /* Si falla el envío automático, la reserva por WhatsApp ya se ha hecho igualmente */
+    }
+  }
+
   /* ---------- Año en el footer ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();
@@ -846,6 +867,18 @@
       /* Abrir WhatsApp de forma síncrona con el clic, para que el navegador no lo bloquee */
       window.open(url, '_blank', 'noopener');
 
+      enviarReservaABackend({
+        tipo: 'mesa',
+        nombre: nombre,
+        email: email,
+        telefono: telefono,
+        personas: personas,
+        tabla: tablaTexto,
+        fechaISO: selectedDate,
+        hora: selectedTime,
+        mensaje: mensaje.trim()
+      });
+
       var successBox = document.querySelector('.form-success');
       if (successBox) successBox.classList.add('is-visible');
 
@@ -950,6 +983,18 @@
 
       var url = 'https://wa.me/34607864393?text=' + encodeURIComponent(texto);
       window.open(url, '_blank', 'noopener');
+
+      enviarReservaABackend({
+        tipo: 'evento',
+        nombre: nombre,
+        tipoEvento: tipo,
+        email: eFields.email.el.value.trim(),
+        telefono: telefono,
+        fechaISO: eFields.fecha.el.value,
+        invitados: invitados,
+        ubicacion: ubicacion,
+        mensaje: mensaje.trim()
+      });
 
       var successBox = document.querySelector('[data-events-success]');
       if (successBox) successBox.classList.add('is-visible');
