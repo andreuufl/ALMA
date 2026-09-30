@@ -1667,8 +1667,10 @@ button{font-family:inherit;}
   grid-template-columns:1fr 1fr;column-gap:24px;
 }
 .menu-options-compact li{
-  padding:9px 0;font-size:.87rem;flex-wrap:wrap;border-bottom:1px dashed var(--line);
+  flex-direction:column;align-items:flex-start;gap:4px;
+  padding:9px 0;font-size:.87rem;border-bottom:1px dashed var(--line);
 }
+.menu-options-compact li .menu-price{margin-left:18px;}
 @media (max-width:520px){
   .menu-options-compact{grid-template-columns:1fr;}
 }
