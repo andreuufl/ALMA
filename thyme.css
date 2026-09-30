@@ -1617,7 +1617,7 @@ button{font-family:inherit;}
 
 /* ---------- Bloques de menú (carta) ---------- */
 .menu-blocks{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:stretch;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start;
 }
 .menu-block{
   display:flex;flex-direction:column;
@@ -1642,6 +1642,15 @@ button{font-family:inherit;}
   font-size:.98rem;
 }
 .menu-options li:last-child{border-bottom:0;}
+.menu-options-compact{
+  grid-template-columns:1fr 1fr;column-gap:24px;
+}
+.menu-options-compact li{
+  padding:9px 0;font-size:.87rem;flex-wrap:wrap;border-bottom:1px dashed var(--line);
+}
+@media (max-width:520px){
+  .menu-options-compact{grid-template-columns:1fr;}
+}
 .menu-options li > span:first-child{position:relative;padding-left:18px;}
 .menu-options li > span:first-child::before{
   content:'';position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--gold-soft);
