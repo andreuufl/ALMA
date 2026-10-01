@@ -52,7 +52,7 @@ var PRODUCTOS = [
   },
   {
     id: 'tabla-quesos', cat: 'tablas', nombre: 'Tabla de Quesos', formato: 'Para 2 personas', raciones: 2,
-    precio: 32, foto: null, veg: true,
+    precio: 32, foto: 'tabla-quesos-card', veg: true,
     resumen: 'Quesos artesanos, crackers, mermelada casera y frutos secos tostados.',
     historia: [
       'Una selección que va de lo suave a lo intenso, pensada para recorrerla en orden: un queso tierno para empezar, uno curado de oveja, uno con carácter y un azul para los valientes.',
@@ -65,7 +65,7 @@ var PRODUCTOS = [
   },
   {
     id: 'tabla-gourmet', cat: 'tablas', nombre: 'Tabla selección gourmet de ibéricos', formato: 'Para 4 personas', raciones: 4,
-    precio: 68, provisional: true, foto: null,
+    precio: 68, provisional: true, foto: 'tabla-ibericos-gourmet-card',
     resumen: 'Nuestra selección premium de ibéricos de bellota, para compartir.',
     historia: [
       'La versión generosa de nuestra tabla ibérica: más variedad, más cantidad y las piezas que reservamos para las ocasiones que se lo merecen.',
@@ -158,7 +158,7 @@ var PRODUCTOS = [
   },
   {
     id: 'croquetas', cat: 'salados', nombre: 'Surtido de croquetas caseras', formato: '24 unidades', raciones: 8,
-    precio: 30, provisional: true, foto: null,
+    precio: 30, provisional: true, foto: 'croquetas-caja-card',
     resumen: 'Cremosas por dentro, crujientes por fuera. Receta de siempre.',
     historia: [
       'Bechamel hecha a fuego lento, rebozado fino y fritura en el punto justo. Así de sencillo y así de difícil.',
