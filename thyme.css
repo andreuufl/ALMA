@@ -2875,3 +2875,9 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
   .topbar-aviso .topbar-sep,
   .topbar-aviso > span:nth-child(n+3){display:none;}
 }
+
+/* ---------- Ritmo visual de la portada ----------
+   Alternamos fondo en secciones alternas para que cada bloque se lea
+   como una unidad y la página no parezca una sola masa de contenido. */
+.showcase-section{background:var(--paper);border-block:1px solid var(--line);}
+#faq{background:var(--paper);border-block:1px solid var(--line);}

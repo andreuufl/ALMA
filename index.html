@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 <link rel="preload" as="image" href="assets/img/hero-mediterranea-square.jpg" fetchpriority="high">
 
-<link rel="stylesheet" href="thyme.css?v=31">
+<link rel="stylesheet" href="thyme.css?v=32">
 
 <script type="application/ld+json">
 {
@@ -259,37 +259,80 @@
     </div>
   </section>
 
-  <!-- ============ ANTOJO / SHOWCASE ============ -->
-  <section class="antojo">
+  <!-- ============ LO MÁS SOLICITADO ============ -->
+  <section class="section showcase-section" style="padding-top:20px;">
     <div class="container">
-      <div class="antojo-head">
-        <div>
-          <p class="kicker">Así llega a tu mesa</p>
-          <h2>Cada tabla, montada al momento delante de ti</h2>
-        </div>
-        <span class="antojo-urgente">Plazas limitadas cada turno</span>
+      <div class="section-head center">
+        <p class="kicker">Lo más solicitado</p>
+        <h2>Lo que la gente repite una y otra vez</h2>
+        <p>Tablas reales, servidas en mesas privadas y eventos reales. Toca cualquier foto para ver los detalles.</p>
       </div>
-      <div class="antojo-grid">
-        <a class="antojo-card" href="menus.html#tablas">
-          <picture><source srcset="assets/img/card-mediterranea.webp" type="image/webp"><img src="assets/img/card-mediterranea.jpg" alt="Tabla mediterránea THYME con jamón, quesos, higos y fruta fresca" loading="lazy" width="600" height="600"></picture>
-          <span class="antojo-tag">Tabla</span>
-          <span class="antojo-caption"><strong>Tabla Mediterránea</strong><span>Jamón, quesos y fruta de temporada</span></span>
-        </a>
-        <a class="antojo-card" href="menus.html#tablas">
-          <picture><source srcset="assets/img/insta-tabla-mixta.webp" type="image/webp"><img src="assets/img/insta-tabla-mixta.jpg" alt="Tabla Mixta THYME, la más pedida, con embutido y queso" loading="lazy" width="600" height="600"></picture>
-          <span class="antojo-tag">La más pedida</span>
-          <span class="antojo-caption"><strong>Tabla Mixta THYME</strong><span>Nuestra firma de la casa</span></span>
-        </a>
-        <a class="antojo-card" href="#eventos">
-          <picture><source srcset="assets/img/card-mesa-flores.webp" type="image/webp"><img src="assets/img/card-mesa-flores.jpg" alt="Tablas individuales decoradas con flores comestibles para una boda" loading="lazy" width="600" height="600"></picture>
-          <span class="antojo-tag">Bodas</span>
-          <span class="antojo-caption"><strong>Mesas para bodas</strong><span>Decoradas con flores comestibles</span></span>
-        </a>
-        <a class="antojo-card" href="menus.html#tablas">
-          <picture><source srcset="assets/img/card-torre.webp" type="image/webp"><img src="assets/img/card-torre.jpg" alt="Torre de tabla gourmet THYME servida en evento" loading="lazy" width="600" height="600"></picture>
-          <span class="antojo-tag">Eventos</span>
-          <span class="antojo-caption"><strong>Presentación en torre</strong><span>Para dar el efecto wow en tu evento</span></span>
-        </a>
+
+      <div class="showcase-grid">
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Bodas y eventos"
+          data-title="Tablas individuales con flores comestibles"
+          data-desc="Pensada para bodas, comuniones y eventos donde cada invitado se merece su propio momento. Cada plato se monta a mano con quesos madurados, embutido cortado fino y flores comestibles de temporada.">
+          <div class="showcase-media">
+            <picture>
+              <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
+              <img src="assets/img/card-mesa-flores.jpg" alt="Varias tablas individuales decoradas con flores comestibles, servidas sobre una encimera de mármol para un evento" loading="lazy" width="1000" height="750">
+            </picture>
+          </div>
+          <div class="showcase-caption">
+            <span class="showcase-tag">Bodas y eventos</span>
+            <h3>Tablas individuales con flores</h3>
+          </div>
+        </button>
+
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Grupos grandes"
+          data-title="Torre THYME de 3 pisos"
+          data-desc="Tres pisos, una sola torre. Pensada para grupos de 15 a 30 personas: jamón cortado a cuchillo, quesos curados, fruta de temporada y algo salado en cada nivel.">
+          <div class="showcase-media">
+            <picture>
+              <source srcset="assets/img/card-torre.webp" type="image/webp">
+              <img src="assets/img/card-torre.jpg" alt="Torre de tres pisos de embutidos, quesos y fruta para grupos grandes" loading="lazy" width="800" height="1000">
+            </picture>
+          </div>
+          <div class="showcase-caption">
+            <span class="showcase-tag">Grupos grandes</span>
+            <h3>Torre THYME de 3 pisos</h3>
+          </div>
+        </button>
+
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="La favorita"
+          data-title="Tabla Mixta THYME"
+          data-tabla-value="mixta"
+          data-desc="La que más repetimos, con diferencia. Rosetones de embutido montados en pincho, brie cremoso, encurtidos caseros y un toque de miel.">
+          <div class="showcase-media">
+            <picture>
+              <source srcset="assets/img/tabla-mixta-card.webp" type="image/webp">
+              <img src="assets/img/tabla-mixta-card.jpg" alt="Tabla Mixta THYME con rosetones de embutido y queso en pinchos, brie, encurtidos y miel" loading="lazy" width="800" height="600">
+            </picture>
+          </div>
+          <div class="showcase-caption">
+            <span class="showcase-tag">La favorita</span>
+            <h3>Tabla Mixta THYME</h3>
+          </div>
+        </button>
+
+        <button type="button" class="showcase-card" data-lightbox-trigger
+          data-tag="Con pan del día"
+          data-title="Tabla Mediterránea"
+          data-desc="Pan artesano horneado el mismo día, jamón cortado fino, higos, fruta fresca y un aceite de oliva que se nota desde el primer bocado.">
+          <div class="showcase-media">
+            <picture>
+              <source srcset="assets/img/card-mediterranea.webp" type="image/webp">
+              <img src="assets/img/card-mediterranea.jpg" alt="Tabla mediterránea con pan artesano, jamón, quesos, higos, miel y fruta fresca" loading="lazy" width="800" height="1000">
+            </picture>
+          </div>
+          <div class="showcase-caption">
+            <span class="showcase-tag">Con pan del día</span>
+            <h3>Tabla Mediterránea</h3>
+          </div>
+        </button>
       </div>
       <div class="antojo-cta">
         <a class="btn btn-primary btn-urgente" href="#reserva" data-magnetic>Reservar día</a>
@@ -510,84 +553,6 @@
           <picture><source srcset="assets/img/tabla-mixta-square.webp" type="image/webp"><img src="assets/img/tabla-mixta-square.jpg" alt="" loading="lazy" width="900" height="900"></picture>
           <picture><source srcset="assets/img/card-mediterranea.webp" type="image/webp"><img src="assets/img/card-mediterranea.jpg" alt="" loading="lazy" width="800" height="1000"></picture>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LO MÁS SOLICITADO ============ -->
-  <section class="section showcase-section" style="padding-top:20px;">
-    <div class="container">
-      <div class="section-head center">
-        <p class="kicker">Lo más solicitado</p>
-        <h2>Lo que la gente repite una y otra vez</h2>
-        <p>Tablas reales, servidas en mesas privadas y eventos reales. Toca cualquier foto para ver los detalles.</p>
-      </div>
-
-      <div class="showcase-grid">
-        <button type="button" class="showcase-card" data-lightbox-trigger
-          data-tag="Bodas y eventos"
-          data-title="Tablas individuales con flores comestibles"
-          data-desc="Pensada para bodas, comuniones y eventos donde cada invitado se merece su propio momento. Cada plato se monta a mano con quesos madurados, embutido cortado fino y flores comestibles de temporada.">
-          <div class="showcase-media">
-            <picture>
-              <source srcset="assets/img/card-mesa-flores.webp" type="image/webp">
-              <img src="assets/img/card-mesa-flores.jpg" alt="Varias tablas individuales decoradas con flores comestibles, servidas sobre una encimera de mármol para un evento" loading="lazy" width="1000" height="750">
-            </picture>
-          </div>
-          <div class="showcase-caption">
-            <span class="showcase-tag">Bodas y eventos</span>
-            <h3>Tablas individuales con flores</h3>
-          </div>
-        </button>
-
-        <button type="button" class="showcase-card" data-lightbox-trigger
-          data-tag="Grupos grandes"
-          data-title="Torre THYME de 3 pisos"
-          data-desc="Tres pisos, una sola torre. Pensada para grupos de 15 a 30 personas: jamón cortado a cuchillo, quesos curados, fruta de temporada y algo salado en cada nivel.">
-          <div class="showcase-media">
-            <picture>
-              <source srcset="assets/img/card-torre.webp" type="image/webp">
-              <img src="assets/img/card-torre.jpg" alt="Torre de tres pisos de embutidos, quesos y fruta para grupos grandes" loading="lazy" width="800" height="1000">
-            </picture>
-          </div>
-          <div class="showcase-caption">
-            <span class="showcase-tag">Grupos grandes</span>
-            <h3>Torre THYME de 3 pisos</h3>
-          </div>
-        </button>
-
-        <button type="button" class="showcase-card" data-lightbox-trigger
-          data-tag="La favorita"
-          data-title="Tabla Mixta THYME"
-          data-tabla-value="mixta"
-          data-desc="La que más repetimos, con diferencia. Rosetones de embutido montados en pincho, brie cremoso, encurtidos caseros y un toque de miel.">
-          <div class="showcase-media">
-            <picture>
-              <source srcset="assets/img/tabla-mixta-card.webp" type="image/webp">
-              <img src="assets/img/tabla-mixta-card.jpg" alt="Tabla Mixta THYME con rosetones de embutido y queso en pinchos, brie, encurtidos y miel" loading="lazy" width="800" height="600">
-            </picture>
-          </div>
-          <div class="showcase-caption">
-            <span class="showcase-tag">La favorita</span>
-            <h3>Tabla Mixta THYME</h3>
-          </div>
-        </button>
-
-        <button type="button" class="showcase-card" data-lightbox-trigger
-          data-tag="Con pan del día"
-          data-title="Tabla Mediterránea"
-          data-desc="Pan artesano horneado el mismo día, jamón cortado fino, higos, fruta fresca y un aceite de oliva que se nota desde el primer bocado.">
-          <div class="showcase-media">
-            <picture>
-              <source srcset="assets/img/card-mediterranea.webp" type="image/webp">
-              <img src="assets/img/card-mediterranea.jpg" alt="Tabla mediterránea con pan artesano, jamón, quesos, higos, miel y fruta fresca" loading="lazy" width="800" height="1000">
-            </picture>
-          </div>
-          <div class="showcase-caption">
-            <span class="showcase-tag">Con pan del día</span>
-            <h3>Tabla Mediterránea</h3>
-          </div>
-        </button>
       </div>
     </div>
   </section>
