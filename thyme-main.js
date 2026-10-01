@@ -1055,8 +1055,10 @@
     if (!monedas.length) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    /* Grados de giro por píxel desplazado: una vuelta completa cada ~1030px */
-    var GRADOS_POR_PIXEL = 0.35;
+    /* Grados de giro por píxel desplazado. El sello está arriba del todo y
+       sale de pantalla hacia los 760px de scroll, así que con 1,5 grados por
+       píxel se ven unas 2,5 vueltas completas mientras está a la vista. */
+    var GRADOS_POR_PIXEL = 1.5;
     var pendiente = false;
 
     function girar() {

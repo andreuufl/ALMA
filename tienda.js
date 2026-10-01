@@ -271,7 +271,7 @@
     if (!/^\d{5}$/.test(cp)) return null;
     var n = parseInt(cp, 10);
     if (n >= TIENDA.cpBarcelona[0] && n <= TIENDA.cpBarcelona[1]) return { ok: true, txt: 'Entregamos en tu zona (Barcelona ciudad).' };
-    if (cp.slice(0, 2) === '08') return { ok: 'consultar', txt: 'Provincia de Barcelona: entregamos en muchas zonas; te confirmamos disponibilidad.' };
+    if (cp.slice(0, 2) === '08') return { ok: 'consultar', txt: 'Provincia de Barcelona: entregamos en muchas zonas; te confirmamos coste y disponibilidad.' };
     return { ok: false, txt: 'De momento no llegamos a este código postal. Escríbenos y buscamos una solución.' };
   }
 
@@ -314,7 +314,7 @@
       (modo === 'domicilio' ? '\n📍 ' + dir + ', ' + cp : '') +
       '\n👤 ' + nombre + ' · ' + tel +
       (form.elements.notas.value.trim() ? '\n📝 ' + form.elements.notas.value.trim() : '') +
-      '\n\n¿Me confirmáis disponibilidad?';
+      '\n\n¿Me confirmáis disponibilidad' + (modo === 'domicilio' ? ' y coste de envío' : '') + '?';
 
     var urlWhatsapp = 'https://wa.me/' + TIENDA.whatsapp + '?text=' + encodeURIComponent(txt);
 

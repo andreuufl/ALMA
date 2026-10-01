@@ -2760,13 +2760,6 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 }
 .antojo-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:24px;}
 .antojo-head h2{margin:4px 0 0;font-size:clamp(1.5rem,2.6vw,2rem);}
-.antojo-urgente{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--wine);color:var(--paper);
-  padding:8px 16px;border-radius:100px;font-size:.82rem;font-weight:600;
-  animation:antojoPulse 2.4s ease-in-out infinite;
-  white-space:nowrap;
-}
 .antojo-urgente::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold-soft);flex:none;}
 @keyframes antojoPulse{
   0%,100%{box-shadow:0 0 0 0 rgba(122,30,38,.35);}
