@@ -184,8 +184,7 @@
       '.banner-photo',
       '.marca-pagina',
       '.sello-marca',
-      '.sello-claim',
-      '.sello-lema'
+      '.sello-claim'
     ];
     groups.forEach(function (selector) {
       document.querySelectorAll(selector).forEach(function (el, i) {

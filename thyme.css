@@ -2457,19 +2457,12 @@ body:has(.sello) .glass-nav{background:rgba(251,248,239,.94);}
   color:var(--paper);
   text-wrap:balance;
 }
-.sello-lema{
-  position:relative;z-index:1;
-  margin:16px auto 0;max-width:860px;
-  font-size:.78rem;letter-spacing:.17em;text-transform:uppercase;
-  color:var(--gold-soft);
-  text-wrap:balance;
-}
+
 @media (max-width:760px){
   .sello{margin:134px 10px 0;border-radius:26px;padding:44px 18px 42px;}
   .sello + .hero{padding-top:40px;}
   .sello-rule{display:none;}
   .sello-claim{margin-top:26px;}
-  .sello-lema{font-size:.68rem;letter-spacing:.12em;margin-top:14px;}
 }
 
 /* ---------- Sello de marca en cabecera de página interior ----------
