@@ -48,13 +48,21 @@
   function abrirWhatsApp(url) {
     var nuevaVentana = null;
     try {
-      nuevaVentana = window.open(url, '_blank', 'noopener');
+      /* OJO: NO se puede pasar 'noopener' aqui. Con esa opcion el navegador
+         devuelve siempre null AUNQUE la pestania se haya abierto bien, y
+         entonces creiamos que estaba bloqueada y navegabamos tambien la
+         pestania actual: se abria WhatsApp dos veces y la confirmacion no
+         llegaba a verse nunca. Abrimos sin la opcion y anulamos el opener a
+         mano, que da la misma seguridad y si deja comprobar el resultado. */
+      nuevaVentana = window.open(url, '_blank');
     } catch (err) {
       nuevaVentana = null;
     }
-    if (!nuevaVentana) {
-      window.location.href = url;
+    if (nuevaVentana) {
+      try { nuevaVentana.opener = null; } catch (err2) {}
+      return true;
     }
+    return false;
   }
 
   /* Compartimos estas dos funciones con tienda.js (carrito de pedidos.html),
@@ -917,10 +925,12 @@
         mensaje: mensaje.trim()
       });
 
-      abrirWhatsApp(url);
-
+      /* La confirmacion se pinta ANTES de abrir WhatsApp: si abrimos primero,
+         el cliente cambia de pestania y no llega a verla nunca. */
       var successBox = document.querySelector('.form-success');
       if (successBox) successBox.classList.add('is-visible');
+
+      var abierto = abrirWhatsApp(url);
 
       var params = new URLSearchParams({
         nombre: nombre,
@@ -930,10 +940,12 @@
         tabla: tablaTexto
       });
 
-      /* Dejamos que se vea la animación de confirmación antes de navegar */
+      /* Si WhatsApp se abrio en otra pestania, esta sigue a la pagina de
+         gracias. Si el navegador lo bloqueo, usamos esta misma pestania
+         para ir a WhatsApp, que es lo que el cliente ha pedido. */
       setTimeout(function () {
-        window.location.href = 'gracias.html?' + params.toString();
-      }, 1300);
+        window.location.href = abierto ? ('gracias.html?' + params.toString()) : url;
+      }, abierto ? 1300 : 700);
     });
   }
 
@@ -1035,16 +1047,54 @@
         mensaje: mensaje.trim()
       });
 
-      abrirWhatsApp(url);
-
       var successBox = document.querySelector('[data-events-success]');
       if (successBox) successBox.classList.add('is-visible');
 
+      var abierto = abrirWhatsApp(url);
+
       var params = new URLSearchParams({ nombre: nombre, fecha: fechaLegible, tabla: tipo + ' — ' + invitados + ' invitados' });
       setTimeout(function () {
-        window.location.href = 'gracias.html?' + params.toString();
-      }, 1300);
+        window.location.href = abierto ? ('gracias.html?' + params.toString()) : url;
+      }, abierto ? 1300 : 700);
     });
+  })();
+
+  /* ============================================================
+     Espacio libre en la parte baja de la pantalla
+     ------------------------------------------------------------
+     El banner de cookies ocupa la zona baja hasta que el cliente
+     responde. Medimos su altura real y la publicamos como variable
+     CSS, para que la barra de "Ver pedido", el aviso flotante y los
+     botones redondos se coloquen justo encima y se puedan pulsar.
+     ============================================================ */
+  (function () {
+    var banner = document.querySelector('[data-cookie-banner]');
+    var raiz = document.documentElement;
+    if (!banner) { raiz.style.setProperty('--alto-cookies', '0px'); return; }
+
+    function medir() {
+      var visible = banner.classList.contains('is-visible');
+      var alto = 0;
+      if (visible) {
+        var caja = banner.getBoundingClientRect();
+        if (caja.height) alto = Math.round(caja.height) + 14;
+      }
+      raiz.style.setProperty('--alto-cookies', alto + 'px');
+    }
+
+    medir();
+    window.addEventListener('resize', medir, { passive: true });
+    window.addEventListener('orientationchange', medir, { passive: true });
+    if (window.ResizeObserver) {
+      try { new ResizeObserver(medir).observe(banner); } catch (err) {}
+    }
+    if (window.MutationObserver) {
+      try {
+        new MutationObserver(medir).observe(banner, { attributes: true, attributeFilter: ['class', 'hidden', 'style'] });
+      } catch (err2) {}
+    }
+    /* El banner aparece con una transicion; volvemos a medir al terminar. */
+    banner.addEventListener('transitionend', medir);
   })();
 
   /* ============================================================

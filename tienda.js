@@ -84,7 +84,7 @@
     if (p.veg) tags += '<span class="producto-tag producto-tag-veg">Vegetariano</span>';
     var enCarrito = carrito[p.id] ? '<span class="producto-en-carrito">' + carrito[p.id] + ' en tu pedido</span>' : '';
     return '' +
-      '<article class="producto" data-id="' + p.id + '">' +
+      '<article class="producto" id="' + p.id + '" data-id="' + p.id + '">' +
         '<button type="button" class="producto-media" data-abrir="' + p.id + '" aria-label="Ver detalles de ' + esc(p.nombre) + '">' +
           media(p) + (tags ? '<div class="producto-tags">' + tags + '</div>' : '') +
           '<span class="producto-ver">Ver ingredientes</span>' +
@@ -335,14 +335,23 @@
       });
     }
 
-    if (window.THYME && window.THYME.abrirWhatsApp) {
-      window.THYME.abrirWhatsApp(urlWhatsapp);
-    } else {
-      window.open(urlWhatsapp, '_blank', 'noopener');
-    }
-
+    /* Confirmacion primero, WhatsApp despues: si abrimos antes, el cliente
+       cambia de pestania y no llega a ver que el pedido se ha registrado. */
     $('[data-cesta-ok]').hidden = false;
     form.hidden = true;
+
+    var abierto = false;
+    if (window.THYME && window.THYME.abrirWhatsApp) {
+      abierto = window.THYME.abrirWhatsApp(urlWhatsapp);
+    } else {
+      var w = null;
+      try { w = window.open(urlWhatsapp, '_blank'); } catch (e) { w = null; }
+      if (w) { try { w.opener = null; } catch (e2) {} abierto = true; }
+    }
+    /* Solo si el navegador bloqueo la pestania nueva navegamos esta. */
+    if (!abierto) {
+      setTimeout(function () { window.location.href = urlWhatsapp; }, 700);
+    }
   }
 
   /* ---------------- AVISO FLOTANTE ---------------- */
@@ -431,7 +440,7 @@
     var calcular = function () {
       var tipo = $('[name="calc-tipo"]:checked', calc);
       var n = parseInt(personas.value, 10);
-      if (!tipo || !n || n < 1) { salida.innerHTML = 'Elige el tipo de cóctel e indica cuántas personas sois.'; return; }
+      if (!tipo || !n || n < 1) { salida.innerHTML = 'Indica si es comida o aperitivo y cuántas personas sois.'; return; }
       var min = tipo.value === 'comida' ? 12 : 6, max = tipo.value === 'comida' ? 15 : 8;
       var tablas = Math.ceil(n / (tipo.value === 'comida' ? 2 : 4));
       salida.innerHTML = 'Para <strong>' + n + ' personas</strong>: entre <strong>' + (min * n) + ' y ' + (max * n) + ' piezas</strong> (' + min + '–' + max + ' por persona), o unas <strong>' + tablas + ' tablas para compartir</strong> de 2 personas.';

@@ -973,6 +973,14 @@ button{font-family:inherit;}
   .reserva-form-side,.reserva-side{padding:34px 26px;}
   .field-row{grid-template-columns:1fr;}
 }
+/* En el formulario de eventos los campos cortos caben de dos en dos tambien
+   en movil. Apilados de uno en uno el formulario se hacia larguisimo. */
+@media (max-width:980px){
+  #events-form .field-row{grid-template-columns:1fr 1fr;gap:14px;}
+}
+@media (max-width:380px){
+  #events-form .field-row{grid-template-columns:1fr;}
+}
 
 /* =========================================================
    Instagram teaser
@@ -1059,7 +1067,7 @@ button{font-family:inherit;}
 }
 .footer-grid{
   display:grid;
-  grid-template-columns:1.3fr 1fr 1fr 1fr;
+  grid-template-columns:1.5fr 1fr 1fr;
   gap:40px;
   padding-bottom:50px;
   border-bottom:1px solid rgba(243,236,218,.14);
@@ -1074,6 +1082,11 @@ button{font-family:inherit;}
   text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:16px;
 }
 .footer-col ul{display:flex;flex-direction:column;gap:11px;}
+@media (max-width:620px){
+  /* "Explorar" tiene bastantes enlaces: en una sola fila cada uno alargaba
+     mucho el pie. A dos columnas ocupa la mitad sin perder ningun enlace. */
+  .footer-col-explorar ul{display:grid;grid-template-columns:1fr 1fr;gap:11px 18px;align-content:start;}
+}
 .footer-col a{text-decoration:none;font-size:.92rem;transition:color .2s ease;}
 .footer-col a:hover{color:var(--gold-soft);}
 .footer-social{display:flex;gap:12px;margin-top:18px;}
@@ -1096,8 +1109,11 @@ button{font-family:inherit;}
   .footer-grid{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:560px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:28px 16px;}
-  .footer-grid > div:first-child{grid-column:1 / -1;}
+  /* Al quitar la columna Legal (duplicada abajo) quedan tres bloques. En dos
+     columnas el contacto se cortaba por la derecha, asi que van apilados y es
+     la lista de "Explorar" la que se reparte en dos columnas. */
+  .footer-grid{grid-template-columns:1fr;gap:26px;}
+  .footer-grid > div:first-child{grid-column:auto;}
 }
 
 /* =========================================================
@@ -1105,7 +1121,8 @@ button{font-family:inherit;}
    ========================================================= */
 .whatsapp-float{
   position:fixed;
-  bottom:26px;right:26px;
+  bottom:calc(26px + var(--alto-cookies,0px));right:26px;
+  transition:bottom .35s var(--ease);
   z-index:400;
   width:60px;height:60px;
   border-radius:50%;
@@ -1119,7 +1136,7 @@ button{font-family:inherit;}
 
 .back-to-top{
   position:fixed;
-  bottom:98px;right:29px;
+  bottom:calc(98px + var(--alto-cookies,0px));right:29px;
   z-index:399;
   width:52px;height:52px;
   border-radius:50%;
@@ -1163,7 +1180,7 @@ button{font-family:inherit;}
   left:20px;right:20px;bottom:20px;
   max-width:640px;
   margin-inline:auto;
-  z-index:600;
+  z-index:1000;
   padding:22px 24px;
   border-radius:22px;
   background:var(--glass-bg-strong);
@@ -1476,8 +1493,10 @@ button{font-family:inherit;}
   .events-photos{max-width:420px;margin-inline:auto;}
 }
 @media (max-width:560px){
-  .events-photos{grid-template-columns:1fr;}
-  .events-photo-b{transform:none;}
+  /* Las fotos se quedan en dos columnas tambien en movil: apiladas ocupaban
+     casi 950px y alargaban muchisimo el final de la pagina. */
+  .events-photos{grid-template-columns:1fr 1fr;gap:12px;max-width:none;}
+  .events-photo-b{transform:translateY(18px);}
 }
 
 /* =========================================================
@@ -2250,24 +2269,25 @@ button{font-family:inherit;}
 .cesta-form .has-error .field-error{display:block;}
 
 .cart-bar{
-  position:fixed;left:16px;right:96px;bottom:18px;z-index:600;
+  position:fixed;left:16px;right:96px;bottom:calc(18px + var(--alto-cookies,0px));z-index:900;
+  transition:bottom .35s var(--ease);
   display:none;justify-content:space-between;align-items:center;gap:10px;
   padding:14px 18px;border-radius:100px;border:0;cursor:pointer;
   background:var(--espresso);color:var(--paper);font:inherit;font-size:.9rem;
   box-shadow:0 14px 30px rgba(42,27,16,.35);
 }
 .cart-bar strong{color:var(--gold-soft);}
-@media (max-width:980px){.cart-bar:not([hidden]){display:flex;}}
+@media (max-width:1300px){.cart-bar:not([hidden]){display:flex;}}
 
 .toast{
-  position:fixed;left:50%;bottom:28px;z-index:950;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  position:fixed;left:50%;bottom:calc(28px + var(--alto-cookies,0px));z-index:950;transform:translate(-50%,20px);opacity:0;pointer-events:none;
   display:flex;align-items:center;gap:14px;padding:12px 14px 12px 20px;border-radius:100px;
   background:var(--espresso);color:var(--paper);font-size:.88rem;box-shadow:0 18px 40px rgba(0,0,0,.3);
   transition:opacity .3s ease,transform .3s var(--ease);max-width:calc(100% - 32px);
 }
 .toast.is-visible{opacity:1;transform:translate(-50%,0);pointer-events:auto;}
 .toast button{border:0;background:var(--gold-soft);color:var(--espresso);font-weight:600;font-size:.8rem;padding:7px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;}
-@media (max-width:980px){.toast{bottom:84px;}}
+@media (max-width:1300px){.toast{bottom:calc(84px + var(--alto-cookies,0px));}}
 
 .entrega{background:var(--paper);}
 .entrega-wrap{align-items:center;}
@@ -2622,6 +2642,13 @@ a.carrusel-card:hover .carrusel-foto img{transform:scale(1.07);}
 .box-media{position:relative;min-height:100%;background:var(--cream-2);}
 .box-media picture,.box-media img,.box-media .producto-placeholder{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .box-media .producto-placeholder svg{width:38%;height:38%;}
+/* Las tablas son fotos cenitales cuadradas y la tabla entera es el producto:
+   en esta pagina la foto va en 1:1 para que no se recorte por los lados. */
+.box-grid-tablas .box-card{grid-template-columns:1fr 1fr;}
+.box-grid-tablas .box-media{aspect-ratio:1/1;min-height:0;}
+@media (max-width:760px){
+  .box-grid-tablas .box-card{grid-template-columns:1fr;}
+}
 .box-tag{position:absolute;top:14px;left:14px;}
 .box-num{position:absolute;bottom:14px;left:16px;font-family:var(--font-display);font-style:italic;font-size:1.4rem;color:var(--gold-deep);background:rgba(251,248,239,.85);padding:2px 10px;border-radius:10px;}
 .box-body{padding:26px 26px 24px;display:flex;flex-direction:column;}
