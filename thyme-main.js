@@ -141,8 +141,9 @@
         if (heroSceneEl) heroSceneEl.style.transform = '';
       }
       if (heroCopyEl) {
-        heroCopyEl.style.opacity = String(1 - progress * 0.85);
-        heroCopyEl.style.transform = 'translateY(' + (progress * 34) + 'px)';
+        /* Sin fundido: el texto mantiene su color al bajar.
+           Solo un desplazamiento suave para que acompañe al scroll. */
+        heroCopyEl.style.transform = 'translateY(' + (progress * 22) + 'px)';
       }
     }
     scrollTicking = false;
