@@ -2340,13 +2340,14 @@ button{font-family:inherit;}
 .domicilio-puntos li{position:relative;padding-left:26px;font-size:.95rem;}
 .domicilio-puntos li::before{content:'✓';position:absolute;left:0;color:var(--gold-soft);font-weight:700;}
 .domicilio-nota{font-size:.82rem;color:rgba(251,248,239,.55);margin:14px 0 0;}
-.domicilio-fotos{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;}
-.domicilio-fotos picture,.domicilio-fotos img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block;}
+.domicilio-fotos{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;align-items:start;}
+.domicilio-fotos picture{display:block;width:100%;aspect-ratio:3/4;}
+.domicilio-fotos img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block;}
 .domicilio-fotos picture:last-child{margin-top:40px;}
 @media (max-width:860px){
   .domicilio-card{grid-template-columns:1fr;}
   .domicilio-copy{padding:36px 26px;}
-  .domicilio-fotos{height:260px;}
+  .domicilio-fotos{height:auto;}
 }
 
 /* =========================================================
