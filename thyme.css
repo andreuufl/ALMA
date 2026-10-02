@@ -1555,7 +1555,33 @@ button{font-family:inherit;}
   .showcase-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media (max-width:560px){
-  .showcase-grid{grid-template-columns:1fr;}
+  /* En movil las cuatro fotos apiladas obligaban a bajar mucho. Pasan a
+     deslizarse con el dedo: se ve una entera y asoma la siguiente, que es
+     lo que invita a seguir pasando. Sin JavaScript. */
+  .showcase-grid:not(.menu-grid-2){
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    /* el carrusel se sale del margen del contenedor para que la foto
+       siguiente asome por el borde de la pantalla */
+    padding-inline:24px;
+    margin-inline:-24px;
+    scroll-padding-inline:24px;
+    padding-block:4px 6px;
+  }
+  .showcase-grid:not(.menu-grid-2)::-webkit-scrollbar{display:none;}
+  .showcase-grid:not(.menu-grid-2) .showcase-card{
+    flex:0 0 80%;
+    scroll-snap-align:center;
+  }
+  /* al deslizar no tiene sentido el efecto de levantar al pasar el raton */
+  .showcase-grid:not(.menu-grid-2) .showcase-card:hover{transform:none;}
+
+  .showcase-grid.menu-grid-2{grid-template-columns:1fr;}
 }
 
 /* =========================================================
