@@ -366,6 +366,7 @@
   (function () {
     var imgEl = document.querySelector('[data-hero-photo-img]');
     var sourceEl = document.querySelector('[data-hero-photo-source]');
+    var avifEl = document.querySelector('[data-hero-photo-avif]');
     if (!imgEl) return;
 
     var hour = new Date().getHours();
@@ -399,6 +400,7 @@
 
     var jpg = 'assets/img/' + photo.base + '.jpg';
     var webp = 'assets/img/' + photo.base + '.webp';
+    var avif = 'assets/img/' + photo.base + '.avif';
 
     /* Si ya es la que está precargada, no hace falta tocar nada */
     if (imgEl.getAttribute('src') === jpg) return;
@@ -406,6 +408,7 @@
     imgEl.style.transition = 'opacity .4s ease';
     imgEl.style.opacity = '0';
     var swap = function () {
+      if (avifEl) avifEl.srcset = avif;
       if (sourceEl) sourceEl.srcset = webp;
       imgEl.src = jpg;
       imgEl.alt = photo.alt;
@@ -1104,6 +1107,9 @@
     var monedas = document.querySelectorAll('[data-moneda]');
     if (!monedas.length) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    /* Si el navegador sabe animar con el scroll por CSS, lo hace el solo y
+       mucho mas fino: nos ahorramos escuchar el scroll desde JavaScript. */
+    if (window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()')) return;
 
     /* Grados de giro por píxel desplazado. El sello está arriba del todo y
        sale de pantalla hacia los 760px de scroll, así que con 1,5 grados por

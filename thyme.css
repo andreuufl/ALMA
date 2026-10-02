@@ -2904,3 +2904,75 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
    como una unidad y la página no parezca una sola masa de contenido. */
 .showcase-section{background:var(--paper);border-block:1px solid var(--line);}
 #faq{background:var(--paper);border-block:1px solid var(--line);}
+
+/* =========================================================
+   EFECTOS MODERNOS (2026)
+   Dos cosas que antes hacia JavaScript y ahora hace el
+   navegador solo: las transiciones entre paginas y las
+   animaciones ligadas al scroll. Van sobre la tarjeta
+   grafica, asi que el movil no se entera.
+   Los navegadores que no lo soporten simplemente no lo
+   aplican: la web sigue funcionando igual.
+   ========================================================= */
+
+/* --- 1. Cambio de pagina sin parpadeo en blanco --- */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: vt-sale .26s ease both; }
+::view-transition-new(root) { animation: vt-entra .34s var(--ease) both; }
+@keyframes vt-sale  { to   { opacity: 0; } }
+@keyframes vt-entra { from { opacity: 0; transform: translateY(10px); } }
+
+/* La cabecera y el logo no parpadean: se quedan fijos de una pagina a otra. */
+.site-header { view-transition-name: cabecera; }
+.site-header .brand-mark { view-transition-name: sello; }
+.topbar      { view-transition-name: avisos; }
+
+/* --- 2. Animaciones ligadas al scroll, en CSS --- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* El sello gira solo con el scroll de la pagina, sin JS. */
+    .moneda {
+      animation: girar-sello linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 900px;
+    }
+    @keyframes girar-sello { to { transform: rotateY(1080deg); } }
+
+    /* Las fotos entran con un leve acercamiento mientras suben. */
+    .showcase-media img,
+    .events-photo img,
+    .domicilio-fotos img {
+      animation: foto-entra linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+    @keyframes foto-entra {
+      from { transform: scale(1.07); opacity: .55; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    /* La franja de confianza se despliega al asomar. */
+    .trust-strip li {
+      animation: sube-suave linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    @keyframes sube-suave {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+}
+
+/* --- 3. Apertura suave de la ventana de fotos y la cesta --- */
+@supports (transition-behavior: allow-discrete) {
+  .lightbox, .cesta {
+    transition: opacity .3s var(--ease), overlay .3s allow-discrete, display .3s allow-discrete;
+  }
+}
+
+/* --- 4. Titulares que no parten mal --- */
+h1, h2, .hero-title { text-wrap: balance; }
+.hero-lede, .section-head p { text-wrap: pretty; }

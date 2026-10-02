@@ -29,7 +29,7 @@
   };
   function media(p, cls) {
     if (p.foto) {
-      return '<picture><source srcset="assets/img/' + p.foto + '.webp" type="image/webp"><img src="assets/img/' + p.foto + '.jpg" alt="' + esc(p.nombre) + '" loading="lazy" width="800" height="800"></picture>';
+      return '<picture><source srcset="assets/img/' + p.foto + '.avif" type="image/avif"><source srcset="assets/img/' + p.foto + '.webp" type="image/webp"><img src="assets/img/' + p.foto + '.jpg" alt="' + esc(p.nombre) + '" loading="lazy" width="800" height="800"></picture>';
     }
     return '<div class="producto-placeholder ' + (cls || '') + '" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">' + (ICONOS[p.cat] || '') + '</svg><span>Próximamente</span><small>' + esc(p.nombre) + '</small></div>';
   }
