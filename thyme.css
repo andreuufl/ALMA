@@ -377,6 +377,8 @@ button{font-family:inherit;}
   box-shadow:var(--glass-shadow);
   opacity:0;visibility:hidden;transform:translateY(-8px);
   transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s;
+
+  pointer-events:none;
 }
 .nav-dropdown-menu::before{
   content:'';position:absolute;top:-14px;left:0;right:0;height:14px;
@@ -390,7 +392,7 @@ button{font-family:inherit;}
 .nav-dropdown-menu a:hover{background:rgba(156,107,46,.1);color:var(--wine-texto);}
 .nav-dropdown:hover > a::before{transform:rotate(225deg);margin-top:-1px;}
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+.nav-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;}
 
 @media (max-width: 480px){
   .brand{gap:10px;}
@@ -430,12 +432,16 @@ button{font-family:inherit;}
     transform:translateY(-12px);
     opacity:0;
     visibility:hidden;
+    /* Decisivo: mientras está cerrado NO captura el dedo, pase lo que pase
+       con la transición. Sin esto, el panel invisible se tragaba los toques
+       y te mandaba a la página del enlace que hubiera debajo del dedo. */
+    pointer-events:none;
     transition:transform .35s var(--ease), opacity .35s var(--ease), visibility .35s;
   }
   .nav-links a{padding:12px 10px;border-radius:12px;}
   .nav-links a::after{display:none;}
   .nav-links a:hover{background:rgba(42,27,16,.06);}
-  .site-header.nav-open .nav-links{transform:translateY(0);opacity:1;visibility:visible;}
+  .site-header.nav-open .nav-links{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto;}
   .nav-toggle{display:flex;}
   .nav-actions .btn-glass{display:none;}
 
