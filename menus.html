@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=52">
+<link rel="stylesheet" href="thyme.css?v=61">
 
 <script type="application/ld+json">
 {
@@ -859,6 +859,13 @@
     <button type="button" class="lightbox-close" data-lightbox-close aria-label="Cerrar">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
+    <button type="button" class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Foto anterior" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Foto siguiente" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <span class="lightbox-contador" data-lightbox-contador aria-live="polite" hidden></span>
     <div class="lightbox-media">
       <img data-lightbox-img alt="">
     </div>
@@ -892,6 +899,6 @@
   </div>
 </div>
 
-<script src="thyme-main.js?v=21"></script>
+<script src="thyme-main.js?v=22"></script>
 </body>
 </html>
