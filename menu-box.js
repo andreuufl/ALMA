@@ -33,7 +33,7 @@
   };
   function media(p) {
     if (p.foto) return '<picture><source srcset="assets/img/' + p.foto + '.webp" type="image/webp"><img src="assets/img/' + p.foto + '.jpg" alt="' + esc(p.nombre) + '" loading="lazy" width="800" height="800"></picture>';
-    return '<div class="producto-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">' + (ICONOS[p.cat] || '') + '</svg><span>Próximamente</span><small>' + esc(p.nombre) + '</small></div>';
+    return '<div class="producto-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">' + (ICONOS[p.cat] || '') + '</svg><span>THYME</span><small>' + esc(p.nombre) + '</small></div>';
   }
 
   var lista = menu.productos.map(function (id) { return byId[id]; }).filter(Boolean);

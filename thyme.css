@@ -1974,26 +1974,52 @@ button{font-family:inherit;}
 .producto-media picture,.producto-media img{width:100%;height:100%;object-fit:cover;display:block;}
 .producto-media img{transition:transform .6s var(--ease);filter:saturate(1.08) contrast(1.05);}
 .producto:hover .producto-media img{transform:scale(1.04);}
+/* Placa de marca para los productos que aun no tienen foto.
+   Antes era un icono gris con la palabra "Proximamente", que ademas
+   confundia: el producto SI se vende, lo que falta es la foto. Ahora es
+   una placa compuesta, con el nombre bien puesto y la textura de la casa. */
 .producto-placeholder{
-  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
   background:
-    radial-gradient(circle at 30% 20%, rgba(201,154,79,.24), transparent 55%),
-    linear-gradient(150deg,var(--cream-2),var(--cream));
+    radial-gradient(ellipse at 50% 24%, rgba(201,154,79,.20), transparent 62%),
+    repeating-linear-gradient(135deg, rgba(90,66,36,.040) 0 1px, transparent 1px 10px),
+    linear-gradient(165deg, var(--cream-2) 0%, var(--paper) 52%, var(--cream-2) 100%);
   color:var(--gold);
   position:relative;
+  padding:16% 12%;
+  text-align:center;
+  overflow:hidden;
+}
+/* filete fino arriba y abajo, como una tarjeta impresa */
+.producto-placeholder::after{
+  content:'';position:absolute;inset:11% 9%;
+  border-top:1px solid rgba(156,107,46,.26);
+  border-bottom:1px solid rgba(156,107,46,.26);
+  pointer-events:none;
 }
 .producto-placeholder::before{
-  content:'';position:absolute;width:64px;height:64px;border-radius:50%;
-  border:1px solid rgba(156,107,46,.28);
+  content:'';position:absolute;width:54%;aspect-ratio:1/1;border-radius:50%;
+  border:1px solid rgba(156,107,46,.20);
+  top:50%;left:50%;transform:translate(-50%,-52%);
 }
-.producto-placeholder svg{width:26%;height:26%;position:relative;z-index:1;}
+.producto-placeholder svg{width:17%;height:17%;position:relative;z-index:1;opacity:.5;margin-bottom:9px;}
 .producto-placeholder span{
-  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
-  color:var(--gold-deep);opacity:.85;position:relative;z-index:1;
+  font-size:.60rem;letter-spacing:.30em;text-transform:uppercase;font-weight:700;
+  color:var(--gold-deep);opacity:.78;position:relative;z-index:1;
+  padding-left:.30em;
 }
+/* En la rejilla de tienda el nombre ya va justo debajo de la foto, asi que
+   en la placa sobra: se quedan el sello y la filigrana. En las paginas de box
+   el texto va al lado, no debajo, y alli el nombre si hace falta. */
+.producto-media .producto-placeholder small{display:none;}
+.producto-media .producto-placeholder svg{width:22%;height:22%;margin-bottom:12px;}
+.producto-media .producto-placeholder span{font-size:.64rem;}
+
 .producto-placeholder small{
-  display:block;margin-top:-6px;font-family:var(--font-display);font-style:italic;
-  font-size:.78rem;color:var(--espresso-50);font-weight:400;letter-spacing:0;text-transform:none;
+  display:block;margin-top:7px;font-family:var(--font-display);font-style:normal;
+  font-size:clamp(.92rem,2.1vw,1.12rem);line-height:1.22;
+  color:var(--espresso);font-weight:500;letter-spacing:0;text-transform:none;
+  position:relative;z-index:1;
 }
 .producto-tags{position:absolute;top:12px;left:12px;display:flex;flex-wrap:wrap;gap:6px;}
 .producto-tag{
@@ -3002,3 +3028,98 @@ body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
 /* --- 4. Titulares que no parten mal --- */
 h1, h2, .hero-title { text-wrap: balance; }
 .hero-lede, .section-head p { text-wrap: pretty; }
+
+/* =========================================================
+   GALERÍA
+   Rejilla de alturas distintas para que no parezca un catálogo
+   de fichas. Cada foto se abre a pantalla completa al pulsar.
+   ========================================================= */
+.galeria-seccion{background:var(--cream);}
+
+/* Mosaico de verdad: en rejilla, las fotos bajas dejaban hueco debajo
+   porque la fila se alinea con la mas alta. Con columnas, cada foto se
+   apoya en la anterior y no queda aire muerto. */
+.galeria-grid{
+  columns:3;
+  column-gap:18px;
+}
+.galeria-item{
+  position:relative;
+  display:block;
+  width:100%;
+  break-inside:avoid;
+  -webkit-column-break-inside:avoid;
+  margin-bottom:18px;
+  border:0;padding:0;margin:0;
+  background:var(--cream-2);
+  border-radius:20px;
+  overflow:hidden;
+  cursor:pointer;
+  aspect-ratio:1/1;
+  box-shadow:0 14px 30px rgba(42,27,16,.12);
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+/* alturas alternas: da ritmo y evita la cuadrícula plana */
+.galeria-item:nth-child(7n+1),
+.galeria-item:nth-child(7n+4){aspect-ratio:4/5;}
+.galeria-item:nth-child(7n+3),
+.galeria-item:nth-child(7n+6){aspect-ratio:5/4;}
+.galeria-item:nth-child(7n+2){aspect-ratio:3/4;}
+
+.galeria-item img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .7s var(--ease);}
+.galeria-item:hover{transform:translateY(-4px);box-shadow:0 26px 50px rgba(42,27,16,.2);}
+.galeria-item:hover img{transform:scale(1.06);}
+.galeria-item:focus-visible{outline:3px solid var(--gold-deep);outline-offset:3px;}
+
+.galeria-item::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(24,15,9,.80) 0%, rgba(24,15,9,.22) 44%, rgba(24,15,9,0) 70%);
+  opacity:0;transition:opacity .35s ease;
+}
+.galeria-item:hover::after,
+.galeria-item:focus-visible::after{opacity:1;}
+
+.galeria-pie{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:flex;flex-direction:column;gap:3px;
+  padding:16px 18px 17px;
+  text-align:left;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .35s ease, transform .35s var(--ease);
+}
+.galeria-item:hover .galeria-pie,
+.galeria-item:focus-visible .galeria-pie{opacity:1;transform:none;}
+.galeria-etiqueta{
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--gold-soft);
+}
+.galeria-pie strong{
+  font-family:var(--font-display);font-weight:500;
+  font-size:1rem;line-height:1.2;color:var(--paper);
+}
+
+/* En tactil no hay raton que pase por encima: el pie se ve siempre */
+@media (hover:none){
+  .galeria-item::after{opacity:1;}
+  .galeria-pie{opacity:1;transform:none;}
+}
+
+.galeria-cierre{
+  margin-top:46px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.galeria-cierre p{font-family:var(--font-display);font-size:1.26rem;color:var(--espresso);}
+.galeria-botones{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+
+@media (max-width:900px){
+  .galeria-grid{columns:2;column-gap:14px;}
+  .galeria-item{margin-bottom:14px;}
+}
+@media (max-width:520px){
+  .galeria-grid{columns:2;column-gap:10px;}
+  .galeria-item{margin-bottom:10px;}
+  .galeria-pie{padding:11px 12px 12px;}
+  .galeria-pie strong{font-size:.82rem;}
+  .galeria-etiqueta{font-size:.55rem;letter-spacing:.12em;}
+}
