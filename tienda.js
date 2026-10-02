@@ -125,10 +125,33 @@
     return lista;
   }
 
+  /* En movil mostramos solo las primeras fichas; el resto se despliega con el
+     boton "Ver mas productos". Con 25 productos la pagina no se acababa nunca. */
+  var LIMITE_MOVIL = 8;
+  var verTodos = false;
+  function esMovil() {
+    return window.matchMedia('(max-width: 560px)').matches;
+  }
+
   function render() {
     var lista = filtrados();
-    grid.innerHTML = lista.length ? lista.map(tarjeta).join('') :
+    var visibles = lista;
+    var ocultos = 0;
+    if (esMovil() && !verTodos && lista.length > LIMITE_MOVIL) {
+      visibles = lista.slice(0, LIMITE_MOVIL);
+      ocultos = lista.length - LIMITE_MOVIL;
+    }
+    grid.innerHTML = lista.length ? visibles.map(tarjeta).join('') :
       '<div class="catalogo-vacio"><p>No hay productos con estos filtros.</p><button type="button" class="btn btn-glass" data-reset>Quitar filtros</button></div>';
+
+    var cajaMas = $('[data-catalogo-mas]');
+    if (cajaMas) {
+      cajaMas.hidden = !ocultos;
+      if (ocultos) {
+        $('[data-catalogo-mas-btn]').textContent = 'Ver ' + ocultos + (ocultos === 1 ? ' producto más' : ' productos más');
+      }
+    }
+
     var c = CATEGORIAS[estado.cat];
     $('[data-catalogo-titulo]').textContent = c.titulo;
     $('[data-catalogo-intro]').textContent = c.intro;
@@ -368,7 +391,7 @@
   document.addEventListener('click', function (e) {
     var t = e.target, el;
     if ((el = t.closest('[data-cat]'))) {
-      estado.cat = el.getAttribute('data-cat'); render();
+      estado.cat = el.getAttribute('data-cat'); verTodos = false; render();
       var m = $('.catalogo-main');
       if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
@@ -378,8 +401,9 @@
       $$('[data-filtro]').forEach(function (i) { i.checked = false; });
       var s = $('[data-buscar]'); if (s) s.value = '';
       var o = $('[data-orden]'); if (o) o.value = 'recomendado';
-      render(); return;
+      verTodos = false; render(); return;
     }
+    if (t.closest('[data-catalogo-mas-btn]')) { verTodos = true; render(); return; }
     if ((el = t.closest('[data-anadir]'))) { anadir(el.getAttribute('data-anadir'), 1); return; }
     if ((el = t.closest('[data-abrir]'))) { e.preventDefault(); abrirFicha(el.getAttribute('data-abrir')); return; }
     if ((el = t.closest('[data-ficha-qty]'))) {
@@ -404,12 +428,12 @@
   });
 
   $$('[data-filtro]').forEach(function (i) {
-    i.addEventListener('change', function () { estado[i.getAttribute('data-filtro')] = i.checked; render(); });
+    i.addEventListener('change', function () { estado[i.getAttribute('data-filtro')] = i.checked; verTodos = false; render(); });
   });
   var orden = $('[data-orden]');
-  if (orden) orden.addEventListener('change', function () { estado.orden = orden.value; render(); });
+  if (orden) orden.addEventListener('change', function () { estado.orden = orden.value; verTodos = false; render(); });
   var buscar = $('[data-buscar]');
-  if (buscar) buscar.addEventListener('input', function () { estado.q = buscar.value; render(); });
+  if (buscar) buscar.addEventListener('input', function () { estado.q = buscar.value; verTodos = false; render(); });
 
   /* Comprobador de código postal (barra superior y cesta) */
   $$('[data-cp-check]').forEach(function (box) {

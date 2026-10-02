@@ -1465,12 +1465,6 @@ button{font-family:inherit;}
   .paths-grid{grid-template-columns:1fr;gap:18px;}
 }
 .events-copy p{color:var(--espresso-70);font-size:1.02rem;}
-.events-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:16px 0 0;padding:0;}
-.events-tags li{
-  font-size:.76rem;font-weight:600;letter-spacing:.03em;color:var(--wine-deep);
-  background:rgba(122,30,38,.08);border:1px solid rgba(122,30,38,.16);
-  padding:5px 12px;border-radius:100px;
-}
 .events-facts{
   display:flex;gap:28px;flex-wrap:wrap;
   margin:26px 0 30px;
@@ -2009,6 +2003,12 @@ button{font-family:inherit;}
 .qty input{width:30px;border:0;text-align:center;font:inherit;font-weight:600;background:none;-moz-appearance:textfield;}
 .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 .producto-btn{flex:1;padding:10px 14px;font-size:.9rem;}
+/* En movil el catalogo arranca con unas pocas fichas y el resto se despliega
+   con este boton: 25 productos de golpe hacian una pagina sin fin. */
+.catalogo-mas{margin-top:18px;}
+.catalogo-mas[hidden]{display:none;}
+@media (min-width:561px){.catalogo-mas{display:none;}}
+
 .catalogo-vacio{grid-column:1/-1;text-align:center;color:var(--espresso-50);padding:40px 0;}
 
 .catalogo-side{position:sticky;top:130px;display:grid;gap:18px;}
@@ -2044,13 +2044,21 @@ button{font-family:inherit;}
   .catalogo-side .side-card:not(.side-calc){display:none;}
 }
 @media (max-width:560px){
-  .producto-grid{grid-template-columns:1fr 1fr;gap:12px;}
-  .producto-body{padding:12px;}
-  .producto-body h3{font-size:.98rem;}
+  /* Catalogo compacto: 25 fichas de 410px hacian una pagina interminable.
+     Foto algo mas baja, textos ajustados y precio en una sola linea. */
+  .producto-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .producto-media{aspect-ratio:4/3;}
+  .producto-body{padding:10px 10px 11px;}
+  .producto-body h3{font-size:.95rem;line-height:1.18;margin-bottom:4px;}
   .producto-desc{display:none;}
-  .producto-precio{flex-direction:column;gap:0;}
-  .producto-precio strong{font-size:1.15rem;}
+  .producto-formato{font-size:.62rem;letter-spacing:.06em;line-height:1.25;margin-bottom:4px;}
+  .producto-alergenos{margin-bottom:6px;}
+  .producto-precio{flex-direction:row;align-items:baseline;gap:6px;flex-wrap:wrap;margin-bottom:9px;}
+  .producto-precio strong{font-size:1.08rem;}
+  .producto-precio span{font-size:.7rem;}
+  .producto-en-carrito{font-size:.72rem;margin-top:6px;}
   .producto-acciones{flex-direction:column;}
+  .producto-btn{padding:9px 10px;font-size:.82rem;}
   .qty{justify-content:space-between;}
   .cat-chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:-24px;padding-inline:24px;scrollbar-width:none;}
   .cat-chip{flex:none;}
@@ -2689,7 +2697,12 @@ a.carrusel-card:hover .carrusel-foto img{transform:scale(1.07);}
   .box-card{grid-template-columns:1fr;}
   .box-media{aspect-ratio:4/3;min-height:0;}
   .box-body{padding:20px 18px;}
-  .box-otro{padding:30px 26px;}
+  /* Apilado bajo la tarjeta oscura, este enlace se fundia con ella y parecia
+     un bloque negro sin explicacion. Le damos una separacion clara arriba y
+     una flecha, para que se lea como lo que es: un enlace a otra pagina. */
+  .box-otro{padding:26px 24px 28px;border-top:1px solid rgba(201,154,79,.32);}
+  .box-otro .kicker{font-size:.9rem;margin-bottom:6px;}
+  .box-otro strong{font-size:1.35rem;}
   .box-banner{padding-top:164px;}
 }
 body:has(.box-banner) .glass-nav{background:rgba(251,248,239,.94);}
