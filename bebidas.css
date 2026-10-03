@@ -1,0 +1,15 @@
+/* Barra de bebidas · fotos de producto */
+.bebidas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:4px 0 26px;padding:0;list-style:none;}
+.bebidas-grid li{display:flex;flex-direction:column;gap:6px;}
+.bebida-foto{display:block;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line, rgba(29,25,19,.1));margin-bottom:6px;}
+.bebida-foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.bebidas-grid li:hover .bebida-foto img{transform:scale(1.04);}
+.bebida-sinfoto{display:flex;align-items:center;justify-content:center;background:rgba(165,125,67,.08);color:var(--gold-deep, #8a6a3a);}
+.bebida-sinfoto svg{width:38%;height:38%;}
+.bebida-nombre{font-size:var(--t-md, .95rem);line-height:1.3;}
+.bebidas-grid .menu-price{margin-left:0;}
+.bebidas-banner-foto{border-radius:22px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(29,25,19,.35);}
+.bebidas-banner-foto img{width:100%;height:auto;display:block;}
+@media (max-width:520px){
+  .bebidas-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+}

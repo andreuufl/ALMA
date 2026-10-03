@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="THYME Express Catering">
 <meta property="og:title" content="Barra de Bebidas para eventos en Barcelona | THYME">
 <meta property="og:description" content="Refrescos, zumos, cervezas, vinos y cavas para tu evento en Barcelona. Precios por unidad y por botella, con entrega junto a tu catering.">
-<meta property="og:image" content="https://andreuufl.github.io/THYME/assets/img/tabla-mixta-square.jpg">
+<meta property="og:image" content="https://andreuufl.github.io/THYME/assets/img/barra-zumos-card.jpg">
 <meta property="og:image:alt" content="Catering THYME para eventos en Barcelona">
 <meta property="og:url" content="https://andreuufl.github.io/THYME/barra-bebidas.html">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Barra de Bebidas para eventos en Barcelona | THYME">
 <meta name="twitter:description" content="Refrescos, zumos, cervezas, vinos y cavas para tu evento en Barcelona. Precios por unidad y por botella, con entrega junto a tu catering.">
-<meta name="twitter:image" content="https://andreuufl.github.io/THYME/assets/img/tabla-mixta-square.jpg">
+<meta name="twitter:image" content="https://andreuufl.github.io/THYME/assets/img/barra-zumos-card.jpg">
 
 <!-- Favicons -->
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -37,6 +37,7 @@
 
 <link rel="stylesheet" href="thyme.css?v=65">
 <link rel="stylesheet" href="thyme-2026.css?v=2">
+<link rel="stylesheet" href="bebidas.css?v=1">
 
 <script type="application/ld+json">
 {
@@ -91,7 +92,7 @@
 
 <main id="main">
 
-  <section class="catalogo-banner box-banner box-banner-solo">
+  <section class="catalogo-banner box-banner">
     <div class="container catalogo-banner-grid">
       <div>
         <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a> <span>/</span> <a href="menus.html">Menús</a> <span>/</span> <strong>Barra de bebidas</strong></nav>
@@ -100,7 +101,7 @@
         <p class="catalogo-banner-lede">Completa tu catering con la bebida ya resuelta: refrescos, zumos, agua y cerveza por unidad, y nuestra selección de vinos y cavas por botella.</p>
         <div class="box-banner-datos"><span><strong>Se suma</strong> a cualquier box</span><span><strong>Encargo</strong> 2 días hábiles</span><span><strong>Entrega</strong> Barcelona y alrededores</span></div>
       </div>
-      
+      <div class="bebidas-banner-foto"><picture><source srcset="assets/img/barra-zumos-card.webp" type="image/webp"><img src="assets/img/barra-zumos-card.jpg" alt="Vasos de zumos naturales con fruta fresca" width="1000" height="525" fetchpriority="high"></picture></div>
     </div>
   </section>
 
@@ -119,7 +120,7 @@
               <h2>Refrescos, agua y cerveza</h2>
               <p>Precio por unidad. Se entregan fríos si nos lo indicas al hacer el pedido.</p>
             </header>
-            <ul class="menu-options menu-options-compact"><li><span>Zumos</span><span class="menu-price">1,90€</span></li><li><span>Coca-Cola / Zero</span><span class="menu-price">2,00€</span></li><li><span>Fanta / Sprite</span><span class="menu-price">2,00€</span></li><li><span>Agua con/sin gas</span><span class="menu-price">1,50€</span></li><li><span>Cerveza Estrella</span><span class="menu-price">2,30€</span></li></ul>
+            <ul class="bebidas-grid"><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-zumos.webp" type="image/webp"><img src="assets/img/bebida-zumos.jpg" alt="Zumos naturales variados" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Zumos</span><span class="menu-price">1,90€</span></li><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-cocacola.webp" type="image/webp"><img src="assets/img/bebida-cocacola.jpg" alt="Lata de Coca-Cola" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Coca-Cola / Zero</span><span class="menu-price">2,00€</span></li><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-fanta.webp" type="image/webp"><img src="assets/img/bebida-fanta.jpg" alt="Lata de Fanta naranja" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Fanta / Sprite</span><span class="menu-price">2,00€</span></li><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-agua.webp" type="image/webp"><img src="assets/img/bebida-agua.jpg" alt="Botella de agua" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Agua con/sin gas</span><span class="menu-price">1,50€</span></li><li><span class="bebida-foto bebida-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h10v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M16 10h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><path d="M6 7a3 3 0 0 1 3-3 3 3 0 0 1 5 0 2.5 2.5 0 0 1 2 3"/></svg></span><span class="bebida-nombre">Cerveza Estrella</span><span class="menu-price">2,30€</span></li></ul>
           </article>
 
           <article class="menu-block">
@@ -129,7 +130,7 @@
               <h2>Vinos y cavas</h2>
               <p>Precio por botella. Nuestra selección habitual para acompañar tablas y bocados.</p>
             </header>
-            <ul class="menu-options menu-options-compact"><li><span>Vino tinto reserva</span><span class="menu-price">18€</span></li><li><span>Vino blanco Albariño</span><span class="menu-price">20€</span></li><li><span>Cava Codorníu N.P.U.</span><span class="menu-price">18€</span></li><li><span>Cava Juvé &amp; Camps</span><span class="menu-price">20€</span></li></ul>
+            <ul class="bebidas-grid"><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-vino-tinto.webp" type="image/webp"><img src="assets/img/bebida-vino-tinto.jpg" alt="Botella de vino tinto Marqués de Murrieta" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Vino tinto reserva</span><span class="menu-price">18€</span></li><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-vino-blanco.webp" type="image/webp"><img src="assets/img/bebida-vino-blanco.jpg" alt="Botella de vino blanco" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Vino blanco Albariño</span><span class="menu-price">20€</span></li><li><span class="bebida-foto bebida-sinfoto" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4l1.6 2.4A4 4 0 0 1 16 10.6V20a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-9.4a4 4 0 0 1 .4-1.7L10 6z"/><path d="M8 13h8"/></svg></span><span class="bebida-nombre">Cava Codorníu N.P.U.</span><span class="menu-price">18€</span></li><li><span class="bebida-foto"><picture><source srcset="assets/img/bebida-cava-juve.webp" type="image/webp"><img src="assets/img/bebida-cava-juve.jpg" alt="Botella de cava Juvé &amp; Camps" loading="lazy" width="400" height="400"></picture></span><span class="bebida-nombre">Cava Juvé &amp; Camps</span><span class="menu-price">20€</span></li></ul>
           </article>
 
       </div>

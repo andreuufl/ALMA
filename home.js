@@ -107,6 +107,7 @@
         if (elTit) elTit.textContent = c.getAttribute('data-title');
         if (elDesc) elDesc.textContent = c.getAttribute('data-desc');
         if (elLink) elLink.setAttribute('href', c.getAttribute('href'));
+        if (elLink) { if (!elLink.dataset.def) elLink.dataset.def = elLink.firstChild.textContent; elLink.firstChild.textContent = c.getAttribute('data-cta') || elLink.dataset.def; }
         info.classList.remove('is-swapping');
       }, reduceMotion ? 0 : 220);
     }
