@@ -33,9 +33,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap">
 
-<link rel="stylesheet" href="thyme.css?v=64">
+<link rel="stylesheet" href="thyme.css?v=65">
+<link rel="stylesheet" href="thyme-2026.css?v=1">
 
 <script type="application/ld+json">
 {
@@ -481,42 +482,28 @@
   </div>
 </div>
 
-<header class="site-header site-header-topbar" data-header>
-  <div class="container">
-    <nav class="glass-nav" aria-label="Navegación principal">
-      <a href="index.html" class="brand" aria-label="THYME Express Catering, ir al inicio">
-        <picture><source srcset="logo-thyme.webp" type="image/webp"><img class="brand-mark" src="logo-thyme.jpg" alt="" width="58" height="58"></picture>
-        <span class="brand-text">
-          <span class="brand-word">THYME</span>
-          <span class="brand-sub">Express<br>Catering</span>
-        </span>
-      </a>
-      <ul class="nav-links" id="nav-links">
+<header class="site-header site-header-topbar x-header" data-header>
+  <div class="x-wrap x-header-in">
+    <a href="index.html" class="x-brand" aria-label="THYME Express Catering, ir al inicio">
+      <picture><source srcset="logo-thyme.webp" type="image/webp"><img src="logo-thyme.jpg" alt="" width="44" height="44"></picture>
+      <span class="x-brand-txt"><b>THYME</b><small>Express Catering</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links x-nav" id="nav-links">
         <li><a href="index.html#eventos">Eventos</a></li>
-        <li><a href="#tablas">Degustaciones</a></li>
+        <li><a href="index.html#boxes">Boxes</a></li>
         <li><a href="menus.html" aria-current="page">Menús</a></li>
-        <li><a href="galeria.html">Galería</a></li>
-        <li class="nav-dropdown">
-          <a href="coffee-break.html">Boxes</a>
-          <ul class="nav-dropdown-menu">
-            <li><a href="coffee-break.html">Coffee Break Box</a></li>
-            <li><a href="cocktail-box.html">Cocktail Box</a></li>
-            <li><a href="tabla-box.html">Tabla Box</a></li>
-            <li><a href="barra-bebidas.html">Barra de bebidas</a></li>
-          </ul>
-        </li>
         <li><a href="extra-service-premium.html">Service Premium</a></li>
+        <li><a href="galeria.html">Galería</a></li>
         <li><a href="pedidos.html">A domicilio</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li class="nav-cta-mobile"><a class="btn btn-primary btn-block" href="index.html#reserva">Reservar mesa</a><a class="btn btn-outline btn-block" href="pedidos.html">Pedir a domicilio</a></li>
+        <li class="x-nav-cta"><a class="x-btn x-btn-dark" href="index.html#eventos">Pedir presupuesto</a><a class="x-btn x-btn-line" href="index.html#reserva">Reservar mesa privada</a></li>
       </ul>
-      <div class="nav-actions">
-        <a class="btn btn-glass" href="index.html#reserva">Reservar</a>
-        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-          <span></span>
-        </button>
-      </div>
     </nav>
+    <div class="x-header-actions">
+      <a class="x-btn x-btn-dark x-btn-sm" href="index.html#eventos">Pedir presupuesto</a>
+      <button class="nav-toggle x-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -807,46 +794,23 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <picture><source srcset="logo-thyme.webp" type="image/webp"><img class="brand-mark" src="logo-thyme.jpg" alt="" width="64" height="64"></picture>
-          <span class="brand-text">
-            <span class="brand-word">THYME</span>
-            <span class="brand-sub">Express<br>Catering</span>
-          </span>
-        </div>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/benditatabla_gourmet/" target="_blank" rel="noopener" aria-label="Instagram de THYME">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-          </a>
-          <a href="https://wa.me/34607864393" target="_blank" rel="noopener" aria-label="WhatsApp de THYME">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20z"/></svg>
-          </a>
-        </div>
+<footer class="x-footer">
+  <div class="x-wrap">
+    <div class="x-footer-top">
+      <div class="x-footer-brand">
+        <picture><source srcset="logo-thyme.webp" type="image/webp"><img src="logo-thyme.jpg" alt="Logo de THYME Express Catering" width="88" height="88" loading="lazy"></picture>
+        <p>Events &amp; Gastronomic Experiences.<br>Barcelona.</p>
       </div>
-      <div class="footer-col">
-        <h4>Cómo funciona</h4>
-        <ul class="footer-datos">
-          <li><strong>Pedido mínimo</strong> 100 €</li>
-          <li><strong>Encargo</strong> 2 días hábiles de antelación</li>
-          <li><strong>Entrega</strong> Barcelona y alrededores</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="https://wa.me/34607864393" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></li>
-          <li><a href="mailto:thyme.catering@outlook.es">thyme.catering@outlook.es</a></li>
-          <li>Barcelona y alrededores</li>
-        </ul>
+      <div class="x-footer-cols">
+        <div><h4>Servicios</h4><ul><li><a href="index.html#eventos">Bodas y eventos</a></li><li><a href="pedidos.html">A domicilio</a></li><li><a href="index.html#reserva">Mesa privada</a></li><li><a href="extra-service-premium.html">Service Premium</a></li></ul></div>
+        <div><h4>Boxes</h4><ul><li><a href="coffee-break.html">Coffee Break Box</a></li><li><a href="cocktail-box.html">Cocktail Box</a></li><li><a href="tabla-box.html">Tabla Box</a></li><li><a href="barra-bebidas.html">Barra de bebidas</a></li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="https://wa.me/34607864393" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:thyme.catering@outlook.es">thyme.catering@outlook.es</a></li><li><a href="https://www.instagram.com/benditatabla_gourmet/" target="_blank" rel="noopener">Instagram</a></li><li><a href="faq.html">Preguntas frecuentes</a></li></ul></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year></span> THYME. Todos los derechos reservados.</span>
-      <span><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos</a> · <a href="cookies.html">Cookies</a></span>
+    <p class="x-footer-word" aria-hidden="true">THYME</p>
+    <div class="x-footer-bottom">
+      <span>© <span data-year></span> THYME Express Catering</span>
+      <span><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="terminos.html">Términos</a><a href="cookies.html">Cookies</a></span>
     </div>
   </div>
 </footer>
