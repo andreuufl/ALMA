@@ -534,3 +534,31 @@ fieldset{border:0;min-width:0;}
 /* Selector de idioma */
 .x-lang{display:inline-grid;place-items:center;min-width:40px;height:40px;padding:0 10px;border-radius:999px;border:1px solid var(--line);font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--ink-70);transition:border-color .25s,color .25s;}
 .x-lang:hover{border-color:var(--ink);color:var(--ink);}
+
+/* ---------- Lo que hacemos · carrusel con flechas (escritorio) ---------- */
+.x-snap-nav{display:flex;gap:10px;flex:none;}
+#servicios .x-head-split > div:first-child{max-width:760px;flex:1 1 520px;}
+#servicios .x-head{margin-bottom:clamp(28px, 4vw, 48px);}
+.x-round-ink{border-color:rgba(29,25,19,.22);color:var(--ink);}
+.x-round-ink:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.x-round-ink:disabled{opacity:.3;pointer-events:none;}
+@media (min-width:761px){
+  .x-services[data-snap-desk]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;scrollbar-width:none;padding:6px 0 14px;}
+  .x-services[data-snap-desk]::-webkit-scrollbar{display:none;}
+  .x-services[data-snap-desk] > .x-service{flex:0 0 calc((100% - 60px) / 4);scroll-snap-align:start;}
+  .x-services[data-snap-desk] .x-service-media{aspect-ratio:4/3;}
+  .x-services[data-snap-desk] .x-service-body{padding:20px 20px 22px;gap:8px;}
+  .x-services[data-snap-desk] .x-service h3{font-size:1.3rem;}
+  .x-services[data-snap-desk] .x-service p{font-size:.9rem;}
+  .x-services[data-snap-desk] .x-service:hover{transform:translateY(-4px);}
+}
+@media (min-width:761px) and (max-width:1100px){
+  .x-services[data-snap-desk] > .x-service{flex-basis:calc((100% - 40px) / 3);}
+}
+@media (max-width:760px){
+  #servicios .x-head-split{flex-wrap:nowrap;align-items:flex-end;}
+  #servicios .x-head-split > div:first-child{flex:1 1 auto;min-width:0;}
+  .x-snap-nav{gap:8px;}
+  .x-snap-nav .x-round{width:42px;height:42px;}
+  .x-snap-nav .x-round svg{width:17px;height:17px;}
+}

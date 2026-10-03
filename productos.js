@@ -280,14 +280,14 @@ var PRODUCTOS = [
   },
   {
     id: 'barra-bartender', cat: 'servicios', nombre: 'Barra de bebidas con bartender', formato: 'Servicio en directo', raciones: 1,
-    precio: null, foto: null, etiqueta: 'En directo',
+    precio: null, foto: 'servicio-bartender', etiqueta: 'En directo',
     resumen: 'Coctelería clásica y de autor, con y sin alcohol.',
     historia: ['Un bartender profesional con barra propia en tu evento: cócteles clásicos, de autor y sin alcohol.'],
     ingredientes: [], alergenos: [], servir: 'Confirmamos disponibilidad y coste según tu evento.', marida: '—'
   },
   {
     id: 'cortador', cat: 'servicios', nombre: 'Cortador de jamón', formato: 'Servicio en directo', raciones: 1,
-    precio: null, foto: null, etiqueta: 'En directo',
+    precio: null, foto: 'servicio-cortador', etiqueta: 'En directo',
     resumen: 'Jamón cortado a cuchillo delante de tus invitados.',
     historia: ['Un maestro cortador en tu evento. El espectáculo es verlo; el premio, probarlo.'],
     ingredientes: [], alergenos: [], servir: 'Confirmamos disponibilidad y coste según tu evento.', marida: '—'

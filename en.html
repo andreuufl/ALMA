@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" imagesrcset="assets/img/hero-mediterranea-square-600.webp 600w, assets/img/hero-mediterranea-square.webp 900w" imagesizes="(max-width: 760px) 92vw, 560px" type="image/webp" fetchpriority="high">
 
-<link rel="stylesheet" href="home.css?v=2">
+<link rel="stylesheet" href="home.css?v=13">
 
 <script type="application/ld+json">
 {
@@ -141,12 +141,18 @@
   <!-- ================= SERVICIOS ================= -->
   <section class="x-sec" id="servicios" aria-labelledby="serv-title">
     <div class="x-wrap">
-      <header class="x-head x-reveal">
+      <header class="x-head x-head-split x-reveal">
+        <div>
         <p class="x-kicker">What we do</p>
         <h2 id="serv-title" class="x-h2">One team for <em>every moment</em> of your celebration</h2>
+        </div>
+        <div class="x-snap-nav" aria-label="Navegar">
+          <button type="button" class="x-round x-round-ink" data-snap-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button type="button" class="x-round x-round-ink" data-snap-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
       </header>
 
-      <div class="x-services x-snap" data-snap>
+      <div class="x-services x-snap" data-snap data-snap-desk>
         <a class="x-service x-reveal" href="coffee-break.html">
           <div class="x-service-media"><picture><source srcset="assets/img/menu-coffeebreak-card.webp" type="image/webp"><img src="assets/img/menu-coffeebreak-card.jpg" alt="THYME Coffee Break Box with waffles, doughnuts and croissants" loading="lazy" width="700" height="814"></picture></div>
           <div class="x-service-body">
@@ -585,7 +591,7 @@
 <script src="repertorio.js?v=1"></script>
 <script src="thyme-main.js?v=23"></script>
 <script src="resenas.js?v=1"></script>
-<script src="home.js?v=3"></script>
+<script src="home.js?v=4"></script>
 <script src="analitica.js?v=1"></script>
 </body>
 </html>

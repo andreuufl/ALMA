@@ -56,7 +56,25 @@
       Array.prototype.forEach.call(puntos.children, function (p, j) { p.classList.toggle('is-on', j === idx); });
     };
     pista.addEventListener('scroll', function () { requestAnimationFrame(marcar); }, { passive: true });
-    marcar();
+    var sec = pista.closest('section');
+    var bPrev = sec && sec.querySelector('[data-snap-prev]');
+    var bNext = sec && sec.querySelector('[data-snap-next]');
+    var paso = function () { return hijos.length > 1 ? hijos[1].offsetLeft - hijos[0].offsetLeft : pista.clientWidth; };
+    var flechas = function () {
+      if (bPrev) bPrev.disabled = pista.scrollLeft <= 4;
+      if (bNext) bNext.disabled = pista.scrollLeft + pista.clientWidth >= pista.scrollWidth - 4;
+    };
+    var ir = function (dir) {
+      var p = paso() || 1;
+      var idx = Math.round(pista.scrollLeft / p) + dir;
+      var max = pista.scrollWidth - pista.clientWidth;
+      pista.scrollTo({ left: Math.max(0, Math.min(max, idx * p)), behavior: 'smooth' });
+    };
+    if (bPrev) bPrev.addEventListener('click', function () { ir(-1); });
+    if (bNext) bNext.addEventListener('click', function () { ir(1); });
+    pista.addEventListener('scroll', function () { requestAnimationFrame(flechas); }, { passive: true });
+    window.addEventListener('resize', flechas);
+    marcar(); flechas();
   });
 
   /* ---------- Carrusel de boxes en abanico ---------- */
