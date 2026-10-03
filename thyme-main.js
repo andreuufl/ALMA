@@ -266,7 +266,7 @@
           { top: 38, left: 38, label: 'Tabla individual', desc: 'Una por invitado — nadie tiene que estirar el brazo para servirse.' },
           { top: 78, left: 45, label: 'Abanico de quesos', desc: 'Cortados finos, para que se sirvan solos sin necesidad de cuchillo.' },
           { top: 63, left: 20, label: 'Higos y moras', desc: 'De temporada, combinados con queso curado y pistachos.' },
-          { top: 30, left: 80, label: 'Flores comestibles', desc: 'Elegidas para combinar con la paleta de color de tu boda o evento.' },
+          { top: 30, left: 80, label: 'Flores comestibles', desc: 'Elegidas para combinar con la paleta de color de tu evento.' },
           { top: 88, left: 78, label: 'Uvas y conos de salami', desc: 'El cierre perfecto de cada tabla individual.' }
         ]
       },
@@ -1000,7 +1000,7 @@
   }
 
   /* ============================================================
-     Formulario de bodas y eventos → validación + envío por WhatsApp
+     Formulario de eventos → validación + envío por WhatsApp
      ============================================================ */
   (function () {
     var eventsForm = document.querySelector('#events-form');

@@ -8,7 +8,7 @@
 
    Formato de cada reseña:
      { nombre: 'Laura M.', texto: 'Todo buenísimo...', estrellas: 5,
-       evento: 'Boda en Sitges', fecha: 'Septiembre 2026' }
+       evento: 'Evento de empresa', fecha: 'Septiembre 2026' }
 
    GOOGLE_RESENAS_URL: enlace a tu ficha de Google (opcional).
    Si lo rellenas, aparece el botón "Ver todas en Google".

@@ -133,7 +133,7 @@ var PRODUCTOS = [
     precio: null, foto: 'card-mesa-flores',
     resumen: 'Una tabla por invitado, con flores comestibles de temporada.',
     historia: [
-      'Para bodas, comuniones y eventos donde cada invitado merece su propio momento. Cada tabla se monta a mano con quesos madurados, embutido cortado fino y flores comestibles que cambian según la época del año.',
+      'Para eventos y celebraciones donde cada invitado merece su propio momento. Cada tabla se monta a mano con quesos madurados, embutido cortado fino y flores comestibles que cambian según la época del año.',
       'Es el detalle del que tus invitados seguirán hablando días después.'
     ],
     ingredientes: ['Quesos madurados', 'Embutido cortado fino', 'Fruta de temporada', 'Flores comestibles', 'Crackers'],
