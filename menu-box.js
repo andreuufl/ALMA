@@ -8,12 +8,15 @@
   var MENUS = {
     coffee: {
       nombre: 'Coffee Break Box',
-      productos: ['donuts', 'napolitanas', 'gofres', 'croissants', 'magdalenas', 'pulgas-queso', 'pulgas-jamon'],
+      grupos: [{ titulo: '', ids: ['donuts-chocolate', 'napolitanas', 'gofres', 'croissants', 'magdalenas', 'bolleria-variada', 'donuts-glace'] }],
       mensaje: '¡Hola THYME! Me interesa la Coffee Break Box completa.'
     },
     cocktail: {
       nombre: 'Cocktail Box',
-      productos: ['mini-burgers', 'tabla-quesos', 'tabla-mixta', 'tabla-gourmet', 'croquetas', 'barra-bartender', 'cortador', 'show-cooking'],
+      grupos: [
+        { titulo: 'Cocktail Box', ids: ['bocadillo-manchego', 'bocadillo-jamon', 'bocadillo-vegetal', 'bocadillos-variados', 'burger-ternera', 'burger-pollo', 'burger-heura', 'focaccia-jamon-brie', 'focaccia-bacon', 'focaccia-vegetal', 'mini-pizza', 'sandwich-pollo', 'sandwich-salmon'] },
+        { titulo: 'Cocktail Box 2 · Croquetas', ids: ['croquetas-jamon', 'croquetas-marisco', 'croquetas-ceps', 'croquetas-variadas'] }
+      ],
       mensaje: '¡Hola THYME! Me interesa la Cocktail Box completa.'
     }
   };
@@ -26,6 +29,10 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function euros(n) { return n.toLocaleString('es-ES', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }) + ' €'; }
   var ICONOS = {
+    coffee: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/>',
+    cocktail: '<path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/>',
+    croquetas: '<ellipse cx="8" cy="12" rx="4" ry="2.6"/><ellipse cx="16" cy="12" rx="4" ry="2.6"/>',
+    bebidas: '<path d="M7 3c0 5 1 8 5 8s5-3 5-8z"/><path d="M12 11v7M8 21h8"/>',
     salados: '<path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/>',
     tablas: '<rect x="3" y="8" width="18" height="10" rx="3"/><path d="M21 13h2"/><circle cx="8" cy="13" r="1.6"/><circle cx="13" cy="12" r="1.2"/><circle cx="16.5" cy="14" r="1.4"/>',
     dulces: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/>',
@@ -36,9 +43,10 @@
     return '<div class="producto-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">' + (ICONOS[p.cat] || '') + '</svg><span>THYME</span><small>' + esc(p.nombre) + '</small></div>';
   }
 
-  var lista = menu.productos.map(function (id) { return byId[id]; }).filter(Boolean);
   var grid = root.querySelector('[data-box-grid]');
-  grid.innerHTML = lista.map(function (p, i) {
+  var nGlobal = 0;
+  function tarjeta(p) {
+    var i = nGlobal++;
     var aler = (p.alergenos || []).map(function (a) { return '<li>' + esc(ALERGENOS[a] || a) + '</li>'; }).join('');
     return '' +
       '<article class="box-card" id="' + p.id + '">' +
@@ -61,6 +69,10 @@
           '</div>' +
         '</div>' +
       '</article>';
+  }
+  grid.innerHTML = menu.grupos.map(function (g) {
+    var lista = g.ids.map(function (id) { return byId[id]; }).filter(Boolean);
+    return (menu.grupos.length > 1 && g.titulo ? '<h2 class="box-grupo">' + esc(g.titulo) + '</h2>' : '') + lista.map(tarjeta).join('');
   }).join('');
 
   /* Carrito compartido con la tienda (pedidos.html) */

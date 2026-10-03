@@ -50,13 +50,11 @@
   /* --- Repertorio por pagina. Cada bloque coge 4 de los suyos --- */
   var REPERTORIOS = {
     dulce:    ['donuts','gofres','croissants','magdalenas','napolitanas',
-               'mdonuts','mgofres','mcroissants','mcoffee','pulgasJamon','pulgasQueso'],
-    cocktail: ['burgers','mburgers','croquetasA','croquetasB','mcocktail',
-               'pulgasJamon','pulgasQueso','tablaMixta','instaMixta'],
-    tablas:   ['tablaQuesos','tablaMixtaBox','tablaIbericos','tablaMixta',
-               'mediterranea','instaMixta','torre','mesaFlores'],
+               'mdonuts','mgofres','mcroissants','mcoffee'],
+    cocktail: ['burgers','mburgers','croquetasA','croquetasB','mcocktail'],
+    tablas:   ['tablaQuesos','tablaMixtaBox','tablaIbericos','tablaMixta','instaMixta'],
     todo:     ['croissants','gofres','donuts','magdalenas','burgers','croquetasA',
-               'tablaMixta','mediterranea','tablaQuesos','instaMixta','torre','mesaFlores']
+               'tablaMixtaBox','tablaQuesos','tablaIbericos']
   };
 
   /* Fotos que son la misma imagen con otro nombre: nunca juntas. */

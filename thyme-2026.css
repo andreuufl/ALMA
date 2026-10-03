@@ -186,3 +186,7 @@ input[type=checkbox]{accent-color:var(--x-ink);}
 .catalogo-pdf{margin-top:18px;}
 .catalogo-banner .catalogo-pdf-btn{border-color:rgba(244,238,227,.35)!important;color:#F4EEE3!important;}
 .catalogo-banner .catalogo-pdf-btn:hover{border-color:#D9BE8C!important;color:#D9BE8C!important;background:transparent!important;}
+
+/* Cabecera de grupo dentro de una página de box (p. ej. Cocktail Box 2) */
+.box-grupo{grid-column:1/-1;font-size:clamp(1.4rem,2.4vw,1.9rem);margin:18px 0 -6px;padding-top:18px;border-top:1px solid var(--line, rgba(29,25,19,.12));}
+.box-grupo:first-child{margin-top:0;padding-top:0;border-top:0;}

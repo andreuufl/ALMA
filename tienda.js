@@ -21,6 +21,10 @@
     return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
   var ICONOS = {
+    coffee: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/>',
+    cocktail: '<path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/>',
+    croquetas: '<ellipse cx="8" cy="12" rx="4" ry="2.6"/><ellipse cx="16" cy="12" rx="4" ry="2.6"/>',
+    bebidas: '<path d="M7 3c0 5 1 8 5 8s5-3 5-8z"/><path d="M12 11v7M8 21h8"/>',
     salados: '<path d="M4 13h16M5 13c0-4 3-7 7-7s7 3 7 7M5 16h14l-1.5 3h-11z"/>',
     tablas: '<rect x="3" y="8" width="18" height="10" rx="3"/><path d="M21 13h2"/><circle cx="8" cy="13" r="1.6"/><circle cx="13" cy="12" r="1.2"/><circle cx="16.5" cy="14" r="1.4"/>',
     dulces: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/>',

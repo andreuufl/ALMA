@@ -4,12 +4,10 @@
    Aquí se edita TODO lo que aparece en "Pedir a domicilio".
    Campos de cada producto:
      nombre      Nombre visible
-     cat         salados | tablas | dulces | cajas | servicios
+     cat         coffee | cocktail | croquetas | tablas | bebidas | servicios
      formato     Unidades o tamaño ("12 unidades", "Para 2 personas")
-     raciones    Personas que alimenta (número) — sirve para el precio por persona
-     precio      Euros (ej. 38.5) · null = "Consultar precio"
-     provisional true = PRECIO DE EJEMPLO → cámbialo por el real y pon false
-     foto        Nombre de la foto en assets/img (sin .jpg/.webp) · null = sin foto
+          precio      Euros (ej. 38.5) · null = "Consultar precio"
+          foto        Nombre de la foto en assets/img (sin .jpg/.webp) · null = sin foto
      resumen     Una línea para la tarjeta
      historia    Párrafos del texto largo de la ficha
      ingredientes Lista de ingredientes
@@ -22,300 +20,620 @@
      etiqueta    Sello destacado opcional
    ========================================================= */
 var PRODUCTOS = [
-
-  /* ===================== TABLAS ===================== */
+  /* ===================== COFFEE BREAK BOX ===================== */
   {
-    id: 'tabla-mixta', cat: 'tablas', nombre: 'Tabla Mixta THYME', formato: 'Para 2 personas', raciones: 2,
-    precio: 42, foto: 'tabla-mixta-card', etiqueta: 'La más pedida',
-    resumen: 'Embutido, queso, encurtidos y frutos: la firma de la casa.',
-    historia: [
-      'Si solo pudiéramos llevar una tabla a tu casa, sería esta. Es la que montamos para nosotros cuando nos juntamos: rosetones de embutido pinchados para picar sin cubiertos, un brie que se funde a temperatura ambiente, encurtidos caseros que limpian el paladar y un hilo de miel que aparece justo cuando hace falta.',
-      'La montamos a mano el mismo día de la entrega, pieza a pieza, para que llegue como sale de nuestra cocina: lista para poner en el centro de la mesa y empezar.'
-    ],
-    ingredientes: ['Salami y chorizo curado en rosetón', 'Jamón curado', 'Queso brie', 'Queso curado de oveja', 'Encurtidos caseros', 'Aceitunas', 'Miel de flores', 'Mermelada casera', 'Picos y crackers'],
-    alergenos: ['lacteos', 'gluten', 'sulfitos'],
-    servir: 'Sácala de la nevera 20 minutos antes para que los quesos cojan temperatura. Consumir en el día.',
-    marida: 'Un tinto joven o un cava brut.'
+    id: "donuts-chocolate",
+    cat: "coffee",
+    nombre: "Donuts de chocolate",
+    formato: "15 unidades",
+    precio: 18,
+    foto: "donuts",
+    veg: true,
+    resumen: "Esponjosos y bañados en chocolate.",
+    historia: ["Esponjosos y bañados en chocolate."],
+    ingredientes: ["Masa de donut", "Cobertura de chocolate"],
+    alergenos: ["gluten", "huevo", "lacteos", "soja"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-iberica', cat: 'tablas', nombre: 'Tabla Ibérica', formato: 'Para 2 personas', raciones: 2,
-    precio: 38, foto: null, etiqueta: 'Favorita de la casa',
-    resumen: 'Jamón 100% ibérico de bellota cortado a cuchillo y embutidos de bellota.',
-    historia: [
-      'El jamón no se corta: se lonchea. Lo hacemos a cuchillo, fino y con su punto de grasa, porque es ahí donde está el sabor de la bellota. Lo acompañamos de lomo, chorizo y salchichón ibéricos, de los que se deshacen al contacto con el paladar.',
-      'Una tabla sin artificios para quien sabe lo que busca. Viaja protegida para que el corte llegue intacto.'
-    ],
-    ingredientes: ['Jamón 100% ibérico de bellota cortado a cuchillo', 'Lomo ibérico de bellota', 'Chorizo ibérico de bellota', 'Salchichón ibérico de bellota', 'Picos de pan'],
-    alergenos: ['gluten', 'lacteos'],
-    servir: 'Deja la tabla tapada a temperatura ambiente 15–20 minutos antes de servir: el jamón gana brillo y aroma.',
-    marida: 'Fino o manzanilla bien fríos, o un tinto de crianza.'
+    id: "napolitanas",
+    cat: "coffee",
+    nombre: "Napolitanas de chocolate",
+    formato: "15 unidades",
+    precio: 15,
+    foto: "napolitanas",
+    veg: true,
+    resumen: "Hojaldre de mantequilla relleno de chocolate.",
+    historia: ["Hojaldre de mantequilla relleno de chocolate."],
+    ingredientes: ["Hojaldre de mantequilla", "Chocolate"],
+    alergenos: ["gluten", "lacteos", "huevo", "soja"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-quesos', cat: 'tablas', nombre: 'Tabla de Quesos', formato: 'Para 2 personas', raciones: 2,
-    precio: 32, foto: 'tabla-quesos-card', veg: true,
-    resumen: 'Quesos artesanos, crackers, mermelada casera y frutos secos tostados.',
-    historia: [
-      'Una selección que va de lo suave a lo intenso, pensada para recorrerla en orden: un queso tierno para empezar, uno curado de oveja, uno con carácter y un azul para los valientes.',
-      'La completamos con crackers, frutos secos recién tostados y una mermelada casera que equilibra cada bocado.'
-    ],
-    ingredientes: ['Selección de 4 quesos artesanos', 'Crackers', 'Frutos secos tostados', 'Mermelada casera', 'Uva y fruta de temporada'],
-    alergenos: ['lacteos', 'gluten', 'frutos-secos'],
-    servir: 'Sácala 30 minutos antes. Empieza por el queso más suave y termina con el azul.',
-    marida: 'Blanco con cuerpo o un tinto suave.'
+    id: "gofres",
+    cat: "coffee",
+    nombre: "Gofres con Nutella",
+    formato: "15 unidades",
+    precio: 22,
+    foto: "gofres",
+    veg: true,
+    resumen: "Gofre dorado con crema de cacao y avellanas.",
+    historia: ["Gofre dorado con crema de cacao y avellanas."],
+    ingredientes: ["Masa de gofre", "Nutella"],
+    alergenos: ["gluten", "lacteos", "huevo", "frutos-secos", "soja"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-gourmet', cat: 'tablas', nombre: 'Tabla selección gourmet de ibéricos', formato: 'Para 4 personas', raciones: 4,
-    precio: 68, provisional: true, foto: 'tabla-ibericos-gourmet-card',
-    resumen: 'Nuestra selección premium de ibéricos de bellota, para compartir.',
-    historia: [
-      'La versión generosa de nuestra tabla ibérica: más variedad, más cantidad y las piezas que reservamos para las ocasiones que se lo merecen.',
-      'Perfecta como centro de una cena en casa o como punto fuerte de un cóctel.'
-    ],
-    ingredientes: ['Jamón ibérico de bellota', 'Lomo ibérico', 'Chorizo y salchichón ibéricos', 'Queso curado', 'Picos y regañás'],
-    alergenos: ['gluten', 'lacteos'],
-    servir: 'A temperatura ambiente, 15–20 minutos antes de servir.',
-    marida: 'Cava brut nature o tinto de crianza.'
+    id: "croissants",
+    cat: "coffee",
+    nombre: "Croissants",
+    formato: "15 unidades",
+    precio: 18,
+    foto: "croissants",
+    veg: true,
+    resumen: "De mantequilla, dorados y crujientes.",
+    historia: ["De mantequilla, dorados y crujientes."],
+    ingredientes: ["Masa de croissant", "Mantequilla"],
+    alergenos: ["gluten", "lacteos", "huevo"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-mediterranea', cat: 'tablas', nombre: 'Tabla Mediterránea', formato: 'Para 4 personas', raciones: 4,
-    precio: 58, provisional: true, foto: 'card-mediterranea',
-    resumen: 'Pan artesano del día, jamón, quesos, higos y fruta fresca.',
-    historia: [
-      'Es la tabla que mejor nos explica: producto de mercado, pan horneado esa misma mañana y un aceite de oliva que se nota desde el primer bocado.',
-      'Jamón, quesos, higos y fruta de temporada, montados como una sobremesa de domingo que no quieres que termine.'
-    ],
-    ingredientes: ['Pan artesano del día', 'Jamón curado', 'Quesos variados', 'Higos', 'Fruta de temporada', 'Aceite de oliva virgen extra', 'Frutos secos'],
-    alergenos: ['gluten', 'lacteos', 'frutos-secos'],
-    servir: 'Consumir en el día. El pan, mejor ligeramente tostado.',
-    marida: 'Un rosado o un blanco mediterráneo.'
+    id: "magdalenas",
+    cat: "coffee",
+    nombre: "Magdalenas",
+    formato: "15 unidades",
+    precio: 18,
+    foto: "magdalenas",
+    veg: true,
+    resumen: "Receta casera, tiernas y esponjosas.",
+    historia: ["Receta casera, tiernas y esponjosas."],
+    ingredientes: ["Harina de trigo", "Huevo", "Azúcar", "Aceite"],
+    alergenos: ["gluten", "huevo", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-dulce', cat: 'tablas', nombre: 'Tabla Dulce', formato: 'Para 2 personas', raciones: 2,
-    precio: 26, foto: null, veg: true,
-    resumen: 'Quesos azules, miel, higos, chocolate negro y frutos rojos.',
-    historia: [
-      'Para cerrar la noche. El contraste de un queso azul con miel de flores, higos, chocolate negro y frutos rojos es de esos que se recuerdan.',
-      'Funciona igual de bien como postre que como final de una tabla salada.'
-    ],
-    ingredientes: ['Queso azul', 'Miel de flores', 'Higos', 'Chocolate negro', 'Frutos rojos', 'Frutos secos'],
-    alergenos: ['lacteos', 'frutos-secos'],
-    servir: 'Sacar 20 minutos antes. Guardar en frío hasta entonces.',
-    marida: 'Un vino dulce o un moscatel.'
+    id: "bolleria-variada",
+    cat: "coffee",
+    nombre: "Bollería variada",
+    formato: "20 unidades",
+    precio: 23,
+    foto: "menu-coffeebreak-card",
+    veg: true,
+    resumen: "Un surtido de nuestra bollería para que haya de todo.",
+    historia: ["Un surtido de nuestra bollería para que haya de todo."],
+    ingredientes: ["Surtido de bollería"],
+    alergenos: ["gluten", "lacteos", "huevo", "soja", "frutos-secos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'tabla-vegetal', cat: 'tablas', nombre: 'Tabla Vegetal', formato: 'Para 2 personas', raciones: 2,
-    precio: 28, foto: null, veg: true, etiqueta: 'Sin lácteos disponible',
-    resumen: 'Hummus casero, encurtidos, vegetales de temporada y quesos veganos.',
-    historia: [
-      'Una tabla para que nadie se quede mirando. Hummus casero, vegetales crujientes de temporada, encurtidos y quesos veganos, con el mismo cuidado que ponemos en las demás.',
-      'Si la necesitas sin lácteos, indícalo al pedir y la adaptamos.'
-    ],
-    ingredientes: ['Hummus casero', 'Crudités de temporada', 'Encurtidos', 'Quesos veganos', 'Aceitunas', 'Pan de pita o crackers'],
-    alergenos: ['sesamo', 'gluten'],
-    servir: 'Mantener en frío hasta el momento de servir.',
-    marida: 'Un blanco fresco o un vermut.'
-  },
-  {
-    id: 'torre', cat: 'tablas', nombre: 'Torre THYME de 3 pisos', formato: 'De 15 a 30 personas', raciones: 20,
-    precio: null, foto: 'card-torre', etiqueta: 'Pieza central',
-    resumen: 'Tres niveles de embutidos, quesos y fruta: la pieza central de tu celebración.',
-    historia: [
-      'Cuando ya no cabe ni un plato más en la mesa, se construye hacia arriba. Tres pisos con jamón cortado a cuchillo, quesos curados, fruta de temporada y algo salado en cada nivel.',
-      'Pensada para grupos de 15 a 30 personas. Cuéntanos cuántos sois y la ajustamos.'
-    ],
-    ingredientes: ['Jamón curado', 'Embutidos variados', 'Quesos curados y tiernos', 'Fruta de temporada', 'Crackers y picos', 'Frutos secos'],
-    alergenos: ['gluten', 'lacteos', 'frutos-secos'],
-    servir: 'Te la entregamos montada. Colócala en una superficie estable y lejos del sol.',
-    marida: 'Cava para brindar.'
-  },
-  {
-    id: 'tablas-individuales', cat: 'tablas', nombre: 'Tablas individuales con flores', formato: 'Por invitado', raciones: 1,
-    precio: null, foto: 'card-mesa-flores',
-    resumen: 'Una tabla por invitado, con flores comestibles de temporada.',
-    historia: [
-      'Para eventos y celebraciones donde cada invitado merece su propio momento. Cada tabla se monta a mano con quesos madurados, embutido cortado fino y flores comestibles que cambian según la época del año.',
-      'Es el detalle del que tus invitados seguirán hablando días después.'
-    ],
-    ingredientes: ['Quesos madurados', 'Embutido cortado fino', 'Fruta de temporada', 'Flores comestibles', 'Crackers'],
-    alergenos: ['lacteos', 'gluten'],
-    servir: 'Mantener en fresco hasta servir.',
-    marida: 'Cava o vino blanco.'
+    id: "donuts-glace",
+    cat: "coffee",
+    nombre: "Donuts glacé",
+    formato: "15 unidades",
+    precio: 18,
+    foto: null,
+    veg: true,
+    resumen: "El donut clásico con su glaseado de azúcar.",
+    historia: ["El donut clásico con su glaseado de azúcar."],
+    ingredientes: ["Masa de donut", "Glaseado de azúcar"],
+    alergenos: ["gluten", "huevo", "lacteos", "soja"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
 
-  /* ===================== SALADOS ===================== */
+  /* ===================== COCKTAIL BOX ===================== */
   {
-    id: 'mini-burgers', cat: 'salados', nombre: 'Mini burgers gourmet', formato: '12 unidades', raciones: 6,
-    precio: 36, provisional: true, foto: 'mini-burgers',
-    resumen: 'Pan brioche, ternera, queso curado y cebolla caramelizada.',
-    historia: [
-      'Dos bocados de hamburguesa de verdad. Carne de ternera jugosa, queso curado fundido y cebolla caramelizada a fuego lento, en un pan brioche tierno que aguanta sin deshacerse.',
-      'Son las primeras en desaparecer de cualquier cóctel.'
-    ],
-    ingredientes: ['Pan brioche', 'Carne de ternera', 'Queso curado', 'Cebolla caramelizada', 'Salsa de la casa'],
-    alergenos: ['gluten', 'lacteos', 'huevo', 'mostaza', 'sesamo'],
-    servir: 'Calentar 5 minutos en horno a 160 °C. Conservar en nevera y consumir en 24 h.',
-    marida: 'Cerveza artesana o un tinto joven.'
+    id: "bocadillo-manchego",
+    cat: "cocktail",
+    nombre: "Mini bocadillo de queso manchego",
+    formato: "15 unidades",
+    precio: 22.5,
+    foto: null,
+    veg: true,
+    resumen: "Pan crujiente y queso manchego.",
+    historia: ["Pan crujiente y queso manchego."],
+    ingredientes: ["Pan", "Queso manchego"],
+    alergenos: ["gluten", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'croquetas', cat: 'salados', nombre: 'Surtido de croquetas caseras', formato: '24 unidades', raciones: 8,
-    precio: 30, provisional: true, foto: 'croquetas-caja-card',
-    resumen: 'Cremosas por dentro, crujientes por fuera. Receta de siempre.',
-    historia: [
-      'Bechamel hecha a fuego lento, rebozado fino y fritura en el punto justo. Así de sencillo y así de difícil.',
-      'Un surtido de nuestros sabores de temporada para que haya para todos los gustos.'
-    ],
-    ingredientes: ['Bechamel casera', 'Jamón ibérico', 'Pollo asado', 'Setas de temporada', 'Pan rallado', 'Huevo'],
-    alergenos: ['gluten', 'lacteos', 'huevo'],
-    servir: 'Calentar 6–8 minutos en horno a 180 °C para que recuperen el crujiente.',
-    marida: 'Vermut o cerveza bien fría.'
+    id: "bocadillo-jamon",
+    cat: "cocktail",
+    nombre: "Mini bocadillo de jamón ibérico",
+    formato: "15 unidades",
+    precio: 31,
+    foto: null,
+    resumen: "Pan crujiente y jamón ibérico.",
+    historia: ["Pan crujiente y jamón ibérico."],
+    ingredientes: ["Pan", "Jamón ibérico"],
+    alergenos: ["gluten"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'pulgas-jamon', cat: 'salados', nombre: 'Mini pulgas de jamón', formato: '12 unidades', raciones: 6,
-    precio: 32, provisional: true, foto: 'pulgas-jamon',
-    resumen: 'Pan de cristal, tomate y jamón curado cortado fino.',
-    historia: [
-      'El clásico que nunca falla: pan crujiente, tomate restregado, un hilo de aceite y jamón cortado fino.',
-      'Formato de un bocado, para picar de pie sin mancharse.'
-    ],
-    ingredientes: ['Pan de cristal', 'Tomate', 'Aceite de oliva virgen extra', 'Jamón curado'],
-    alergenos: ['gluten'],
-    servir: 'Listo para servir. Mejor consumir en el día.',
-    marida: 'Cava o un tinto joven.'
+    id: "bocadillo-vegetal",
+    cat: "cocktail",
+    nombre: "Mini bocadillo vegetal",
+    formato: "15 unidades",
+    precio: 25,
+    foto: null,
+    veg: true,
+    resumen: "Pan crujiente con verduras frescas.",
+    historia: ["Pan crujiente con verduras frescas."],
+    ingredientes: ["Pan", "Verduras frescas"],
+    alergenos: ["gluten"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'pulgas-queso', cat: 'salados', nombre: 'Mini pulgas de queso', formato: '12 unidades', raciones: 6,
-    precio: 28, provisional: true, foto: 'pulgas-queso', veg: true,
-    resumen: 'Queso curado de oveja, aceite de oliva y un toque de membrillo.',
-    historia: [
-      'Queso curado de oveja con su punto de membrillo, sobre un pan crujiente.',
-      'La versión vegetariana de nuestras pulgas, igual de adictiva.'
-    ],
-    ingredientes: ['Pan', 'Queso curado de oveja', 'Membrillo', 'Aceite de oliva virgen extra'],
-    alergenos: ['gluten', 'lacteos'],
-    servir: 'Listo para servir. Consumir en el día.',
-    marida: 'Un blanco con cuerpo.'
+    id: "bocadillos-variados",
+    cat: "cocktail",
+    nombre: "Mini bocadillos variados",
+    formato: "20 unidades",
+    precio: 38,
+    foto: null,
+    resumen: "Un surtido de nuestros mini bocadillos.",
+    historia: ["Un surtido de nuestros mini bocadillos."],
+    ingredientes: ["Pan", "Queso manchego", "Jamón ibérico", "Verduras frescas"],
+    alergenos: ["gluten", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "burger-ternera",
+    cat: "cocktail",
+    nombre: "Burger de ternera y queso",
+    formato: "15 unidades",
+    precio: 22,
+    foto: "mini-burgers",
+    etiqueta: "La más pedida",
+    resumen: "Mini burger de ternera con queso fundido.",
+    historia: ["Mini burger de ternera con queso fundido."],
+    ingredientes: ["Pan de burger", "Carne de ternera", "Queso"],
+    alergenos: ["gluten", "lacteos", "huevo", "sesamo"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "burger-pollo",
+    cat: "cocktail",
+    nombre: "Burger de pollo y queso",
+    formato: "15 unidades",
+    precio: 22,
+    foto: null,
+    resumen: "Mini burger de pollo con queso fundido.",
+    historia: ["Mini burger de pollo con queso fundido."],
+    ingredientes: ["Pan de burger", "Pollo", "Queso"],
+    alergenos: ["gluten", "lacteos", "huevo", "sesamo"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "burger-heura",
+    cat: "cocktail",
+    nombre: "Burger de Heura con pesto",
+    formato: "15 unidades",
+    precio: 22,
+    foto: null,
+    veg: true,
+    resumen: "Mini burger vegetal de Heura con pesto.",
+    historia: ["Mini burger vegetal de Heura con pesto."],
+    ingredientes: ["Pan de burger", "Heura", "Pesto"],
+    alergenos: ["gluten", "soja", "frutos-secos", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "focaccia-jamon-brie",
+    cat: "cocktail",
+    nombre: "Focaccia de jamón y queso brie con trufa",
+    formato: "15 unidades",
+    precio: 35,
+    foto: null,
+    resumen: "Focaccia con jamón, brie y un toque de trufa.",
+    historia: ["Focaccia con jamón, brie y un toque de trufa."],
+    ingredientes: ["Focaccia", "Jamón", "Queso brie", "Trufa"],
+    alergenos: ["gluten", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "focaccia-bacon",
+    cat: "cocktail",
+    nombre: "Focaccia de bacon y queso",
+    formato: "15 unidades",
+    precio: 30,
+    foto: null,
+    resumen: "Focaccia con bacon y queso.",
+    historia: ["Focaccia con bacon y queso."],
+    ingredientes: ["Focaccia", "Bacon", "Queso"],
+    alergenos: ["gluten", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "focaccia-vegetal",
+    cat: "cocktail",
+    nombre: "Focaccia vegetal",
+    formato: "20 unidades",
+    precio: 28,
+    foto: null,
+    veg: true,
+    resumen: "Focaccia con verduras.",
+    historia: ["Focaccia con verduras."],
+    ingredientes: ["Focaccia", "Verduras"],
+    alergenos: ["gluten"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "mini-pizza",
+    cat: "cocktail",
+    nombre: "Mini pizza de champiñones y mozzarella",
+    formato: "20 unidades",
+    precio: 26,
+    foto: null,
+    veg: true,
+    resumen: "Mini pizza con champiñones y mozzarella.",
+    historia: ["Mini pizza con champiñones y mozzarella."],
+    ingredientes: ["Masa de pizza", "Champiñones", "Mozzarella", "Tomate"],
+    alergenos: ["gluten", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "sandwich-pollo",
+    cat: "cocktail",
+    nombre: "Sandwich de pollo asado",
+    formato: "15 unidades",
+    precio: 27,
+    foto: null,
+    resumen: "Sandwich de pollo asado.",
+    historia: ["Sandwich de pollo asado."],
+    ingredientes: ["Pan de molde", "Pollo asado"],
+    alergenos: ["gluten"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
+  },
+  {
+    id: "sandwich-salmon",
+    cat: "cocktail",
+    nombre: "Sandwich de salmón y queso fresco con pepino",
+    formato: "15 unidades",
+    precio: 35,
+    foto: null,
+    resumen: "Sandwich de salmón, queso fresco y pepino.",
+    historia: ["Sandwich de salmón, queso fresco y pepino."],
+    ingredientes: ["Pan de molde", "Salmón", "Queso fresco", "Pepino"],
+    alergenos: ["gluten", "pescado", "lacteos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
 
-  /* ===================== DULCES ===================== */
+  /* ===================== COCKTAIL BOX 2 · CROQUETAS ===================== */
   {
-    id: 'donuts', cat: 'dulces', nombre: 'Mini donuts de chocolate', formato: '12 unidades', raciones: 6,
-    precio: 18, provisional: true, foto: 'donuts', veg: true,
-    resumen: 'Esponjosos y bañados en chocolate.',
-    historia: ['Masa esponjosa y un baño de chocolate que cruje al morder. Los favoritos de las pausas de media mañana.'],
-    ingredientes: ['Harina de trigo', 'Huevo', 'Leche', 'Mantequilla', 'Chocolate'],
-    alergenos: ['gluten', 'huevo', 'lacteos', 'soja'],
-    servir: 'Temperatura ambiente. Consumir en 24 h.', marida: 'Café o chocolate caliente.'
+    id: "croquetas-jamon",
+    cat: "croquetas",
+    nombre: "Croquetas de jamón ibérico",
+    formato: "20 unidades",
+    precio: 20,
+    foto: "croquetas-caja-card",
+    resumen: "Cremosas por dentro y crujientes por fuera.",
+    historia: ["Cremosas por dentro y crujientes por fuera."],
+    ingredientes: ["Bechamel", "Jamón ibérico", "Pan rallado", "Huevo"],
+    alergenos: ["gluten", "lacteos", "huevo"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'napolitanas', cat: 'dulces', nombre: 'Mini napolitanas', formato: '12 unidades', raciones: 6,
-    precio: 18, provisional: true, foto: 'napolitanas', veg: true,
-    resumen: 'Hojaldre de mantequilla relleno de chocolate.',
-    historia: ['Hojaldre de mantequilla con capas que se deshacen y un corazón de chocolate. Horneadas el mismo día.'],
-    ingredientes: ['Hojaldre de mantequilla', 'Chocolate', 'Huevo'],
-    alergenos: ['gluten', 'lacteos', 'huevo', 'soja'],
-    servir: '3 minutos en horno a 160 °C y parecerán recién hechas.', marida: 'Café con leche.'
+    id: "croquetas-marisco",
+    cat: "croquetas",
+    nombre: "Croquetas de marisco",
+    formato: "20 unidades",
+    precio: 20,
+    foto: "croquetas-caja-b-card",
+    resumen: "Cremosas por dentro y crujientes por fuera.",
+    historia: ["Cremosas por dentro y crujientes por fuera."],
+    ingredientes: ["Bechamel", "Marisco", "Pan rallado", "Huevo"],
+    alergenos: ["gluten", "lacteos", "huevo", "crustaceos", "moluscos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'gofres', cat: 'dulces', nombre: 'Mini gofres con Nutella', formato: '12 unidades', raciones: 6,
-    precio: 20, provisional: true, foto: 'gofres', veg: true,
-    resumen: 'Gofre recién hecho con crema de avellanas y fruta.',
-    historia: ['Gofre dorado, crema de avellanas y fruta fresca por encima. Un capricho en dos bocados.'],
-    ingredientes: ['Masa de gofre', 'Crema de cacao y avellanas', 'Fruta fresca'],
-    alergenos: ['gluten', 'lacteos', 'huevo', 'frutos-secos', 'soja'],
-    servir: 'Temperatura ambiente. Consumir en el día.', marida: 'Café o zumo natural.'
+    id: "croquetas-ceps",
+    cat: "croquetas",
+    nombre: "Croquetas de ceps",
+    formato: "20 unidades",
+    precio: 20,
+    foto: "croquetas-caja",
+    veg: true,
+    resumen: "Cremosas por dentro y crujientes por fuera.",
+    historia: ["Cremosas por dentro y crujientes por fuera."],
+    ingredientes: ["Bechamel", "Ceps", "Pan rallado", "Huevo"],
+    alergenos: ["gluten", "lacteos", "huevo"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
   {
-    id: 'croissants', cat: 'dulces', nombre: 'Mini croissants', formato: '12 unidades', raciones: 6,
-    precio: 16, provisional: true, foto: 'croissants', veg: true,
-    resumen: 'De mantequilla, dorados y crujientes.',
-    historia: ['Croissants de mantequilla en formato mini: crujientes por fuera, tiernos por dentro.'],
-    ingredientes: ['Harina de trigo', 'Mantequilla', 'Huevo', 'Azúcar'],
-    alergenos: ['gluten', 'lacteos', 'huevo'],
-    servir: '3 minutos en horno a 160 °C.', marida: 'Café o zumo natural.'
-  },
-  {
-    id: 'magdalenas', cat: 'dulces', nombre: 'Mini magdalenas', formato: '12 unidades', raciones: 6,
-    precio: 14, provisional: true, foto: 'magdalenas', veg: true,
-    resumen: 'Receta casera con un toque de limón.',
-    historia: ['Las de toda la vida, con su copete y un aroma a limón que llena la sala.'],
-    ingredientes: ['Harina de trigo', 'Huevo', 'Aceite de oliva', 'Azúcar', 'Limón'],
-    alergenos: ['gluten', 'huevo', 'lacteos'],
-    servir: 'Temperatura ambiente. Consumir en 48 h.', marida: 'Café o leche.'
-  },
-
-  /* ===================== CAJAS ===================== */
-  {
-    id: 'coffee-break-box', cat: 'cajas', nombre: 'Coffee Break Box', formato: 'Según asistentes', raciones: 10,
-    precio: null, foto: null, etiqueta: 'Para jornadas y reuniones',
-    resumen: 'Dulce y salado para pausas, formaciones y reuniones.',
-    historia: [
-      'Todo lo necesario para una pausa que se note: bollería mini recién horneada y pulgas saladas para quien prefiere algo salado.',
-      'Dinos cuántos asistentes sois y la dimensionamos para que no sobre ni falte.'
-    ],
-    ingredientes: ['Mini donuts de chocolate', 'Mini napolitanas', 'Mini gofres con Nutella', 'Mini croissants', 'Mini magdalenas', 'Mini pulgas de queso', 'Mini pulgas de jamón'],
-    alergenos: ['gluten', 'lacteos', 'huevo', 'frutos-secos', 'soja'],
-    servir: 'Se entrega lista para servir.', marida: 'Café, zumos y agua.'
-  },
-  {
-    id: 'cocktail-box', cat: 'cajas', nombre: 'Cocktail Box', formato: 'Según asistentes', raciones: 10,
-    precio: null, foto: null, etiqueta: 'Para cócteles y eventos',
-    resumen: 'Picoteo y tablas para eventos de pie.',
-    historia: [
-      'Pensada para eventos con formato cóctel: piezas para picar de pie combinadas con tablas para compartir.',
-      'Puedes sumar servicios en directo (bartender, cortador de jamón o show cooking) para darle espectáculo.'
-    ],
-    ingredientes: ['Mini burgers', 'Tabla de quesos variados con crackers y frutos secos', 'Tabla mixta de quesos y embutidos', 'Tabla selección gourmet de ibéricos', 'Surtido de croquetas caseras'],
-    alergenos: ['gluten', 'lacteos', 'huevo', 'frutos-secos', 'mostaza', 'sesamo'],
-    servir: 'Se entrega lista para servir. Las croquetas y burgers, mejor calentadas.', marida: 'Cava, vino y cerveza.'
+    id: "croquetas-variadas",
+    cat: "croquetas",
+    nombre: "Croquetas variadas",
+    formato: "20 unidades",
+    precio: 20,
+    foto: "croquetas-caja-b",
+    resumen: "Un surtido de nuestras croquetas.",
+    historia: ["Un surtido de nuestras croquetas."],
+    ingredientes: ["Bechamel", "Jamón ibérico", "Marisco", "Ceps", "Pan rallado", "Huevo"],
+    alergenos: ["gluten", "lacteos", "huevo", "crustaceos", "moluscos"],
+    servir: "Se entrega listo para servir.",
+    marida: "—"
   },
 
-  /* ===================== SERVICIOS ===================== */
+  /* ===================== TABLA BOX ===================== */
   {
-    id: 'maridaje', cat: 'servicios', nombre: 'Maridaje de vinos', formato: 'Por persona', raciones: 1,
-    precio: 18, foto: null,
-    resumen: 'Tres copas seleccionadas para acompañar tus tablas.',
-    historia: ['Tres vinos elegidos para acompañar lo que pidas. Todas nuestras tablas se pueden acompañar con cava o vino.'],
-    ingredientes: ['3 vinos seleccionados'], alergenos: ['sulfitos'],
-    servir: 'Blancos y cava, entre 6 y 8 °C. Tintos, a 16 °C.', marida: '—'
+    id: "tabla-quesos",
+    cat: "tablas",
+    nombre: "Tabla de quesos variados",
+    formato: "700 g",
+    precio: 48,
+    foto: "tabla-quesos-card",
+    veg: true,
+    resumen: "Quesos de suaves a intensos, con crackers, frutos secos y fruta.",
+    historia: ["Quesos de suaves a intensos, con crackers, frutos secos y fruta."],
+    ingredientes: ["Quesos variados", "Crackers", "Frutos secos", "Fruta fresca"],
+    alergenos: ["lacteos", "gluten", "frutos-secos"],
+    servir: "Se entrega lista para poner en el centro de la mesa.",
+    marida: "—"
   },
   {
-    id: 'barra-bartender', cat: 'servicios', nombre: 'Barra de bebidas con bartender', formato: 'Servicio en directo', raciones: 1,
-    precio: null, foto: 'servicio-bartender', etiqueta: 'En directo',
-    resumen: 'Coctelería clásica y de autor, con y sin alcohol.',
-    historia: ['Un bartender profesional con barra propia en tu evento: cócteles clásicos, de autor y sin alcohol.'],
-    ingredientes: [], alergenos: [], servir: 'Confirmamos disponibilidad y coste según tu evento.', marida: '—'
+    id: "tabla-mixta",
+    cat: "tablas",
+    nombre: "Tabla mixta de quesos y embutidos",
+    formato: "700 g",
+    precio: 50,
+    foto: "tabla-mixta-box-card",
+    etiqueta: "La más pedida",
+    resumen: "Quesos y embutidos con encurtidos, frutos secos y fruta.",
+    historia: ["Quesos y embutidos con encurtidos, frutos secos y fruta."],
+    ingredientes: ["Quesos variados", "Embutidos", "Encurtidos", "Frutos secos", "Fruta fresca"],
+    alergenos: ["lacteos", "gluten", "frutos-secos"],
+    servir: "Se entrega lista para poner en el centro de la mesa.",
+    marida: "—"
   },
   {
-    id: 'cortador', cat: 'servicios', nombre: 'Cortador de jamón', formato: 'Servicio en directo', raciones: 1,
-    precio: null, foto: 'servicio-cortador', etiqueta: 'En directo',
-    resumen: 'Jamón cortado a cuchillo delante de tus invitados.',
-    historia: ['Un maestro cortador en tu evento. El espectáculo es verlo; el premio, probarlo.'],
-    ingredientes: [], alergenos: [], servir: 'Confirmamos disponibilidad y coste según tu evento.', marida: '—'
+    id: "tabla-gourmet",
+    cat: "tablas",
+    nombre: "Tabla selección gourmet de ibéricos",
+    formato: "500 g",
+    precio: 58,
+    foto: "tabla-ibericos-gourmet-card",
+    resumen: "Jamón, lomo y embutidos ibéricos con queso, frutos secos y fruta.",
+    historia: ["Jamón, lomo y embutidos ibéricos con queso, frutos secos y fruta."],
+    ingredientes: ["Jamón ibérico", "Lomo ibérico", "Embutidos ibéricos", "Queso", "Frutos secos", "Fruta fresca"],
+    alergenos: ["lacteos", "frutos-secos"],
+    servir: "Se entrega lista para poner en el centro de la mesa.",
+    marida: "—"
+  },
+
+  /* ===================== BARRA DE BEBIDAS ===================== */
+  {
+    id: "zumos",
+    cat: "bebidas",
+    nombre: "Zumos (naranja, piña, melocotón)",
+    formato: "Unidad",
+    precio: 1.9,
+    foto: "bebida-zumos",
+    resumen: "Zumo de naranja, piña o melocotón.",
+    historia: ["Zumo de naranja, piña o melocotón."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
   },
   {
-    id: 'show-cooking', cat: 'servicios', nombre: 'Show cooking de risotto de ceps', formato: 'Servicio en directo', raciones: 1,
-    precio: null, foto: null, etiqueta: 'En directo',
-    resumen: 'Risotto cremoso preparado al momento en tu evento.',
-    historia: ['Arroz, caldo, ceps y paciencia, removido delante de tus invitados hasta el punto exacto.'],
-    ingredientes: ['Arroz', 'Ceps', 'Caldo', 'Parmesano', 'Mantequilla'], alergenos: ['lacteos'],
-    servir: 'Confirmamos disponibilidad y coste según tu evento.', marida: 'Un blanco con cuerpo.'
+    id: "coca-cola",
+    cat: "bebidas",
+    nombre: "Coca-Cola / Zero",
+    formato: "Unidad",
+    precio: 2,
+    foto: "bebida-cocacola",
+    resumen: "Coca-Cola o Coca-Cola Zero.",
+    historia: ["Coca-Cola o Coca-Cola Zero."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
   },
   {
-    id: 'chef-camareros', cat: 'servicios', nombre: 'Chef y camareros a domicilio', formato: 'Cenas privadas', raciones: 1,
-    precio: null, foto: null,
-    resumen: 'Cenas privadas para grupos reducidos, con menú a medida.',
-    historia: ['Consulta menús y disponibilidad para tu grupo. Cocinamos y servimos en tu casa; tú solo disfrutas.'],
-    ingredientes: [], alergenos: [], servir: 'Menú y precio a medida.', marida: '—'
+    id: "fanta",
+    cat: "bebidas",
+    nombre: "Fanta naranja / limón / Sprite",
+    formato: "Unidad",
+    precio: 2,
+    foto: "bebida-fanta",
+    resumen: "Fanta de naranja, Fanta de limón o Sprite.",
+    historia: ["Fanta de naranja, Fanta de limón o Sprite."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "agua",
+    cat: "bebidas",
+    nombre: "Agua mineral / con gas",
+    formato: "Unidad",
+    precio: 1.5,
+    foto: "bebida-agua",
+    resumen: "Agua mineral natural o con gas.",
+    historia: ["Agua mineral natural o con gas."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "cerveza",
+    cat: "bebidas",
+    nombre: "Cerveza Estrella",
+    formato: "Unidad",
+    precio: 2.3,
+    foto: "bebida-cerveza",
+    resumen: "Cerveza Estrella Galicia.",
+    historia: ["Cerveza Estrella Galicia."],
+    ingredientes: [],
+    alergenos: ["gluten"],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "vino-tinto",
+    cat: "bebidas",
+    nombre: "Vino tinto reserva",
+    formato: "Botella",
+    precio: 18,
+    foto: "bebida-vino-tinto",
+    resumen: "Vino tinto reserva.",
+    historia: ["Vino tinto reserva."],
+    ingredientes: [],
+    alergenos: ["sulfitos"],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "vino-blanco",
+    cat: "bebidas",
+    nombre: "Vino blanco Viña Regajo",
+    formato: "Botella",
+    precio: 20,
+    foto: "bebida-vino-blanco",
+    resumen: "Vino blanco seco.",
+    historia: ["Vino blanco seco."],
+    ingredientes: [],
+    alergenos: ["sulfitos"],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "cava-codorniu",
+    cat: "bebidas",
+    nombre: "Cava Codorníu Non Plus Ultra",
+    formato: "Botella",
+    precio: 18,
+    foto: "bebida-cava-codorniu",
+    resumen: "Cava brut reserva.",
+    historia: ["Cava brut reserva."],
+    ingredientes: [],
+    alergenos: ["sulfitos"],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+  {
+    id: "cava-juve",
+    cat: "bebidas",
+    nombre: "Cava Juvé & Camps Reserva",
+    formato: "Botella",
+    precio: 20,
+    foto: "bebida-cava-juve",
+    resumen: "Cava brut reserva.",
+    historia: ["Cava brut reserva."],
+    ingredientes: [],
+    alergenos: ["sulfitos"],
+    servir: "Se entrega frío si nos lo indicas al hacer el pedido.",
+    marida: "—"
+  },
+
+  /* ===================== SERVICE PREMIUM ===================== */
+  {
+    id: "barra-bartender",
+    cat: "servicios",
+    nombre: "Barra de bebidas con bartender",
+    formato: "Servicio en directo",
+    precio: null,
+    foto: "servicio-bartender",
+    etiqueta: "En directo",
+    resumen: "Un bartender profesional con barra propia en tu evento.",
+    historia: ["Un bartender profesional con barra propia en tu evento: cócteles clásicos, de autor y sin alcohol."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Confirmamos disponibilidad y coste según tu evento.",
+    marida: "—"
+  },
+  {
+    id: "cortador",
+    cat: "servicios",
+    nombre: "Estación de cortador de jamón",
+    formato: "Servicio en directo",
+    precio: null,
+    foto: "servicio-cortador",
+    etiqueta: "En directo",
+    resumen: "Jamón cortado a cuchillo delante de tus invitados.",
+    historia: ["Un maestro cortador en tu evento. El espectáculo es verlo; el premio, probarlo."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Confirmamos disponibilidad y coste según tu evento.",
+    marida: "—"
+  },
+  {
+    id: "show-cooking",
+    cat: "servicios",
+    nombre: "Show cooking con chef",
+    formato: "Servicio en directo",
+    precio: null,
+    foto: null,
+    etiqueta: "En directo",
+    resumen: "Un chef cocinando en directo durante tu evento.",
+    historia: ["Un chef cocinando en directo durante tu evento, con el plato terminado y servido al momento."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Confirmamos disponibilidad y coste según tu evento.",
+    marida: "—"
+  },
+  {
+    id: "cenas-privadas",
+    cat: "servicios",
+    nombre: "Cenas privadas para grupos reducidos",
+    formato: "A medida",
+    precio: null,
+    foto: null,
+    resumen: "Una cena a tu medida con chef y camareros.",
+    historia: ["Una cena a tu medida, en tu casa o en el espacio que elijas, con chef y camareros a domicilio."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Menú y precio a medida.",
+    marida: "—"
+  },
+  {
+    id: "cafeteria",
+    cat: "servicios",
+    nombre: "Servicio de cafetería",
+    formato: "Servicio en directo",
+    precio: null,
+    foto: null,
+    resumen: "Café e infusiones preparados al momento.",
+    historia: ["Café e infusiones preparados al momento, para cerrar una comida o sostener una jornada de trabajo."],
+    ingredientes: [],
+    alergenos: [],
+    servir: "Confirmamos disponibilidad y coste según tu evento.",
+    marida: "—"
   }
 ];
 
 var CATEGORIAS = {
   todos:     { titulo: 'Catering a domicilio', intro: 'Lo preparamos por encargo con 2 días de antelación y te lo llevamos a casa, a la oficina o al lugar de tu evento. Elige, añade a tu pedido y confírmalo por WhatsApp.' },
-  tablas:    { titulo: 'Tablas para compartir', intro: 'Jamón cortado a cuchillo, quesos artesanos y embutidos de bellota, montados a mano el mismo día de la entrega.' },
-  salados:   { titulo: 'Bocados salados', intro: 'Mini burgers, croquetas caseras y pulgas para picar de pie. Para cócteles, reuniones y celebraciones.' },
-  dulces:    { titulo: 'Dulces', intro: 'Bollería mini horneada el mismo día, para coffee breaks, desayunos de empresa y el final de cualquier celebración.' },
-  cajas:     { titulo: 'Cajas para eventos', intro: 'Formatos cerrados para tu evento. Dinos cuántos asistentes sois y ajustamos cantidades y precio.' },
-  servicios: { titulo: 'Bebidas y servicios', intro: 'Maridaje de vinos y servicios en directo que convierten tu evento en una experiencia.' }
+  coffee:    { titulo: 'Coffee Break Box', intro: 'Bollería para pausas, jornadas de trabajo y reuniones. Bandejas de 15 y 20 unidades.' },
+  cocktail:  { titulo: 'Cocktail Box', intro: 'Mini bocadillos, burgers, focaccias, mini pizzas y sandwiches para cócteles y celebraciones de pie.' },
+  croquetas: { titulo: 'Cocktail Box 2 · Croquetas', intro: 'Croquetas caseras en bandejas de 20 unidades.' },
+  tablas:    { titulo: 'Tabla Box', intro: 'Tablas de quesos, mixta y selección gourmet de ibéricos, montadas a mano el mismo día.' },
+  bebidas:   { titulo: 'Barra de bebidas', intro: 'Refrescos, zumos, agua y cerveza por unidad; vinos y cavas por botella.' },
+  servicios: { titulo: 'Service Premium', intro: 'Servicios en directo y a medida para tu evento. Te confirmamos disponibilidad y precio.' }
 };
 
 var ALERGENOS = {
