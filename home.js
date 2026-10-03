@@ -301,7 +301,7 @@
         var href = t.getAttribute('data-cta-href');
         if (!href) {
           cta.setAttribute('href', '#reserva');
-          cta.textContent = 'Reservar mesa privada';
+          cta.textContent = document.documentElement.lang === 'en' ? 'Book a private table' : 'Reservar mesa privada';
         }
         /* Enlaces de la propia web: misma pestaña */
         if (!href || href.charAt(0) === '#' || href.indexOf('.html') > -1) {
@@ -310,5 +310,39 @@
         }
       });
     });
+  }
+})();
+
+/* ---------- Reseñas (resenas.js): la sección solo aparece si hay reseñas ---------- */
+(function () {
+  'use strict';
+  var sec = document.querySelector('[data-resenas]');
+  if (!sec || typeof RESENAS === 'undefined' || !RESENAS.length) return;
+  var list = sec.querySelector('[data-resenas-list]');
+  var esc = function (t) { var d = document.createElement('div'); d.textContent = t == null ? '' : String(t); return d.innerHTML; };
+  RESENAS.forEach(function (r) {
+    var n = Math.max(0, Math.min(5, parseInt(r.estrellas, 10) || 5));
+    var f = document.createElement('figure');
+    f.className = 'x-review';
+    f.innerHTML = '<div class="x-review-stars" aria-label="' + n + ' de 5 estrellas">' + '★★★★★'.slice(0, n) + '<span style="opacity:.25">' + '★★★★★'.slice(0, 5 - n) + '</span></div>' +
+      '<blockquote>“' + esc(r.texto) + '”</blockquote>' +
+      '<figcaption><b>' + esc(r.nombre) + '</b>' + esc([r.evento, r.fecha].filter(Boolean).join(' · ')) + '</figcaption>';
+    list.appendChild(f);
+  });
+  var g = sec.querySelector('[data-resenas-google]');
+  if (g && typeof GOOGLE_RESENAS_URL === 'string' && GOOGLE_RESENAS_URL) { g.href = GOOGLE_RESENAS_URL; g.hidden = false; }
+  sec.hidden = false;
+  /* puntos del carrusel en móvil */
+  if (window.matchMedia('(max-width: 760px)').matches && list.children.length > 1) {
+    var dots = document.createElement('div'); dots.className = 'x-snap-dots'; dots.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < list.children.length; i++) dots.appendChild(document.createElement('i'));
+    list.parentNode.insertBefore(dots, list.nextSibling);
+    var mark = function () {
+      var step = list.children.length > 1 ? list.children[1].offsetLeft - list.children[0].offsetLeft : 1;
+      var idx = Math.round(list.scrollLeft / (step || 1));
+      Array.prototype.forEach.call(dots.children, function (d, j) { d.classList.toggle('is-on', j === idx); });
+    };
+    list.addEventListener('scroll', function () { requestAnimationFrame(mark); }, { passive: true });
+    mark();
   }
 })();

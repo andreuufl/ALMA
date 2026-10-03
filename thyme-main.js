@@ -763,8 +763,10 @@
   var timeHidden = document.querySelector('#reserva-hora');
   var summaryEl = document.querySelector('[data-avail-summary]');
 
-  var DOW = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-  var MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  /* Versión en inglés (en.html): mismos selectores, textos en inglés */
+  var EN = document.documentElement.lang === 'en';
+  var DOW = EN ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  var MONTHS = EN ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] : ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
   /* Abierto todos los días, con turnos aproximadamente de 14:00 a 23:00. */
   var HORARIO_TURNOS = ['14:00', '16:00', '18:00', '20:00', '21:30', '23:00'];
@@ -849,7 +851,7 @@
 
   function formatDateEs(iso) {
     var d = new Date(iso + 'T00:00:00');
-    return d.getDate() + ' de ' + MONTHS[d.getMonth()];
+    return EN ? (MONTHS[d.getMonth()] + ' ' + d.getDate()) : (d.getDate() + ' de ' + MONTHS[d.getMonth()]);
   }
 
   function updateAvailField() {
@@ -859,13 +861,13 @@
     if (availField) availField.classList.remove('has-error');
     if (summaryEl) {
       summaryEl.textContent = (selectedDate && selectedTime)
-        ? ('Seleccionado: ' + formatDateEs(selectedDate) + ' · ' + selectedTime + 'h')
-        : 'Elige día y turno disponibles';
+        ? ((EN ? 'Selected: ' : 'Seleccionado: ') + formatDateEs(selectedDate) + ' · ' + selectedTime + 'h')
+        : (EN ? 'Choose an available day and time' : 'Elige día y turno disponibles');
     }
   }
 
   buildDayPicker();
-  if (timePicker) timePicker.innerHTML = '<p class="time-picker-empty">Primero elige un día</p>';
+  if (timePicker) timePicker.innerHTML = '<p class="time-picker-empty">' + (EN ? 'Choose a day first' : 'Primero elige un día') + '</p>';
 
   /* ============================================================
      Formulario de reserva → validación + envío por WhatsApp

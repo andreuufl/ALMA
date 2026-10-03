@@ -13,19 +13,19 @@
   --paper-rgb:251,248,242;
   --espresso:#1D1913;
   --espresso-70:rgba(29,25,19,.72);
-  --espresso-50:rgba(29,25,19,.55);
+  --espresso-50:rgba(29,25,19,.66);
   --banda:#2E3624;
   --banda-texto:#F4EEE3;
   --banda-texto-rgb:244,238,227;
   --gold:#A57D43;
-  --gold-deep:#8A6532;
+  --gold-deep:#76572A;
   --gold-soft:#D9BE8C;
   --marron-logo:#2E3624;
   --marron-logo-oscuro:#232A1B;
   --wine:#1D1913;          /* botón principal = tinta, como en la portada */
   --wine-deep:#2E3624;     /* hover = oliva */
   --wine-ink:#1D1913;
-  --wine-texto:#8A6532;    /* enlaces y acentos de texto = oro oscuro (legible) */
+  --wine-texto:#76572A;    /* enlaces y acentos de texto = oro oscuro (legible) */
   --olive:#3B4530;
   --line:rgba(29,25,19,.12);
   --glass-bg:rgba(251,248,242,.7);
@@ -90,7 +90,7 @@ input[type=checkbox]{accent-color:var(--x-ink);}
 .x-brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 1px var(--line);}
 .x-brand-txt{display:flex;flex-direction:column;line-height:1;}
 .x-brand-txt b{font-family:var(--font-display);font-weight:400;font-size:1.4rem;letter-spacing:.12em;color:var(--x-ink);}
-.x-brand-txt small{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--espresso-50);margin-top:5px;}
+.x-brand-txt small{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--espresso-70);margin-top:5px;}
 .x-header nav{margin:0;}
 .x-nav{display:flex;align-items:center;gap:4px;margin:0;padding:0;list-style:none;
   /* anula los estilos del menú antiguo de thyme.css */
@@ -146,7 +146,7 @@ input[type=checkbox]{accent-color:var(--x-ink);}
 .x-footer-brand img{width:88px;height:88px;border-radius:50%;margin-bottom:18px;}
 .x-footer-brand p{font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:#F4EEE3;line-height:1.4;margin:0;}
 .x-footer-cols{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px;}
-.x-footer h4{font-family:var(--font-body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--x-gold-soft);margin:0 0 18px;font-weight:700;}
+.x-footer h3,.x-footer h4{font-family:var(--font-body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--x-gold-soft);margin:0 0 18px;font-weight:700;}
 .x-footer ul{display:grid;gap:10px;margin:0;padding:0;list-style:none;}
 .x-footer ul a{font-size:.94rem;transition:color .25s;word-break:break-word;}
 .x-footer a:hover{color:#F4EEE3;}
@@ -177,3 +177,12 @@ input[type=checkbox]{accent-color:var(--x-ink);}
   .x-header .x-nav .x-nav-cta a.x-btn-dark{color:#F4EEE3!important;background:var(--x-ink)!important;}
   .x-header .x-nav .x-nav-cta a.x-btn-line{color:var(--x-ink)!important;background:transparent!important;}
 }
+
+/* Contraste (revisión técnica) */
+.topbar-cp input::placeholder{color:rgba(244,238,227,.72)!important;}
+.topbar-cp input{color:#F4EEE3!important;background-color:rgba(255,255,255,.08)!important;border-color:rgba(244,238,227,.3)!important;}
+.menu-tbd,.catalogo-count,.producto-alergeno{color:var(--espresso-70)!important;}
+/* Botón de catálogo en la cabecera oscura de "A domicilio" */
+.catalogo-pdf{margin-top:18px;}
+.catalogo-banner .catalogo-pdf-btn{border-color:rgba(244,238,227,.35)!important;color:#F4EEE3!important;}
+.catalogo-banner .catalogo-pdf-btn:hover{border-color:#D9BE8C!important;color:#D9BE8C!important;background:transparent!important;}
